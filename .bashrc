@@ -121,25 +121,18 @@ fi
 
 export EDITOR="emacs -nw"
 export VISUAL=$EDITOR
-
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
-export PYTHONPATH="/$HOME/lib"
+unset USERNAME
 
 export LOCALE=en_us
 export LANG=C
-
-export PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:
+export PYTHONPATH="/$HOME/lib"
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-
-unset USERNAME
 export JAVA_HOME=/usr
-
 export GEM_HOME=$HOME/.gems
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
-
 export GOPATH=$HOME/cmd/src/go
-
-
+export PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:$GOPATH/bin
 
 # # ## ### ##### ######## ############# #####################
 # # aliases
