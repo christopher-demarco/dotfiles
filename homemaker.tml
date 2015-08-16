@@ -1,8 +1,10 @@
 [tasks.default]
 	links = [
 		[".bashrc"],
+		[".bash_profile"],
 		[".emacs"],
 		[".emacs.d"],
 		[".homemaker.tml", "homemaker.tml"],
+		[".gitconfig"],
 	]
 

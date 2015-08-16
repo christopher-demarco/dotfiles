@@ -1,0 +1,11 @@
+[user]
+        name = Christopher DeMarco
+        email = cdemarco@gmail.com
+[color]
+        status = auto
+        branch = auto
+[alias]
+        st = status
+        ci = commit
+[push]
+        default = simple
