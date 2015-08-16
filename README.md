@@ -7,4 +7,4 @@ You should be able to test this repository by sudoing into it.
 
 TODO: properly externalize other git repos within .emacs.d/
 
-Copyright (c) 2015 Christopher DeMarco <cdemarco@gmail.com>. All rights reserved.
+Copyright (c) 2015 Christopher DeMarco <<cdemarco@gmail.com>>. All rights reserved.
