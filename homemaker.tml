@@ -1,0 +1,8 @@
+[tasks.default]
+	links = [
+		[".bashrc"],
+		[".emacs"],
+		[".emacs.d"],
+		[".homemaker.tml", "homemaker.tml"],
+	]
+
