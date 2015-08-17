@@ -1,9 +1,6 @@
 # dotfiles
 
-I intend that this directory be copied up to $HOME. 
-You should be able to test this repository by sudoing into it.
-
-``homemaker'' http://foosoft.net/projects/homemaker/ looks interesting.
+Use [homemaker](http://foosoft.net/projects/homemaker/) to deploy.
 
 TODO: properly externalize other git repos within .emacs.d/
 
