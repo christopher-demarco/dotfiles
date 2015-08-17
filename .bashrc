@@ -167,12 +167,6 @@ alias hgrep='his | grep'
 # # ## ### ##### ######## ############# #####################
 # # functions
 
-
-function rlocate {
-    locate -r $1 | grep -v .svn
-}
-
-
 function sshkey {
     cat ~/.ssh/id_dsa.pub | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
 }
@@ -239,23 +233,6 @@ function delsshkey {
     sed -i.bak "$1d" ~/.ssh/known_hosts
 }
 
-function sshjump {
-    # This is a cute trick that isn't actually useful in this form...
-    # You want to use this to securely forward traffic where you don't
-    # have a working VPN... e.g. for VNC to a host on a public
-    # address...
-    [[ $1 =~ ([^@]*)@(.*) ]]
-    username=${BASH_REMATCH[1]}
-    if [ -z $username ]; then
-        username=$(whoami)
-        host=$1
-    else host=${BASH_REMATCH[2]}
-    fi
-    ssh  -N -L 2222:$host:22 stork & sleep 1
-    ssh -p 2222 ${username}@localhost -o "HostKeyAlias=${host}"
-    fg
-}
-
 function pidof {
     ps -Ac | egrep -i $@ | awk '{ print $1 }'
 }
@@ -269,6 +246,3 @@ function svnstamp {
     echo '# $Id$' >> $1
     echo '# $URL$' >> $1
 }
-
-
-
