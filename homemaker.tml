@@ -6,5 +6,7 @@
 		[".emacs.d"],
 		[".homemaker.tml", "homemaker.tml"],
 		[".gitconfig"],
+		[".slate"],
+		[".subversion/config"]
 	]
 
