@@ -79,10 +79,28 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+### Aliases
 alias sl=ls
 alias ls='ls -FhG'
+alias svnst="svn st | egrep -v '^(X|$|Performing)'"
+alias em='open -a Emacs'
+alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias his='history'
+alias hgrep='his | grep'
+alias crasshplan='ssh -v -L 4200:localhost:4243'
+alias screenssharing="ssh -L 31337:localhost:5900 "
 
+### Environment variables
+export GOPATH=$HOME/cmd/src/go
 
+### Functions
+function sshkey {
+    cat ~/.ssh/id_dsa.pub | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
+}
+function delsshkey {
+    sed -i.bak "$1d" ~/.ssh/known_hosts
+}
