@@ -4,3 +4,6 @@
 [submodule ".emacs.d/yaml-mode"]
 	path = .emacs.d/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
+[submodule ".emacs.d/markdown-mode"]
+	path = .emacs.d/markdown-mode
+	url = https://github.com/defunkt/markdown-mode.git
