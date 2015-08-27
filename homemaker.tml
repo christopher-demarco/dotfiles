@@ -1,13 +1,14 @@
 [tasks.default]
 	links = [
-		[".bashrc"]
+	         [".dotfiles", "."]
+		,[".homemaker.tml", "homemaker.tml"]
+		,[".bashrc"]
 		,[".bash_profile"]
 		,[".emacs"]
 		,[".emacs.d"]
-		,[".homemaker.tml", "homemaker.tml"]
 		,[".gitconfig"]
 		,[".slate"]
 		,[".subversion/config"]
 		,[".zshrc"]
+		,[".oh-my-zsh", "oh-my-zsh"]
 	]
-
