@@ -14,7 +14,10 @@ Install go. Then
 
     go get github.com/FooSoft/homemaker
 	
-	
+
+## Customization
+
+I've forked oh-my-zsh and made a custom theme. It remains to be seen whether pulling changes from master (what's the Git terminology for that!?) is too hairy.
 
 
 
