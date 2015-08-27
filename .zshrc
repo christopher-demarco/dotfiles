@@ -82,9 +82,20 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 
+case $TERM in
+	"emacs" | "dumb")
+        alias ls='ls --color=no -Fh'
+	    ;;
+	*)
+        alias ls='ls --color=yes -Fh'
+	    ;;
+esac
+if [[ "$OSTYPE" = darwin* ]]; then
+    alias ls='ls -FhG'
+fi
+
 ### Aliases
 alias sl=ls
-alias ls='ls -FhG'
 alias svnst="svn st | egrep -v '^(X|$|Performing)'"
 alias em='open -a Emacs'
 alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
