@@ -2,9 +2,9 @@
 
 ## Installation
 Use [homemaker](http://foosoft.net/projects/homemaker/) to deploy.
-#### Linux
+Linux: 
     ./homemaker_x86 ./homemaker.tml .
-#### OSX 
+OSX: 
 Install go. Then
     go get github.com/FooSoft/homemaker
 	
