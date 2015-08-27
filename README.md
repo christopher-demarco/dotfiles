@@ -2,6 +2,9 @@
 TODO: properly externalize other git repos within .emacs.d/
 
 ## Installation
+
+Clone the git repo: https://github.com/christopher-demarco/dotfiles.git .
+
 Use [homemaker](http://foosoft.net/projects/homemaker/) to deploy.
 
 Linux: 
