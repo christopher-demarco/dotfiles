@@ -109,6 +109,7 @@ alias screenssharing="ssh -L 31337:localhost:5900 "
 
 ### Environment variables
 export GOPATH=$HOME/cmd/src/go
+export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 
 ### Functions
 function sshkey {

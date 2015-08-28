@@ -129,7 +129,6 @@ export LANG=C
 export PYTHONPATH="/$HOME/lib"
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 export JAVA_HOME=/usr
-export GEM_HOME=$HOME/.gems
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 export GOPATH=$HOME/cmd/src/go
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:$GOPATH/bin
