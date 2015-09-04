@@ -106,6 +106,7 @@ alias his='history'
 alias hgrep='his | grep'
 alias crasshplan='ssh -v -L 4200:localhost:4243'
 alias screenssharing="ssh -L 31337:localhost:5900 "
+alias svnurl="svn info | grep URL | cut -d' ' -f2 | pbcopy"
 
 ### Environment variables
 export GOPATH=$HOME/cmd/src/go
