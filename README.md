@@ -21,6 +21,7 @@ OSX:
 Install go. Then
 
     go get github.com/FooSoft/homemaker
+    homemaker ./homemaker.tml .
 	
 
 ## Customization

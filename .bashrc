@@ -167,7 +167,12 @@ alias hgrep='his | grep'
 # # functions
 
 function sshkey {
-    cat ~/.ssh/id_dsa.pub | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
+    if [ -e ~/.ssh/id_dsa.pub ] ; then
+	keyfile=id_dsa.pub
+    elif [ -e ~/.ssh/id_rsa.pub ] ; then
+	keyfile=id_rsa.pub
+    fi
+    cat ~/.ssh/${keyfile} | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
 }
 
 
