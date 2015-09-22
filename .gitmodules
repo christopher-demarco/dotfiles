@@ -2,10 +2,10 @@
 	path = .emacs.d/emacs-color-theme-solarized
 	url = https://github.com/sellout/emacs-color-theme-solarized.git
 [submodule ".emacs.d/yaml-mode"]
-	path = .emacs.d/yaml-mode
+	path = .emacs.d/lib/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
 [submodule ".emacs.d/markdown-mode"]
-	path = .emacs.d/markdown-mode
+	path = .emacs.d/lib/markdown-mode
 	url = https://github.com/defunkt/markdown-mode.git
 [submodule "homemaker"]
 	path = homemaker

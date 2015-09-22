@@ -35,7 +35,7 @@
 (add-to-list 'exec-path "~/bin")
 (add-to-list 'exec-path "/usr/local/bin")
 
-(push "~/.emacs.d" load-path)
+(push "~/.emacs.d/lib" load-path)
 
 (autoload 'applescript-mode "applescript-mode"
   "Major mode for editing AppleScript source." t)
@@ -276,7 +276,7 @@
 ;; (require 'wc-mode)
 ;;(global-set-key "\C-cw" 'wc-mode)
 
-(push "~/.emacs.d/yaml-mode" load-path)
+(push "~/.emacs.d/lib/yaml-mode" load-path)
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
