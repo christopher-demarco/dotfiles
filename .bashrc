@@ -114,23 +114,32 @@ umask 0077
 # # ## ### ##### ######## ############# #####################
 # # env variables
 
+export LOCALE=en_us
+export LANG=C
+
+export EDITOR="emacs -nw"
+export VISUAL=$EDITOR
+
+unset USERNAME
+
 if [ -a /proc/cpuinfo ]; then
     export CONCURRENCY_LEVEL=$(($(grep -c processor /proc/cpuinfo) * 2 + 1))
     export MAKEOPTS="-j${CONCURRENCY_LEVEL}"
 fi
 
-export EDITOR="emacs -nw"
-export VISUAL=$EDITOR
-export PYTHONSTARTUP="$HOME/.pythonrc.py"
-unset USERNAME
 
-export LOCALE=en_us
-export LANG=C
+export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export PYTHONPATH="/$HOME/lib"
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+# # sudo -H pip install virtualenvwrapper
+# export WORKON_HOME=$HOME/.virtualenvs # mkvirtualenv someproject
+# source /usr/local/bin/virtualenvwrapper.sh
+
 export JAVA_HOME=/usr
+
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
+
 export GOPATH=$HOME/cmd/src/go
+
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:$GOPATH/bin
 
 # # ## ### ##### ######## ############# #####################
@@ -177,9 +186,7 @@ function sshkey {
 
 
 # inverse viagra to compete with vi and ed 
-alias em='open -a Emacs'
-
-
+alias em='/Applications/Emacs.app/Contents/MacOS/Emacs -nw "$@"'
 
 # Did you ever wonder whether an IP is *really* retired?
 function otf {

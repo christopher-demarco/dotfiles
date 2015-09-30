@@ -121,11 +121,11 @@
 
 
 ;; Load org-mode elsewhere
-(if (file-exists-p "~/.emacs.d/cmd_org.el")
-     (load-file "~/.emacs.d/cmd_org.el"))
+(if (file-exists-p "~/.emacs.d/lib/cmd_org.el")
+     (load-file "~/.emacs.d/lib/cmd_org.el"))
 
 
-(push "~/.emacs.d/markdown-mode" load-path)
+(push "~/.emacs.d/lib/markdown-mode" load-path)
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
