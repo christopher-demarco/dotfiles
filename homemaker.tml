@@ -1,6 +1,5 @@
 [tasks.default]
 	links = [
-	         [".dotfiles", "."],
  		[".homemaker.tml", "homemaker.tml"],
 		[".bashrc"],
 		[".bash_profile"],
@@ -12,4 +11,5 @@
 		[".zshrc"],
 		[".oh-my-zsh", "oh-my-zsh"],
 		[".tmux.conf"],
+		[".ssh/config", "ssh_config"],
 	]
