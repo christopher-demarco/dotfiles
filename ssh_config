@@ -1,0 +1,124 @@
+Host *
+    ControlMaster auto
+    ControlPath ~/.ssh/master-%r@%h:%p
+    ForwardAgent yes
+    Compression no
+    ServerAliveInterval 60
+#    VisualHostKey=yes
+
+
+Host olivaw*
+    Port 22
+    User cmd
+
+host carrot*
+    HostName 192.168.1.113
+    User cmd
+    Port 16801
+
+
+
+# ### Rhiza
+# Host staging-db
+#  HostName ec2-54-224-116-197.compute-1.amazonaws.com
+
+# Host cicada # Shared dev server
+#  HostName 192.168.1.119
+#  user palat
+#  IdentityFile ~/.ssh/id_rsa_rhiza
+
+Host concorde*
+    HostName 192.168.1.44
+
+Host froghopper*
+    HostName 192.168.1.48
+
+Host utility*
+    HostName utility.rhizalytics.com
+    User rhiza
+    IdentityFile ~/.ssh/id_rsa_rhiza
+
+Host doc.rhiza.com
+    HostName 104.131.86.27
+    User root
+
+Host intra*
+    HostName 104.131.63.31
+    IdentityFile ~/.ssh/id_rsa
+
+
+# Host backup-db # rsync machine on the west coast
+#  HostName ec2-54-215-118-3.us-west-1.compute.amazonaws.com
+
+Host scarab # dev/integration warehouse
+    HostName 192.168.1.42
+
+Host mantis # internal ETL box -- formerly Alison's exclusively
+    HostName 192.168.1.46
+
+# Host integration-user
+#  HostName 192.168.1.104
+
+# Host production-db
+#  HostName ec2-54-224-47-141.compute-1.amazonaws.com
+
+# Host staging-etl # Used for event log processing
+#  HostName ec2-54-87-86-78.compute-1.amazonaws.com
+
+# Host production-etl # Used for event log processign
+#  HostName ec2-54-83-100-151.compute-1.amazonaws.com
+
+Host arkham # internal ETL box -- Karl's workshop
+    HostName 192.168.1.40
+
+
+# Host office
+#  HostName office.rhiza.com
+#  user jpalat 
+#  IdentityFile ~/.ssh/id_rsa_rhiza
+#  LocalForward 10080 192.168.1.1:80
+
+
+# Host officey
+#  HostName office.rhizalytics.com
+#  user palat 
+#  IdentityFile ~/.ssh/id_rsa_rhiza
+
+# Host stageUserDB
+#  HostName ec2-54-224-116-197.compute-1.amazonaws.com
+#  user rhiza
+#  IdentityFile ~/.ssh/id_rsa_rhiza_aws
+#  LocalForward 13307 ec2-54-224-64-105.compute-1.amazonaws.com:3306
+
+# Host prodUserDB
+#  HostName ec2-54-226-110-38.compute-1.amazonaws.com
+#  HostName utility.rhizalytics.com
+#  user rhiza
+#  IdentityFile ~/.ssh/id_rsa_rhiza_aws
+#  LocalForward 13306 comcast-production.c0034zsw4bal.us-east-1.rds.amazonaws.com:3306
+
+# Host RhizaDBs
+#  HostName utility.rhizalytics.com
+#  user rhiza
+#  IdentityFile ~/.ssh/id_rsa_rhiza
+#  #production
+#  LocalForward 13306 comcast-production.c0034zsw4bal.us-east-1.rds.amazonaws.com:3306
+#  #staging
+#  LocalForward 13308 ec2-50-16-81-24.compute-1.amazonaws.com:3306
+#  #integration
+#  LocalForward 13307 ec2-23-20-173-226.compute-1.amazonaws.com:3306 
+#  #replica 
+#  LocalForward 13309 prodreplica.c0034zsw4bal.us-east-1.rds.amazonaws.com:3306
+#  #Backup Replica
+#  LocalForward 13310 production-user-replica.c0034zsw4bal.us-east-1.rds.amazonaws.com:3306
+
+# Host devblog 
+#  HostName 54.175.165.56
+#  user ubuntu
+#  IdentityFile ~/.ssh/id_rsa_rhiza_aws
+
+# Host *.amazonaws.com
+#  user rhiza
+#  IdentityFile ~/.ssh/id_rsa_rhiza_aws
+
+
