@@ -64,11 +64,19 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='emacs -nw'
-else
-  export EDITOR='emacs -nw'
+EMACS=$(which emacs)
+if [ -e /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
+    EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw"
 fi
+
+export EDITOR="$EMACS"
+
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='emacs -nw'
+# else
+#   export EDITOR='emacs -nw'
+# fi
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -97,7 +105,7 @@ fi
 ### Aliases
 alias sl=ls
 alias svnst="svn st | egrep -v '^(X|$|Performing)'"
-alias em='open -a Emacs'
+alias em="$EMACS"
 alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
 alias rm='rm -i'
 alias cp='cp -i'

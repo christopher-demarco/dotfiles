@@ -117,7 +117,13 @@ umask 0077
 export LOCALE=en_us
 export LANG=C
 
-export EDITOR="emacs -nw"
+EMACS=$(which emacs)
+if [ -e /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
+    #    EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+    EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw"
+fi
+
+export EDITOR="$EMACS"
 export VISUAL=$EDITOR
 
 unset USERNAME
@@ -186,7 +192,7 @@ function sshkey {
 
 
 # inverse viagra to compete with vi and ed 
-alias em='/Applications/Emacs.app/Contents/MacOS/Emacs -nw "$@"'
+alias em="$EMACS"
 
 # Did you ever wonder whether an IP is *really* retired?
 function otf {
