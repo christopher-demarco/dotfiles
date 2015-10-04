@@ -271,6 +271,15 @@
 ;;(load-theme 'tango t)
 ;;(load-theme 'manoj-dark t)
 
+;; Disable theme in terminal (!X-D)
+(defun on-frame-open (frame)
+  (if (not (display-graphic-p frame))
+      (set-face-background 'default "unspecified-bg" frame )))
+(on-frame-open (selected-frame))
+(add-hook 'after-make-frame-functions 'on-frame-open)
+
+
+
 ;; for 750-words
 ;; (add-to-list 'load-path "~/.emacs.d/wc-mode")
 ;; (require 'wc-mode)
