@@ -38,9 +38,13 @@ Host utility*
     User rhiza
     IdentityFile ~/.ssh/id_rsa_rhiza
 
-Host doc.rhiza.com
+Host help.rhiza.com
     HostName 104.131.86.27
     User root
+
+Host help.stg.rhiza.com
+    HostName 104.131.63.31
+    IdentityFile ~/.ssh/id_rsa
 
 Host intra*
     HostName 104.131.63.31

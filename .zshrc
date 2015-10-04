@@ -66,10 +66,10 @@ source $ZSH/oh-my-zsh.sh
 
 EMACS=$(which emacs)
 if [ -e /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
-    EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw"
+    EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 fi
 
-export EDITOR="$EMACS"
+export EDITOR="$EMACS -nw"
 
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='emacs -nw'
@@ -86,23 +86,6 @@ export EDITOR="$EMACS"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-
-case $TERM in
-	"emacs" | "dumb")
-        alias ls='ls --color=no -Fh'
-	    ;;
-	*)
-        alias ls='ls --color=yes -Fh'
-	    ;;
-esac
-if [[ "$OSTYPE" = darwin* ]]; then
-    alias ls='ls -FhG'
-fi
-
-### Aliases
 alias sl=ls
 alias svnst="svn st | egrep -v '^(X|$|Performing)'"
 alias em="$EMACS"
@@ -114,13 +97,13 @@ alias his='history'
 alias hgrep='his | grep'
 alias crasshplan='ssh -v -L 4200:localhost:4243'
 alias screenssharing="ssh -L 31337:localhost:5900 "
-alias svnurl="svn info | grep URL | cut -d' ' -f2 | pbcopy"
 
-### Environment variables
+
+### Go
 export GOPATH=$HOME/cmd/src/go
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 
-### Functions
+### SSH
 function sshkey {
     cat ~/.ssh/id_dsa.pub | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
 }
