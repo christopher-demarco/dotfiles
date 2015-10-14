@@ -103,7 +103,7 @@ alias screenssharing="ssh -L 31337:localhost:5900 "
 ### tmux
 alias tattach='tmux attach -d -t '
 alias tnew='tmux new-session -s '
-alias tpair='tux attach -t '
+alias tpair='tmux attach -t '
 
 ### Go
 export GOPATH=$HOME/cmd/src/go

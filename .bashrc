@@ -166,6 +166,11 @@ alias dirs='dirs -l -p'
 alias pushd='pushd >/dev/null'
 alias popd='popd >/dev/null'
 
+### tmux
+alias tattach='tmux attach -d -t '
+alias tnew='tmux new-session -s '
+alias tpair='tmux attach -t '
+
 # Safety First
 alias rm='rm -i'
 alias cp='cp -i'
