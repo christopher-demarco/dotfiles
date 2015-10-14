@@ -6,6 +6,8 @@ Host *
     ServerAliveInterval 60
 #    VisualHostKey=yes
 
+Host manticore*
+	port 15203
 
 Host olivaw*
     Port 22
@@ -30,9 +32,6 @@ host carrot*
 Host concorde*
     HostName 192.168.1.44
 
-Host froghopper*
-    HostName 192.168.1.48
-
 Host utility*
     HostName utility.rhizalytics.com
     User rhiza
@@ -54,12 +53,6 @@ Host intra*
 # Host backup-db # rsync machine on the west coast
 #  HostName ec2-54-215-118-3.us-west-1.compute.amazonaws.com
 
-Host scarab # dev/integration warehouse
-    HostName 192.168.1.42
-
-Host mantis # internal ETL box -- formerly Alison's exclusively
-    HostName 192.168.1.46
-
 # Host integration-user
 #  HostName 192.168.1.104
 
@@ -71,9 +64,6 @@ Host mantis # internal ETL box -- formerly Alison's exclusively
 
 # Host production-etl # Used for event log processign
 #  HostName ec2-54-83-100-151.compute-1.amazonaws.com
-
-Host arkham # internal ETL box -- Karl's workshop
-    HostName 192.168.1.40
 
 
 # Host office

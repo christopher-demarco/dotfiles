@@ -119,9 +119,10 @@ export LANG=C
 
 EMACS=$(which emacs)
 if [ -e /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
-    #    EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
-    EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+     EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs
+#    EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 fi
+alias emacs=$EMACS
 
 export EDITOR="$EMACS"
 export VISUAL=$EDITOR

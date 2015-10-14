@@ -12,4 +12,5 @@
 		[".oh-my-zsh", "oh-my-zsh"],
 		[".tmux.conf"],
 		[".ssh/config", "ssh_config"],
+		[".vimrc"],
 	]

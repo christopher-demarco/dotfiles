@@ -15,7 +15,7 @@
 ;; ;(load "~/.emacs.d/org-7.01g/contrib/lisp/org-checklist")
 ;; (load "~/.emacs.d/org-7.5/contrib/lisp/org-checklist")
 
-(global-visual-line-mode 1)
+;;(global-visual-line-mode 1)
 
 (add-to-list 'auto-mode-alist'("\\.org" . org-mode))
 (add-to-list 'auto-mode-alist'("\\.txt" . org-mode))

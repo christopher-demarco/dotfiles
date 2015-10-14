@@ -66,7 +66,8 @@ source $ZSH/oh-my-zsh.sh
 
 EMACS=$(which emacs)
 if [ -e /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
-    EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+    # EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+    EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
 fi
 
 export EDITOR="$EMACS -nw"
@@ -98,6 +99,11 @@ alias hgrep='his | grep'
 alias crasshplan='ssh -v -L 4200:localhost:4243'
 alias screenssharing="ssh -L 31337:localhost:5900 "
 
+
+### tmux
+alias tattach='tmux attach -d -t '
+alias tnew='tmux new-session -s '
+alias tpair='tux attach -t '
 
 ### Go
 export GOPATH=$HOME/cmd/src/go
