@@ -104,6 +104,7 @@ alias screenssharing="ssh -L 31337:localhost:5900 "
 alias tattach='tmux attach -d -t '
 alias tnew='tmux new-session -s '
 alias tpair='tmux attach -t '
+alias tjoin='tmux attach -t '
 
 ### Go
 export GOPATH=$HOME/cmd/src/go
@@ -116,3 +117,8 @@ function sshkey {
 function delsshkey {
     sed -i.bak "$1d" ~/.ssh/known_hosts
 }
+
+### Python
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
