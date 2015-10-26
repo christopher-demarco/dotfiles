@@ -9,6 +9,9 @@
 
 (server-start)
 
+;; don't interfere with tmux and anyway I bind this myself in the WM
+(define-key global-map (kbd "C-z") nil)
+
 ;; Type unicode with C-x 8 <cr>
 ;263a☺
 ;;C-x 8 <cr> 263a ;☺
@@ -260,7 +263,8 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-(load-theme 'solarized-dark t)
+;;(load-theme 'solarized-dark t)
+
 ;;(load-theme 'solarized-light t)
 ;;(load-theme 'dichromacy t)
 ;;(load-theme 'adwaita t)

@@ -6,7 +6,11 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="cmd"
+#ZSH_THEME="cmd"
+#ZSH_THEME="arrow"
+#ZSH_THEME='bira'
+ZSH_THEME='fino'
+
 
 
 
@@ -66,17 +70,11 @@ source $ZSH/oh-my-zsh.sh
 
 EMACS=$(which emacs)
 if [ -e /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
-    # EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
-    EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
+    EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+    #EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
 fi
 
 export EDITOR="$EMACS -nw"
-
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='emacs -nw'
-# else
-#   export EDITOR='emacs -nw'
-# fi
 
 
 # Compilation flags
@@ -89,7 +87,7 @@ export EDITOR="$EMACS -nw"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 alias sl=ls
 alias svnst="svn st | egrep -v '^(X|$|Performing)'"
-alias em="$EMACS"
+alias em="$EMACS -nw"
 alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
 alias rm='rm -i'
 alias cp='cp -i'
