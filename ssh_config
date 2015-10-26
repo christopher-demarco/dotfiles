@@ -6,6 +6,14 @@ Host *
     ServerAliveInterval 60
 #    VisualHostKey=yes
 
+Match User rhiza
+    IdentityFile ~/.ssh/id_rsa_rhiza
+
+Host *.amazonaws.com
+    User rhiza
+    IdentityFile ~/.ssh/id_rsa_rhiza
+    StrictHostKeyChecking no
+
 Host manticore*
 	port 15203
 
@@ -31,6 +39,15 @@ host carrot*
 
 Host concorde*
     HostName 192.168.1.44
+
+Host arkham
+  HostName arkham.rhiza.com
+Host froghopper
+  HostName froghopper.rhiza.com
+Host mantis
+  HostName mantis.rhiza.com
+Host scarab
+  HostName scarab.rhiza.com
 
 Host utility*
     HostName utility.rhizalytics.com
