@@ -266,7 +266,7 @@
 ;;(load-theme 'solarized-dark t)
 
 ;;(load-theme 'solarized-light t)
-;;(load-theme 'dichromacy t)
+(load-theme 'dichromacy t)
 ;;(load-theme 'adwaita t)
 ;;(load-theme 'whiteboard t)
 ;;(load-theme 'tangerine t)
