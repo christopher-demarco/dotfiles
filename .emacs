@@ -263,10 +263,10 @@
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-;;(load-theme 'solarized-dark t)
+(load-theme 'solarized-dark t)
 
 ;;(load-theme 'solarized-light t)
-(load-theme 'dichromacy t)
+;;(load-theme 'dichromacy t)
 ;;(load-theme 'adwaita t)
 ;;(load-theme 'whiteboard t)
 ;;(load-theme 'tangerine t)
