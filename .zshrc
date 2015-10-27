@@ -88,7 +88,6 @@ export EDITOR="$EMACS -nw"
 alias sl=ls
 alias svnst="svn st | egrep -v '^(X|$|Performing)'"
 alias em="$EMACS -nw"
-alias tm='tmux'
 alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
 alias rm='rm -i'
 alias cp='cp -i'
@@ -100,10 +99,15 @@ alias screenssharing="ssh -L 31337:localhost:5900 "
 
 
 ### tmux
-alias tattach='tmux attach -d -t '
+alias tls='tmux ls'
+alias tm='tmux'
+alias tn='tmux new-session -s '
 alias tnew='tmux new-session -s '
+alias ta='tmux attach -d -t '
+alias tattach='tmux attach -d -t '
+alias tp='tmux attach -t '
 alias tpair='tmux attach -t '
-alias tjoin='tmux attach -t '
+
 
 ### Go
 export GOPATH=$HOME/cmd/src/go
