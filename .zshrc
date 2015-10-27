@@ -88,6 +88,7 @@ export EDITOR="$EMACS -nw"
 alias sl=ls
 alias svnst="svn st | egrep -v '^(X|$|Performing)'"
 alias em="$EMACS -nw"
+alias tm='tmux'
 alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
 alias rm='rm -i'
 alias cp='cp -i'
