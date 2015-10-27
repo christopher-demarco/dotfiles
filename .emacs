@@ -6,6 +6,7 @@
 (column-number-mode t)
 (auto-compression-mode 1)
 (setq redisplay-dont-pause t)
+(menu-bar-mode -1)
 
 (server-start)
 
@@ -312,7 +313,7 @@
 
 
 
-;; visual-line-mode
+
 
 
 

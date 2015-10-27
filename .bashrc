@@ -167,9 +167,15 @@ alias pushd='pushd >/dev/null'
 alias popd='popd >/dev/null'
 
 ### tmux
-alias tattach='tmux attach -d -t '
+alias tls='tmux ls'
+alias tm='tmux'
+alias tn='tmux new-session -s '
 alias tnew='tmux new-session -s '
+alias ta='tmux attach -d -t '
+alias tattach='tmux attach -d -t '
+alias tp='tmux attach -t '
 alias tpair='tmux attach -t '
+
 
 # Safety First
 alias rm='rm -i'

@@ -6,7 +6,6 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-#ZSH_THEME="cmd"
 #ZSH_THEME="arrow"
 #ZSH_THEME='bira'
 ZSH_THEME='fino'
@@ -125,3 +124,9 @@ function delsshkey {
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
+
+
+
+# So backward-compatible aliases should be in a .bash_aliases. In
+# fact, there should be a bash_common.sh which has everything for both
+# shells, and .zshrc only overrides.
