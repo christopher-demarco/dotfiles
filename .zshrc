@@ -67,14 +67,12 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-EMACS=$(which emacs)
+EMACS=$(which emacsclient)
 if [ -e /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
     EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
     #EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
 fi
-
 export EDITOR="$EMACS -nw"
-
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
