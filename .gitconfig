@@ -10,3 +10,5 @@
   co = checkout
 [push]
   default = simple
+[credential]
+	helper = cache
