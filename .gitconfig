@@ -11,4 +11,5 @@
 [push]
   default = simple
 [credential]
-	helper = cache
+  helper = cache
+  username = cdemarco@gmail.com
