@@ -1,4 +1,6 @@
 ; basic stuff
+
+(server-start)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 (transient-mark-mode t)
@@ -6,9 +8,13 @@
 (column-number-mode t)
 (auto-compression-mode 1)
 (setq redisplay-dont-pause t)
-(menu-bar-mode -1)
 
-(server-start)
+
+(menu-bar-mode -1)
+(require 'mouse)
+(xterm-mouse-mode t)
+		  
+	 
 
 ;; don't interfere with tmux and anyway I bind this myself in the WM
 (define-key global-map (kbd "C-z") nil)
