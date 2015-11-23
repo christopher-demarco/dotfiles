@@ -13,3 +13,6 @@
 [credential]
   helper = cache
   username = cdemarco@gmail.com
+
+[core]
+  editor = emacs
