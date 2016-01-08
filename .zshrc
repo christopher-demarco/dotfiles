@@ -85,6 +85,7 @@ export EDITOR="$EMACS -nw"
 alias sl=ls
 alias svnst="svn st | egrep -v '^(X|$|Performing)'"
 alias em="$EMACS -nw"
+alias EM="$EMACS"
 alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
 alias rm='rm -i'
 alias cp='cp -i'
@@ -106,13 +107,17 @@ alias tp='tmux attach -t '
 alias tpair='tmux attach -t '
 
 
+### Ansible
+alias ansible-init='workon ansible; source ~/rhiza/EngOps/ansible/ansible/hacking/env-setup'
+
+
 ### Go
 export GOPATH=$HOME/cmd/src/go
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 
 ### SSH
 function sshkey {
-    cat ~/.ssh/id_dsa.pub | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
+    cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
 }
 function delsshkey {
     sed -i.bak "$1d" ~/.ssh/known_hosts
@@ -123,8 +128,12 @@ export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
 
+### Rhiza stuff
+export rz='rhizalytics.com'
+
 
 
 # So backward-compatible aliases should be in a .bash_aliases. In
 # fact, there should be a bash_common.sh which has everything for both
 # shells, and .zshrc only overrides.
+

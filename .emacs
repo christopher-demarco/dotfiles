@@ -13,7 +13,7 @@
 (menu-bar-mode -1)
 (require 'mouse)
 (xterm-mouse-mode t)
-		  
+
 	 
 
 ;; don't interfere with tmux and anyway I bind this myself in the WM

@@ -1,6 +1,6 @@
 Host *
     ControlMaster auto
-    ControlPath ~/.ssh/master-%r@%h:%p
+    ControlPath ~/.ssh/%h:%p
     ForwardAgent yes
     Compression no
     ServerAliveInterval 60
@@ -10,6 +10,11 @@ Match User rhiza
     IdentityFile ~/.ssh/id_rsa_rhiza
 
 Host *.amazonaws.com
+    User rhiza
+    IdentityFile ~/.ssh/id_rsa_rhiza
+    StrictHostKeyChecking no
+
+Host *.rhizalytics.com
     User rhiza
     IdentityFile ~/.ssh/id_rsa_rhiza
     StrictHostKeyChecking no
@@ -132,4 +137,13 @@ Host intra*
 #  user rhiza
 #  IdentityFile ~/.ssh/id_rsa_rhiza_aws
 
+# LISABUILD 2015
+Host moose
+    HostName 172.16.0.14
+    User cmd
 
+# emc mars challenge
+Host mars
+  HostName emcmarsdelta.cloudapp.net
+  User deltauser
+  
