@@ -269,8 +269,8 @@
 
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-(load-theme 'solarized-dark t)
+;(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
+;(load-theme 'solarized-dark t)
 
 ;;(load-theme 'solarized-light t)
 ;;(load-theme 'dichromacy t)
@@ -299,6 +299,8 @@
 (push "~/.emacs.d/lib/yaml-mode" load-path)
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+(push "/usr/local/share/emacs/site-lisp/json-mode" load-path)
 
 
 

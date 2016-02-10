@@ -31,7 +31,8 @@ host carrot*
     User cmd
     Port 16801
 
-
+host automation*
+    HostName automation.rhizalytics.com
 
 # ### Rhiza
 # Host staging-db
