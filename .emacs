@@ -269,9 +269,8 @@
 
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-;(load-theme 'solarized-dark t)
-
+(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
+;;(load-theme 'solarized-dark t)
 ;;(load-theme 'solarized-light t)
 ;;(load-theme 'dichromacy t)
 ;;(load-theme 'adwaita t)
@@ -280,7 +279,7 @@
 ;;(load-theme 'misterioso t)
 ;;(load-theme 'tango-dark t)
 ;;(load-theme 'tango t)
-;;(load-theme 'manoj-dark t)
+(load-theme 'manoj-dark t)
 
 ;; Disable theme bg in terminal (!X-D)
 (defun on-frame-open (frame)
