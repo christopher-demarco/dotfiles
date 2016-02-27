@@ -20,13 +20,13 @@ Host *.rhizalytics.com
     StrictHostKeyChecking no
 
 ## PostGresXL test cluster
-Host 52.4.209.29
+Host 52.4.209.29 # gtm
     User ubuntu
     IdentityFile ~/.ssh/rhiza-eval.pem
     StrictHostKeyChecking no
 Host 52.22.170.31
     User ubuntu
-    IdentityFile ~/.ssh/rcanavan.pem
+    IdentityFile ~/.ssh/rhiza-eval.pem
 Host 52.70.177.225
     User ubuntu
     IdentityFile ~/.ssh/rhiza-eval.pem
