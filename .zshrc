@@ -8,10 +8,10 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="arrow"
 #ZSH_THEME='bira'
-ZSH_THEME=fino
+#ZSH_THEME=fino
 #ZSH_THEME='agnoster'
-ZSH_THEME=ys
-ZSH_THEME=mortalscumbag
+#ZSH_THEME=ys
+ZSH_THEME=mortalscumbag-cmd
 
 
 # Uncomment the following line to use case-sensitive completion.
