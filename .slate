@@ -25,10 +25,11 @@ bind x:alt,shift corner bottom-left resize:screenSizeX;screenSizeY/2
 
 bind f:alt,shift corner top-left resize:screenSizeX;screenSizeY
 
-
 bind a:ctrl,alt,shift resize +100% +0
 bind w:ctrl,alt,shift resize +0 +100%
 
+bind ]:cmd,shift throw next
+bind [:cmd,shift throw prev
 
 # bind i:alt,shift nudge +0 -10
 # bind k:alt,shift nudge +0 +10
