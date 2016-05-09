@@ -1,0 +1,11 @@
+name: poc
+root: ~/
+windows:
+  - poc:
+      layout: even-vertical
+      panes:
+        - ssh ec2-54-145-184-76.compute-1.amazonaws.com
+        - ssh ec2-54-146-160-46.compute-1.amazonaws.com
+        - ssh ec2-54-158-81-172.compute-1.amazonaws.com
+        - ssh ec2-54-158-89-224.compute-1.amazonaws.com
+        - ssh ec2-54-159-128-40.compute-1.amazonaws.com

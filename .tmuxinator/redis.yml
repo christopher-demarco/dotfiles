@@ -1,0 +1,11 @@
+name: redis
+root: ~/
+windows:
+  - redis:
+      layout: even-vertical
+      panes:
+        - ssh gotham-redis.rhizalytics.com
+        - ssh gotham-redis.staging.rhizalytics.com
+        - ssh gotham-redis.integration.rhizalytics.com
+        - ssh gotham-redis.performance.rhizalytics.com
+        - ssh gotham-redis.poc.rhizalytics.com

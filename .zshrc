@@ -111,6 +111,8 @@ alias tpair='tmux attach -t '
 ### Ansible
 alias ansible-init='workon ansible; source ~/rhiza/EngOps/ansible/ansible/hacking/env-setup; export EC2_INI_PATH=inventory/ec2.ini'
 
+### Hashicorp
+alias tf=terraform
 
 ### Go
 export GOPATH=$HOME/cmd/src/go

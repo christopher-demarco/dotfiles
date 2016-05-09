@@ -1,0 +1,16 @@
+# *** THIS FILE WILL BE OVERWRITTEN AUTOMATICALLY BY ANSIBLE
+# *** DO NOT PUT ANYTHING YOU CARE ABOUT HERE 
+
+
+name: metropolis-xyzzy
+windows:
+  - gtm:
+      layout: even-vertical
+      panes:
+        - ssh ubuntu@52.91.114.18 -i aws-metropolis-xyzzy-private.pem
+
+  - workers:
+      layout: even-vertical
+      panes:
+        - ssh ubuntu@54.173.221.235 -i aws-metropolis-xyzzy-private.pem
+        - ssh ubuntu@52.23.207.115 -i aws-metropolis-xyzzy-private.pem

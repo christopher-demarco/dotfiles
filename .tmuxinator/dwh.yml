@@ -1,0 +1,15 @@
+# ~/.tmuxinator/dwh.yml
+
+name: dwh
+root: ~/
+
+
+windows:
+  - dwh:
+      layout: even-vertical
+      panes:
+        - ssh gotham-data-db.integration.rhizalytics.com
+        - ssh gotham-data-db.staging.rhizalytics.com
+        - ssh gotham-data-db.performance.rhizalytics.com
+        - ssh gotham-data-db.qa.rhizalytics.com
+        - ssh gotham-data-db.rhizalytics.com

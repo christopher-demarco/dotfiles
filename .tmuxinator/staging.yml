@@ -1,0 +1,15 @@
+name: staging
+root: ~/
+windows:
+  - staging:
+      layout: tiled
+      panes:
+        - ssh ec2-54-89-56-240.compute-1.amazonaws.com
+        - ssh ec2-54-87-86-78.compute-1.amazonaws.com
+        - ssh ec2-54-160-76-234.compute-1.amazonaws.com
+        - ssh ec2-54-161-91-54.compute-1.amazonaws.com
+        - ssh ec2-54-204-169-78.compute-1.amazonaws.com
+        - ssh ec2-54-83-190-119.compute-1.amazonaws.com
+        - ssh gotham-data-db.rhizalytics.com
+        - ssh ec2-54-158-125-175.compute-1.amazonaws.com
+        - ssh ec2-54-87-105-102.compute-1.amazonaws.com

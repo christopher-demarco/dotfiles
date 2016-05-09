@@ -1,0 +1,13 @@
+name: metropolis-xyzzy
+windows:
+  - metropolis-xyzzy:
+      layout: even-vertical
+      panes:
+        - ssh ubuntu@52.91.61.54 -i aws-metropolis-xyzzy-private.pem
+        - ssh ubuntu@52.87.227.126 -i aws-metropolis-xyzzy-private.pem
+        - ssh ubuntu@54.152.116.13 -i aws-metropolis-xyzzy-private.pem
+        - ssh ubuntu@54.173.96.223 -i aws-metropolis-xyzzy-private.pem
+        - ssh ubuntu@52.207.255.80 -i aws-metropolis-xyzzy-private.pem
+        - ssh ubuntu@54.237.251.55 -i aws-metropolis-xyzzy-private.pem
+        - ssh ubuntu@52.91.212.222 -i aws-metropolis-xyzzy-private.pem
+        - ssh ubuntu@54.243.0.233 -i aws-metropolis-xyzzy-private.pem

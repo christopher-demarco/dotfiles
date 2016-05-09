@@ -1,0 +1,21 @@
+name: production
+root: ~/
+windows:
+  - production:
+      layout: tiled
+      panes:
+        - ssh ec2-54-83-100-151.compute-1.amazonaws.com
+        - ssh ec2-184-73-99-188.compute-1.amazonaws.com
+        - ssh ec2-54-147-214-122.compute-1.amazonaws.com
+        - ssh ec2-23-22-145-238.compute-1.amazonaws.com
+        - ssh ec2-54-91-111-128.compute-1.amazonaws.com
+        - ssh ec2-54-162-138-218.compute-1.amazonaws.com
+        - ssh ec2-54-162-82-203.compute-1.amazonaws.com
+        - ssh ec2-54-226-110-38.compute-1.amazonaws.com
+        - ssh ec2-54-80-185-190.compute-1.amazonaws.com
+        - ssh ec2-54-159-155-109.compute-1.amazonaws.com
+        - ssh ec2-54-204-113-81.compute-1.amazonaws.com
+        - ssh gotham-data-db.rhizalytics.com
+        - ssh ec2-54-147-219-221.compute-1.amazonaws.com
+        - ssh ec2-54-145-248-32.compute-1.amazonaws.com
+                                                                                                                

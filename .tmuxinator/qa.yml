@@ -1,0 +1,11 @@
+name: xyzzy
+root: ~/
+windows:
+  - xyzzy:
+      layout: even-vertical
+      panes:
+        - ssh rhiza@ec2-54-157-29-226.compute-1.amazonaws.com
+        - ssh rhiza@ec2-54-146-177-67.compute-1.amazonaws.com
+        - ssh rhiza@ec2-54-158-69-196.compute-1.amazonaws.com
+        - ssh rhiza@ec2-54-197-150-87.compute-1.amazonaws.com
+        - ssh rhiza@ec2-54-163-141-50.compute-1.amazonaws.com

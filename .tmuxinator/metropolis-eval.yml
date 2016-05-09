@@ -1,0 +1,20 @@
+# *** THIS FILE WILL BE OVERWRITTEN AUTOMATICALLY BY ANSIBLE
+# *** DO NOT PUT ANYTHING YOU CARE ABOUT HERE 
+
+
+name: metropolis-eval
+windows:
+  - metropolis-eval:
+      layout: even-vertical
+      panes:
+        - ssh ubuntu@52.207.233.109 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@54.173.161.64 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@54.84.218.106 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@52.90.57.105 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@52.23.211.91 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@54.88.249.227 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@52.90.109.205 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@52.90.175.74 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@52.90.90.36 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@52.207.246.201 -i aws-metropolis-eval-private.pem
+        - ssh ubuntu@52.90.9.115 -i aws-metropolis-eval-private.pem

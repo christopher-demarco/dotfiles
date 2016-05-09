@@ -1,0 +1,16 @@
+# ~/.tmuxinator/pgxl.yml
+
+name: pgxl
+root: ~/
+
+
+windows:
+  - main:
+      panes:
+        - ssh rhiza@52.87.161.212 -i ~/.ssh/id_rsa_rhiza
+        - ssh rhiza@52.90.8.113 -i ~/.ssh/id_rsa_rhiza
+        - ssh rhiza@52.91.0.240 -i ~/.ssh/id_rsa_rhiza
+        - ssh rhiza@52.91.255.92 -i ~/.ssh/id_rsa_rhiza
+        - ssh rhiza@54.164.54.55 -i ~/.ssh/id_rsa_rhiza
+        - ssh rhiza@54.84.158.95 -i ~/.ssh/id_rsa_rhiza
+        

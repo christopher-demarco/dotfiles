@@ -1,0 +1,11 @@
+name: performance
+root: ~/
+windows:
+  - performance:
+      layout: even-vertical
+      panes:
+        - ssh gotham-application.performance.rhizalytics.com
+        - ssh gotham-application-proxy.performance.rhizalytics.com
+        - ssh gotham-redis-worker.performance.rhizalytics.com
+        - ssh gotham-redis.performance.rhizalytics.com
+        - ssh gotham-data-db.performance.rhizalytics.com

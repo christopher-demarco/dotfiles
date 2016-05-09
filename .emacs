@@ -45,6 +45,17 @@
 (add-to-list 'exec-path "~/bin")
 (add-to-list 'exec-path "/usr/local/bin")
 
+
+
+;; MELPA; see https://melpa.org/#/getting-started
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
+
 (push "~/.emacs.d/lib" load-path)
 
 (autoload 'applescript-mode "applescript-mode"

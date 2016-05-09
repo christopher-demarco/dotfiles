@@ -1,0 +1,14 @@
+name: integration
+root: ~/
+windows:
+  - integration:
+      layout: even-vertical
+      panes:
+
+        - ssh ec2-54-157-209-184.compute-1.amazonaws.com
+        - ssh gotham-application.integration.rhizalytics.com
+        - ssh ec2-54-144-150-11.compute-1.amazonaws.com
+        - ssh ec2-54-237-70-101.compute-1.amazonaws.com
+        - ssh ec2-54-237-64-165.compute-1.amazonaws.com
+        - ssh ec2-54-90-17-164.compute-1.amazonaws.com
+                                                

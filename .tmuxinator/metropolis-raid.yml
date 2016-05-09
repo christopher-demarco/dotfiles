@@ -1,0 +1,13 @@
+# *** THIS FILE WILL BE OVERWRITTEN AUTOMATICALLY BY ANSIBLE
+# *** DO NOT PUT ANYTHING YOU CARE ABOUT HERE 
+
+
+name: metropolis-raid
+windows:
+  - metropolis-raid:
+      layout: even-vertical
+      panes:
+        - ssh ubuntu@52.90.242.49 -i aws-metropolis-raid-private.pem
+        - ssh ubuntu@52.201.225.129 -i aws-metropolis-raid-private.pem
+        - ssh ubuntu@54.86.7.245 -i aws-metropolis-raid-private.pem
+        - ssh ubuntu@54.84.169.233 -i aws-metropolis-raid-private.pem
