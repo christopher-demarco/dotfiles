@@ -22,11 +22,6 @@
 ;; Type unicode with C-x 8 <cr>
 ;263a☺
 ;;C-x 8 <cr> 263a ;☺
-(global-set-key "\M-P" "Π")
-(global-set-key "\M-j" "Δ") ; already set in Emacs!?
-(global-set-key "\M-8" "∞")
-(global-set-key "\M-6" (lambda () (interactive) (insert-char 167))) ;; §
-(global-set-key "\M-7" (lambda () (interactive) (insert-char 182))) ;; ¶
 (global-set-key "\M-_" (lambda () (interactive) (insert "--")));; the unicode character messes up the line spacing :-/
 
 
