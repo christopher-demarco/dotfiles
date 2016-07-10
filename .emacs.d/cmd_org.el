@@ -2,6 +2,7 @@
 
 (add-to-list 'auto-mode-alist'("\\.org" . org-mode))
 (add-to-list 'auto-mode-alist'("\\.txt" . org-mode))
+(add-hook 'org-agenda-mode-hook 'hl-line-mode)
 	       
 (global-set-key "\C-ca" 'org-agenda)
 ;; (global-set-key "\C-cb" 'org-iswitchb)
@@ -19,7 +20,6 @@
 ;; Cool capture stuff, maybe re-use some day
 ;; (define-key global-map "\M-?" 'org-capture)
 ;; (setq org-default-notes-file "~/working/refile.org")
-
 ;; (setq org-capture-templates
 ;;       '(
 ;;     ("t" "Todo" entry (file "~/working/refile.org")
@@ -40,8 +40,6 @@
 ;;         (kill-buffer buffer)))))
 
 
-
-(add-hook 'org-agenda-mode-hook 'hl-line-mode)
 
 ;; ;; ;; Most everything below here cribbed shamelessly from Bernt Hansen
 ;; ;; http://doc.norang.ca/org-mode.html
