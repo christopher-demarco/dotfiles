@@ -48,22 +48,6 @@
        (
         (sequence "TODO(t)" "WAITING(w)" "DONE(d!)"))))
 
-
-
-
-
-
-
-;; (setq org-use-fast-todo-selection t)
-;; (setq org-todo-state-tags-triggers
-;;       (quote (("KEIL" ("KEIL" . t))
-;;               ("SHANKAR" ("SHANKAR" . t))
-;;               ("DEODHAR" ("DEODHAR" . t)))))
-
-
-;; (setq org-stuck-projects '("/PROJECT" ("TODO" "WAITING" "INPROGRESS" "DEODHAR" "KEIL" "SHANKAR") nil ""))
-
-
 ;; ;; Don't pollute effort estimate summary with DONE stuff
 
 
