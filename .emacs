@@ -241,6 +241,10 @@
 ;; ;; Found at http://argandgahandapandpa.wordpress.com/2008/07/27/searching-multiple-buffers-emacs/
 
 
+;; `C-c C-o` is (org-open-at-point), which opens a link
+
+
+
 ;; M-x toggle-debug-on-error
 
 
