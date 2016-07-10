@@ -57,20 +57,6 @@
 
 
 
-;; ;; Narrow to a subtree
-;; (global-set-key (kbd "<f5>") 'bh/org-todo)
-
-;; (defun bh/org-todo ()
-;;   (interactive)
-;;   (org-narrow-to-subtree)
-;;   (org-show-todo-tree nil))
-
-;; (global-set-key (kbd "<S-f5>") 'bh/widen)
-
-;; (defun bh/widen ()
-;;   (interactive)
-;;   (widen)
-;;   (org-reveal))
 
 
 
