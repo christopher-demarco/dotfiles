@@ -13,9 +13,6 @@
 ;; (setq org-special-ctrl-k t)
 ;; (setq org-log-done t)
 ;; (setq org-log-into-drawer t)
-;; (global-set-key (kbd "C-c C-w") 'org-refile)
-
-
 
 ;; Cool capture stuff, maybe re-use some day
 ;; (define-key global-map "\M-?" 'org-capture)
@@ -35,16 +32,6 @@
 ;; ;; (remove-hook 'org-finalize-agenda-hook
 ;; ;;     (lambda () (remove-text-properties
 ;; ;;                (point-min) (point-max) '(mouse-face t))))
-
-
-;; ;; Refiling
-;; ;; Targets include this file and any file contributing to the agenda -
-;; ;; up to 5 levels deep
-;; (setq org-refile-targets 
-;;       (quote ((org-agenda-files :maxlevel . 5))))
-;; ;; how to choose refile targets
-;; (setq org-refile-use-outline-path 'file)
-;; (setq org-outline-path-complete-in-steps t)
 
 
 ;; ;; for great convenience
