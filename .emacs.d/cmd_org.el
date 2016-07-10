@@ -14,7 +14,6 @@
 ;; (setq org-log-done t)
 ;; (setq org-log-into-drawer t)
 ;; (global-set-key (kbd "C-c C-w") 'org-refile)
-;; (setq org-agenda-repeating-timestamp-show-all t)
 
 
 
@@ -58,17 +57,8 @@
 ;;         (kill-buffer buffer)))))
 
 
-;; (setq org-agenda-time-grid 
-;;       (quote ((daily today require-timed) "----------------" (600 700 900 1000 1100 1200 1300 1400 1500 1600 1700))))
-;; (setq org-use-tag-inheritance t)
-;; (setq org-use-property-inheritance  t)
 
-;; (add-hook 'org-agenda-mode-hook 'hl-line-mode)
-
-;; ;; Effort estimates and summary in the agenda
-;; (setq org-global-properties '(("Effort_ALL" . "0:10 0:20 0:30 0:40 0:50 1:00 1:10 1:20 1:30 0:01")))
-;; (setq org-columns-default-format "%40ITEM(Task) %17Effort(Estimate){:} %CLOCKSUM")
-
+(add-hook 'org-agenda-mode-hook 'hl-line-mode)
 
 ;; ;; ;; Most everything below here cribbed shamelessly from Bernt Hansen
 ;; ;; http://doc.norang.ca/org-mode.html
@@ -93,39 +83,13 @@
 ;; (setq org-stuck-projects '("/PROJECT" ("TODO" "WAITING" "INPROGRESS" "DEODHAR" "KEIL" "SHANKAR") nil ""))
 
 
-;; ;; Keep tasks with dates off the global todo lists
-;; (setq org-agenda-todo-ignore-with-date t)
-;; (setq org-agenda-tags-todo-honor-ignore-options t)
-
 ;; ;; Don't pollute effort estimate summary with DONE stuff
-;; (setq org-agenda-skip-scheduled-if-done t)
-;; (setq org-agenda-skip-deadline-if-done t)
-
-;; ;; Don't put deadlines on the agenda
-;; (setq org-deadline-warning-days 7)
 
 
 
 ;; (setq org-hierarchical-checkbox-statistics t)
 
 
-;; ;; This is the magic that makes / RET in the agenda work so nice
-;; ;; Again, cribbed from Bernt
-;; (defun cmd/weekday-p ()
-;;   (let ((wday (nth 6 (decode-time))))
-;;     (and (< wday 6) (> wday 0))))
-;; (defun cmd/working-p ()
-;;   (let (( hour (nth 2 (decode-time))))
-;;     (and (cmd/weekday-p) (and (>= hour 8) (>= hour 20)))))
-;; (defun cmd/org-auto-exclude-function (tag)
-;;   (and (cond
-;;        ((string= tag "@work")
-;; 	(string= tag "@phone")
-;;         (cmd/working-p))
-;;        ((string= tag "@home")
-;;         (not (cmd/working-p))))
-;;        (concat "-" tag)))
-;; (setq org-agenda-auto-exclude-function 'cmd/org-auto-exclude-function)
 
 
 ;; ;; Narrow to a subtree
@@ -153,22 +117,13 @@
 
 ;; C-c . inserts a timestamp!
 
+(setq org-agenda-span 1)
 
-;; (setq org-agenda-custom-commands
-;;       '(("a" "Block agenda"
-;;          ((agenda "" ((org-agenda-ndays 1)))
-;;           (todo "INPROGRESS|WAITING")
-;;           (tags "REFILE")
-;;           (tags-todo "-@shopping-REPEATING-WRITE/TODO")
-;; 	  (tags-todo "WRITE")
-;;           ))
-;;         ("A" agenda "" ((org-agenda-ndays 1)))
-;;         ("K" tags "KEIL")
-;;         ("S" tags "SHANKAR")
-;;         ("D" tags "DEODHAR")
-;;         ("y" tags-todo "AYD" nil ("~/working/finances/Dropbox/Public/yani.html"))
-;;         ("h" tags-todo "@home" nil ("~/working/finances/Dropbox/Public/home.html"))
-;;         ("$" tags-todo "@shopping/TODO" nil ("~/working/finances/Dropbox/Public/shopping.html"))
-;;         ("f" tags "@phone-scheduled/TODO" nil ("~/working/finances/Dropbox/Public/phone.html") )
-;; 	("w" tags "WRITE" nil ("~/working/finances/Dropbox/Public/write.html"))
-;; ))
+(setq org-agenda-custom-commands
+      '(("A" agenda ""
+	 ((org-agenda-with-colors nil))
+	 ("~/.org/today.html"))
+	("T" alltodo ""
+	 ((org-agenda-with-colors nil))
+	 ("~/.org/todo.html"))
+	))
