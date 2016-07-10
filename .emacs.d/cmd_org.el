@@ -5,8 +5,6 @@
 (add-hook 'org-agenda-mode-hook 'hl-line-mode)
 	       
 (global-set-key "\C-ca" 'org-agenda)
-;; (setq org-log-done t)
-;; (setq org-log-into-drawer t)
 
 ;; Don't insert lines inside subtrees
 (setq org-insert-heading-respect-content t)
@@ -23,6 +21,10 @@
 ;;         ("n" "Note" entry (file "~/working/refile.org")
 ;;          "* %? :NOTE:\n%i%U" )))
 
+;; Log stuff into drawers
+(setq org-log-done t
+      org-log-into-drawer t
+      )
 
 
 
