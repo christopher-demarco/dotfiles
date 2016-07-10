@@ -1,5 +1,7 @@
 ; basic stuff
 
+
+
 (server-start)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
@@ -137,8 +139,8 @@
 
 
 ;; Load org-mode elsewhere
-(if (file-exists-p "~/.emacs.d/lib/cmd_org.el")
-     (load-file "~/.emacs.d/lib/cmd_org.el"))
+(if (file-exists-p "~/.emacs.d/cmd_org.el")
+     (load-file "~/.emacs.d/cmd_org.el"))
 
 
 (push "~/.emacs.d/lib/markdown-mode" load-path)
