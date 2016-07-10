@@ -354,3 +354,10 @@
  '(org-level-6 ((t (:inherit outline-8))))
  '(org-level-7 ((t (:inherit outline-1))))
  '(org-level-8 ((t (:inherit outline-2)))))
+
+
+;; I *really* should do this properly >:-(
+(require 'info)
+(info-initialize)
+(push "/usr/local/Cellar/org-mode/8.3.4/share/info/emacs/org-mode" Info-directory-list)
+(push "/usr/local/Cellar/gawk/4.1.3_1/share/info" Info-directory-list)
