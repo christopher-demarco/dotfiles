@@ -16,16 +16,7 @@
 ;; (global-set-key (kbd "C-c C-w") 'org-refile)
 ;; (setq org-agenda-repeating-timestamp-show-all t)
 
-;; ;; (defun org-mobile-pullpush nil nil (org-save-all-org-buffers)
-;; ;;   (org-mobile-pull)
-;; ;;   (org-mobile-push))
-;; ;;(define-key org-agenda-mode-map (kbd "S") 'org-mobile-pullpush)
-;; ;; how very annoying, this keymap isn't available at startup >:-b
-;; ;; should modify this in org-agenda-mode-hook...
 
-;; ;;(setq org-mobile-directory "~/working/finances/Dropbox/MobileOrg")
-;; (setq org-mobile-directory "/scpc:sphinx:~/org")
-;; (setq org-mobile-inbox-for-pull "~/working/refile.org")
 
 ;; (define-key global-map "\M-?" 'org-capture)
 ;; (setq org-default-notes-file "~/working/refile.org")
