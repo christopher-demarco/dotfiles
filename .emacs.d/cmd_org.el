@@ -36,6 +36,7 @@
         (sequence "TODO(t)" "WAITING(w)" "DONE(d!)"))))
 
 ;; ;; Don't pollute effort estimate summary with DONE stuff
+(setq org-agenda-skip-scheduled-if-done t)
 
 
 (setq org-agenda-span 1)
