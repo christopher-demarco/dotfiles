@@ -6,8 +6,15 @@
 	       
 (global-set-key "\C-ca" 'org-agenda)
 
-;; Don't insert lines inside subtrees
+;; Make it easier to insert new lines
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (local-set-key
+	     (kbd "M-RET")
+	     'org-insert-todo-heading-respect-content)))
+;;;; but not inside subtrees
 (setq org-insert-heading-respect-content t)
+
 
 ;; Cool capture stuff, maybe re-use some day
 ;; (define-key global-map "\M-?" 'org-capture)
