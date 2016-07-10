@@ -29,15 +29,6 @@
 ;;         ("n" "Note" entry (file "~/working/refile.org")
 ;;          "* %? :NOTE:\n%i%U" )))
 
-;; ;; for great convenience
-;; (defun kill-org-buffers ()
-;;   (interactive)
-;;   (dolist (buffer (buffer-list))
-;;     (let ((fname (buffer-file-name buffer))
-;;           (pattern "\.org"))
-;;       (when (and fname (string-match pattern fname))
-;;         (message (concat "Killing " fname))
-;;         (kill-buffer buffer)))))
 
 
 
