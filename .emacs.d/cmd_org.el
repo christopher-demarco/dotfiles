@@ -77,17 +77,6 @@
        (
         (sequence "TODO(t)" "WAITING(w)" "DONE(d!)"))))
 
-;; (setq org-todo-keyword-faces
-;;       '(("TODO" . (:foreground "PaleTurquoise1" :background "gray80"))
-;;         ("INPROGRESS" . (:foreground "PaleTurquoise1" :background "gray80"))
-;;         ("PROJECT" . (:foreground "PaleTurquoise1" :background "gray80"))
-;;         ("WAITING" . (:foreground "PaleTurquoise1" :background "gray80"))
-;;         ("KEIL" . (:foreground "PaleTurquoise1" :background "gray80"))
-;;         ("SHANKAR" . (:foreground "PaleTurquoise1" :background "gray80"))
-;;         ("SOMEDAY" . (:foreground "white" :background "gray80"))
-;;         ("NEXT" . (:foreground "white" :background "gray80"))
-;;         ("PROJECT" . (:foreground "white" :background "gray80"))
-;;          ))
 
         
 ;; (setq org-tag-alist '(
