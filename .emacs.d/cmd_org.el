@@ -6,12 +6,21 @@
 	       
 (global-set-key "\C-ca" 'org-agenda)
 
-;; Make it easier to insert new lines
+
+;; Automagically export agenda views to HTML whenever an org-mode
+;; buffer is saved.
 (add-hook 'org-mode-hook
-	  (lambda ()
-	    (local-set-key
-	     (kbd "M-RET")
-	     'org-insert-todo-heading-respect-content)))
+	  '(lambda ()
+	     (add-hook 'after-save-hook 'org-store-agenda-views nil t)
+	     ))
+
+
+;; Make it easier to insert new lines
+;; (add-hook 'org-mode-hook
+;; 	  (lambda ()
+;; 	    (local-set-key
+;; 	     (kbd "M-RET")
+;; 	     'org-insert-todo-heading-respect-content)))
 ;;;; but not inside subtrees
 (setq org-insert-heading-respect-content t)
 
@@ -49,11 +58,7 @@
 (setq org-agenda-span 1)
 
 (setq org-agenda-custom-commands
-      '(("A" agenda ""
-	 ((org-agenda-with-colors nil))
-	 ("~/.org/today.html"))
-	("T" alltodo ""
-	 ((org-agenda-with-colors nil))
-	 ("~/.org/todo.html"))
+      '(("T" "All todos" todo "TODO" nil ("~/tmp/todo.html"))
+	("A" "Agenda" agenda nil nil ("~/tmp/agenda.html"))
 	))
 
