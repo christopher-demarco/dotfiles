@@ -78,19 +78,6 @@
         (sequence "TODO(t)" "WAITING(w)" "DONE(d!)"))))
 
 
-        
-;; (setq org-tag-alist '(
-;;                       ("ADELS" . ?A)("KEIL" . ?K)("SHANKAR" . ?S)
-;;                       ("AYD" . ?Y)("HACK" . ?#)("PROJECT" . ?P)("WRITE" . ?r)
-;;                       ("MAYBE" . ?M)("NOTE" . ?N)
-;;                       (:startgroup . nil)
-;;                       ("@home" . ?h)("@work" . ?w)("@shopping" . ?$)("@phone" . ?f)
-;;                       (:endgroup . nil)
-;;                       (:startgroup . nil)("i" . ?i)("s" . ?s)
-;;                       (:endgroup . nil)
-;;                       (:startgroup . nil)("d" . ?d)("o" . ?o)
-;;                       (:endgroup . nil)))
-
 
 
 
