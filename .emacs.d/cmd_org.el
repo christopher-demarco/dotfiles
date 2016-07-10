@@ -27,13 +27,6 @@
 ;;         ("n" "Note" entry (file "~/working/refile.org")
 ;;          "* %? :NOTE:\n%i%U" )))
 
-
-;; ;; Stop the annoying mouse highlight of the agenda
-;; ;; (remove-hook 'org-finalize-agenda-hook
-;; ;;     (lambda () (remove-text-properties
-;; ;;                (point-min) (point-max) '(mouse-face t))))
-
-
 ;; ;; for great convenience
 ;; (defun kill-org-buffers ()
 ;;   (interactive)
