@@ -6,13 +6,15 @@
 (global-set-key "\C-ca" 'org-agenda)
 ;; (global-set-key "\C-cb" 'org-iswitchb)
 ;; (setq org-hide-leading-stars nil)
-;; (setq org-insert-heading-respect-content t)
 ;; (setq org-cycle-separator-lines 0)
 ;; ;; (setq org-blank-before-new-entry (quote ((heading)
 ;; ;;                                          (plain-list-item))))
 ;; (setq org-special-ctrl-k t)
 ;; (setq org-log-done t)
 ;; (setq org-log-into-drawer t)
+
+;; Don't insert lines inside subtrees
+(setq org-insert-heading-respect-content t)
 
 ;; Cool capture stuff, maybe re-use some day
 ;; (define-key global-map "\M-?" 'org-capture)
