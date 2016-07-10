@@ -17,12 +17,13 @@
 
 
 
+;; Cool capture stuff, maybe re-use some day
 ;; (define-key global-map "\M-?" 'org-capture)
 ;; (setq org-default-notes-file "~/working/refile.org")
 
 ;; (setq org-capture-templates
 ;;       '(
-;; 	("t" "Todo" entry (file "~/working/refile.org")
+;;     ("t" "Todo" entry (file "~/working/refile.org")
 ;;          "* TODO %?\n  %i%U" )
 ;;         ("i" "Interruption" entry (file "~/working/refile.org")
 ;;          "* TODO %? :i:\n %U" )
