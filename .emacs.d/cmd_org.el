@@ -41,8 +41,6 @@
 
 
 
-;; ;; ;; Most everything below here cribbed shamelessly from Bernt Hansen
-;; ;; http://doc.norang.ca/org-mode.html
 (setq org-todo-keywords
       (quote
        (
@@ -53,21 +51,6 @@
 
 
 ;; (setq org-hierarchical-checkbox-statistics t)
-
-
-
-
-
-
-
-
-;;; Random notes about org-mode
-
-;; Add    &   remove current file from org-agenda-files
-;; C-c [      C-c ]
-
-;; C-c . inserts a timestamp!
-
 (setq org-agenda-span 1)
 
 (setq org-agenda-custom-commands
@@ -78,3 +61,4 @@
 	 ((org-agenda-with-colors nil))
 	 ("~/.org/todo.html"))
 	))
+
