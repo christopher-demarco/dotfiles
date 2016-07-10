@@ -26,6 +26,8 @@
       org-log-into-drawer t
       )
 
+;; Only consider children when calculating completion percent
+(setq org-checkbox-hierarchical-statistics t)
 
 
 (setq org-todo-keywords
@@ -36,8 +38,6 @@
 ;; ;; Don't pollute effort estimate summary with DONE stuff
 
 
-
-;; (setq org-hierarchical-checkbox-statistics t)
 (setq org-agenda-span 1)
 
 (setq org-agenda-custom-commands
