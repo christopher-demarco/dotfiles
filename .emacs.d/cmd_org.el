@@ -5,7 +5,6 @@
 	       
 (global-set-key "\C-ca" 'org-agenda)
 ;; (global-set-key "\C-cb" 'org-iswitchb)
-;; (define-key global-map "\C-c\C-x\C-j" 'org-clock-goto)
 ;; (setq org-hide-leading-stars nil)
 ;; (setq org-insert-heading-respect-content t)
 ;; (setq org-cycle-separator-lines 0)
@@ -13,13 +12,9 @@
 ;; ;;                                          (plain-list-item))))
 ;; (setq org-special-ctrl-k t)
 ;; (setq org-log-done t)
-;; (setq org-clock-into-drawer t)
 ;; (setq org-log-into-drawer t)
 ;; (global-set-key (kbd "C-c C-w") 'org-refile)
 ;; (setq org-agenda-repeating-timestamp-show-all t)
-;; (setq org-agenda-log-mode-items (quote(clock)))
-;; (setq org-agenda-clockreport-parameter-plist (quote (:link nil :maxlevel 2)))
-;; (setq org-agenda-start-with-clockreport-mode nil)
 
 ;; ;; (defun org-mobile-pullpush nil nil (org-save-all-org-buffers)
 ;; ;;   (org-mobile-pull)
@@ -129,8 +124,6 @@
 
 
 ;; (setq org-stuck-projects '("/PROJECT" ("TODO" "WAITING" "INPROGRESS" "DEODHAR" "KEIL" "SHANKAR") nil ""))
-;; (setq org-clock-in-switch-to-state "INPROGRESS")
-;; (setq org-clock-out-remove-zero-time-clocks t)
 
 
 ;; ;; Keep tasks with dates off the global todo lists
