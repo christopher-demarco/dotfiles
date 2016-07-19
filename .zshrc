@@ -102,10 +102,8 @@ alias tls='tmux ls'
 alias tm='tmux'
 alias tn='tmux new-session -s '
 alias tnew='tmux new-session -s '
-alias ta='tmux attach -d -t '
+alias ta='tmux attach -t '
 alias tattach='tmux attach -d -t '
-alias tp='tmux attach -t '
-alias tpair='tmux attach -t '
 
 
 ### Ansible
