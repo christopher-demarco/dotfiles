@@ -106,6 +106,9 @@
 (setq make-backup-files nil)
 (setq backup-inhibited t)
 
+;; Let's have proper syntax!
+(setq sentence-end-double-space nil)
+
 
 ;; aspell
 (setq-default ispell-program-name "/usr/local/bin/aspell")
