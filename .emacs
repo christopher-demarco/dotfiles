@@ -285,9 +285,9 @@
 ;; ;; (remove-hook 'text-mode-hook 'smart-spacing-mode)
 
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-(load-theme 'solarized-dark t)
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
+;;(load-theme 'solarized-dark t)
 ;;(load-theme 'solarized-light t)
 ;;(load-theme 'dichromacy t)
 ;;(load-theme 'adwaita t)
@@ -298,12 +298,11 @@
 ;;(load-theme 'tango t)
 ;;(load-theme 'manoj-dark t)
 
-;; Disable theme bg in terminal (!X-D)
-(defun on-frame-open (frame)
-  (if (not (display-graphic-p frame))
-      (set-face-background 'default "unspecified-bg" frame )))
-(on-frame-open (selected-frame))
-(add-hook 'after-make-frame-functions 'on-frame-open)
+;; Disable theme bg in terminal (it makes me sad to need this)
+;; (defun on-frame-open (frame)
+;;   (if (not (display-graphic-p frame))
+;;       (set-face-background 'default "unspecified-bg" frame )))
+;; (add-hook 'after-make-frame-functions 'on-frame-open)
 
 
 
