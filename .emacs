@@ -138,7 +138,10 @@
 (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . html-helper-mode))
 
 
-
+(defun cmd-insert-date ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
+(global-set-key (kbd "C-c d") 'cmd-insert-date)
 
 
 ;; Load org-mode elsewhere
