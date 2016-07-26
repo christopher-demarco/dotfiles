@@ -110,14 +110,13 @@
 (setq sentence-end-double-space nil)
 
 
-;; aspell
+;; slepping
 (setq-default ispell-program-name "/usr/local/bin/aspell")
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
-;; (flyspell-all-modes)
-;; (defun turn-on-flyspell ()
-;;   n "Force flyspell-mode on using a positive arg.  For use in hooks."
-;;   (interactive)
-;;   (flyspell-mode 1))
+(defun turn-on-flyspell ()
+  "Force flyspell-mode on using a positive arg.  For use in hooks."
+  (interactive)
+  (flyspell-mode 1))
 (add-hook 'text-mode-hook 'turn-on-flyspell)
 (add-hook 'org-mode-hook 'turn-on-flyspell)
 
