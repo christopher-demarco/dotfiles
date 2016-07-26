@@ -126,7 +126,7 @@ function delsshkey {
 
 ### Python
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh # sudo pip install virtualenvwrapper
 
 
 ### Rhiza stuff
