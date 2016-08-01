@@ -6,7 +6,6 @@
 	       
 (global-set-key "\C-ca" 'org-agenda)
 
-
 ;; Automagically export agenda views to HTML whenever an org-mode
 ;; buffer is saved.
 (add-hook 'org-mode-hook
@@ -14,14 +13,7 @@
 	     (add-hook 'after-save-hook 'org-store-agenda-views nil t)
 	     ))
 
-
-;; Make it easier to insert new lines
-;; (add-hook 'org-mode-hook
-;; 	  (lambda ()
-;; 	    (local-set-key
-;; 	     (kbd "M-RET")
-;; 	     'org-insert-todo-heading-respect-content)))
-;;;; but not inside subtrees
+;; Don't break drawers etc.
 (setq org-insert-heading-respect-content t)
 
 
