@@ -46,8 +46,13 @@
 
 (setq org-agenda-span 1)
 
+
 (setq org-agenda-custom-commands
-      '(("T" "All todos" todo "TODO" nil ("~/tmp/todo.html"))
-	("A" "Agenda" agenda nil nil ("~/tmp/agenda.html"))
+      '(
+;;      (key desc type match settings files)
+	("A" "Agenda" agenda nil nil ("~/tmp/today.html"))
+	("T " "All" todo "TODO" nil ("~/tmp/todo.html"))
+	("P" "Phone" tags-todo "PHONE" nil ("~/tmp/phone.html"))
+	("E" "Errand" tags-todo "ERRAND" nil ("~/tmp/errand.html"))
 	))
 
