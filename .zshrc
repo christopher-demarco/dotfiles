@@ -14,6 +14,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME=mortalscumbag
 
 
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -79,7 +80,7 @@ export EDITOR="$EMACS -nw"
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+alias ssh='ssh -v'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
