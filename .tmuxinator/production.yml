@@ -4,18 +4,17 @@ windows:
   - production:
       layout: tiled
       panes:
-        - ssh ec2-54-83-100-151.compute-1.amazonaws.com
-        - ssh ec2-184-73-99-188.compute-1.amazonaws.com
-        - ssh ec2-54-147-214-122.compute-1.amazonaws.com
-        - ssh ec2-23-22-145-238.compute-1.amazonaws.com
-        - ssh ec2-54-91-111-128.compute-1.amazonaws.com
-        - ssh ec2-54-162-138-218.compute-1.amazonaws.com
-        - ssh ec2-54-162-82-203.compute-1.amazonaws.com
-        - ssh ec2-54-226-110-38.compute-1.amazonaws.com
-        - ssh ec2-54-80-185-190.compute-1.amazonaws.com
-        - ssh ec2-54-159-155-109.compute-1.amazonaws.com
-        - ssh ec2-54-204-113-81.compute-1.amazonaws.com
-        - ssh gotham-data-db.rhizalytics.com
-        - ssh ec2-54-147-219-221.compute-1.amazonaws.com
-        - ssh ec2-54-145-248-32.compute-1.amazonaws.com
-                                                                                                                
+        - ssh rhiza@54.162.147.53 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.80.185.190 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.204.145.29 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.157.20.198 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.163.89.40 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.211.180.154 -i ~/.ssh/rhiza_master -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.162.138.218 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.162.82.203 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.159.188.219 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.226.110.38 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@23.22.145.238 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.147.214.122 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@54.83.100.151 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
+        - ssh rhiza@184.73.99.188 -i ~/.ssh/rhiza_master  -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"
