@@ -13,8 +13,9 @@
 	     (add-hook 'after-save-hook 'org-store-agenda-views nil t)
 	     ))
 
-;; Don't break drawers etc.
-(setq org-insert-heading-respect-content t)
+;; Don't break things
+(setq org-insert-heading-respect-content t
+      org-catch-invisible-edits "error")
 
 ;; Capture is bonzer!
 (define-key global-map "\M-?" 'org-capture)
