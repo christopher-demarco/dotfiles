@@ -81,6 +81,8 @@ export EDITOR="$EMACS -nw"
 
 # ssh
 alias ssh='ssh -v'
+## proxy through office.rhiza.com
+alias ssho='ssh -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"'
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
