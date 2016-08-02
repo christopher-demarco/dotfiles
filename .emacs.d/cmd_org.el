@@ -35,6 +35,9 @@
 (setq org-checkbox-hierarchical-statistics t)
 
 
+;; Archive into a datetree
+(setq org-archive-location "%s_archive::datetree/")
+
 (setq org-todo-keywords
       (quote
        (
