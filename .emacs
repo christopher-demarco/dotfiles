@@ -288,13 +288,13 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 ;;(load-theme 'solarized-dark t)
-(load-theme 'wombat t)
+(load-theme 'wombat-black t)
 
-;; Disable theme bg in terminal (it makes me sad to need this)
-(defun on-frame-open (frame)
-  (if (not (display-graphic-p frame))
-      (set-face-background 'default "unspecified-bg" frame )))
-(add-hook 'after-make-frame-functions 'on-frame-open)
+;; ;; Disable theme bg in terminal (it makes me sad to need this)
+;; (defun on-frame-open (frame)
+;;   (if (not (display-graphic-p frame))
+;;       (set-face-background 'default "unspecified-bg" frame )))
+;; (add-hook 'after-make-frame-functions 'on-frame-open)
 
 
 
