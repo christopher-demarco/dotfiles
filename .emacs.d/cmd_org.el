@@ -16,18 +16,15 @@
 ;; Don't break drawers etc.
 (setq org-insert-heading-respect-content t)
 
-
-;; Cool capture stuff, maybe re-use some day
-;; (define-key global-map "\M-?" 'org-capture)
-;; (setq org-default-notes-file "~/working/refile.org")
-;; (setq org-capture-templates
-;;       '(
-;;     ("t" "Todo" entry (file "~/working/refile.org")
-;;          "* TODO %?\n  %i%U" )
-;;         ("i" "Interruption" entry (file "~/working/refile.org")
-;;          "* TODO %? :i:\n %U" )
-;;         ("n" "Note" entry (file "~/working/refile.org")
-;;          "* %? :NOTE:\n%i%U" )))
+;; Capture is bonzer!
+(define-key global-map "\M-?" 'org-capture)
+(setq org-default-notes-file "~/.org/cmd.org")
+(setq org-capture-templates
+      '(
+	("t" "Todo" entry (file "~/.org/cmd.org")
+	 "* TODO %?\n  %i%U" )
+	("n" "Note" entry (file "~/.org/cmd.org")
+	 "* %? :NOTE:\n%i%U" )))
 
 ;; Log stuff into drawers
 (setq org-log-done t
