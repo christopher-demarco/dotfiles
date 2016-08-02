@@ -285,24 +285,16 @@
 ;; ;; (remove-hook 'text-mode-hook 'smart-spacing-mode)
 
 
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;;(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 ;;(load-theme 'solarized-dark t)
-;;(load-theme 'solarized-light t)
-;;(load-theme 'dichromacy t)
-;;(load-theme 'adwaita t)
-;;(load-theme 'whiteboard t)
-;;(load-theme 'tangerine t)
-;;(load-theme 'misterioso t)
-;;(load-theme 'tango-dark t)
-;;(load-theme 'tango t)
-;;(load-theme 'manoj-dark t)
+(load-theme 'wombat t)
 
 ;; Disable theme bg in terminal (it makes me sad to need this)
-;; (defun on-frame-open (frame)
-;;   (if (not (display-graphic-p frame))
-;;       (set-face-background 'default "unspecified-bg" frame )))
-;; (add-hook 'after-make-frame-functions 'on-frame-open)
+(defun on-frame-open (frame)
+  (if (not (display-graphic-p frame))
+      (set-face-background 'default "unspecified-bg" frame )))
+(add-hook 'after-make-frame-functions 'on-frame-open)
 
 
 
@@ -333,19 +325,6 @@
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
  '(tool-bar-mode nil))
-
-
-
-
-
-
-
-
-
-; (if (eq system-type 'darwin)
-;      (setq default-frame-alist '((background-color . "gray")
-;  				(foreground-color . "black"))))
-
 
 
 (custom-set-faces
