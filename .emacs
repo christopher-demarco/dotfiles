@@ -288,9 +288,10 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 ;;(load-theme 'solarized-dark t)
-(load-theme 'wombat-black t)
+(load-theme 'wombat t)
 
-;; ;; Disable theme bg in terminal (it makes me sad to need this)
+
+;; ;;;;Disable theme bg in terminal (it makes me sad to need this)
 ;; (defun on-frame-open (frame)
 ;;   (if (not (display-graphic-p frame))
 ;;       (set-face-background 'default "unspecified-bg" frame )))
@@ -319,7 +320,9 @@
  '(aquamacs-additional-fontsets nil t)
  '(aquamacs-customization-version-id 216 t)
  '(aquamacs-tool-bar-user-customization nil t)
- '(custom-safe-themes (quote ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "303488aa27ce49f658a7ba4035e93380421e394ec2799ae8fd952d08808c7235" "02414c4cfbbe9805b89a5ec66d3d3deb4ae1e4795ed2092eab240ca0cb79ea96" "828d47ac5f3c9c5c06341b28a1d0ebd9f0a0a9c4074504626148f36c438321c2" "3b7e62b9884f1533f8eac5d21b252e5b8098274d7d9096521db84e4f10797ae3" default)))
+ '(custom-safe-themes
+   (quote
+    ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "303488aa27ce49f658a7ba4035e93380421e394ec2799ae8fd952d08808c7235" "02414c4cfbbe9805b89a5ec66d3d3deb4ae1e4795ed2092eab240ca0cb79ea96" "828d47ac5f3c9c5c06341b28a1d0ebd9f0a0a9c4074504626148f36c438321c2" "3b7e62b9884f1533f8eac5d21b252e5b8098274d7d9096521db84e4f10797ae3" default)))
  '(gpm-mouse-mode nil)
  '(org-startup-indented t)
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
@@ -332,10 +335,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-
-;; '(hl-line ((t (:inherit highlight :background "#1b3943" :underline nil))))
-
-;; '(org-level-3 ((t (:background "#042028" :foreground "#829a05"))))
  '(org-level-4 ((t (:inherit outline-5))))
  '(org-level-5 ((t (:inherit outline-6))))
  '(org-level-6 ((t (:inherit outline-8))))
