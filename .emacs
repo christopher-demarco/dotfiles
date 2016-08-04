@@ -27,6 +27,13 @@
 (global-set-key "\M-_" (lambda () (interactive) (insert "--")));; the unicode character messes up the line spacing :-/
 
 
+;; Make it easier to copy to OSX
+(defun pbcopy (text &optional push)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc text)
+            (process-send-eof proc))))
+(setq interprogram-cut-function 'pbcopy)
 
 (global-set-key "\M-T" 'transpose-lines)
 (global-set-key "\M-#" 'comment-region)
