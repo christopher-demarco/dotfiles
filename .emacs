@@ -27,7 +27,7 @@
 (global-set-key "\M-_" (lambda () (interactive) (insert "--")));; the unicode character messes up the line spacing :-/
 
 
-;; Make it easier to copy to OSX
+;; Make it easier to copy to OSX clipboard
 (when (memq system-type '(darwin))
   (defun pbcopy (text &optional push)
     (let ((process-connection-type nil))
