@@ -22,8 +22,8 @@ windows:
       panes:
         - ssh rhiza@54.211.180.154 -i ~/.ssh/rhiza_master -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com" # worker
         - ssh rhiza@54.204.145.29 -i ~/.ssh/rhiza_master -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"  # worker
-        - ssh rhiza@54.162.138.218 -i ~/.ssh/rhiza_master -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com" # worker
         - ssh rhiza@54.162.82.203 -i ~/.ssh/rhiza_master -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"  # worker
         - ssh rhiza@184.73.99.188 -i ~/.ssh/rhiza_master -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"  # worker
         - ssh rhiza@54.80.185.190 -i ~/.ssh/rhiza_master -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"  # worker
+
         - ssh rhiza@54.147.214.122 -i ~/.ssh/rhiza_master -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com" # redis
