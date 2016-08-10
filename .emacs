@@ -188,27 +188,8 @@
 ;; ;;
 ;; ;; Specify SSH port number in tramp-mode:
 ;; ;; /ssh:user@host#portnum:/some/path/to/a/file
-;; ;;
-;; ;; C-x r m set a bookmark at current cursor pos
-;; ;; C-x r b jump to bookmark
-;; ;; M-x bookmark-rename says it
-;; ;; M-x bookmark-delete "
-;; ;; M-x bookmark-save "
-;; ;; C-x r l list bookmarks
-;; ;;     d mark bookmark for deletion
-;; ;;     r rename bookmark
-;; ;;     s save all listed bookmarks
-;; ;;     f show bookmark the cursor is over
-;; ;;     m mark bookmarks to be shown in multiple window
-;; ;;     v show marked bookmarks (or the one the cursor is over)
-;; ;;     t toggle listing of the corresponding paths
-;; ;;     w " path to this file
-;; ;;     x delete marked bookmarks
-;; ;;     Del ?
-;; ;;     q quit bookmark list
-;; ;; M-x bookmark-write write all bookmarks in given file
-;; ;; M-x bookmark-load load bookmark from given file
-;; ;;
+
+
 ;; ;; Macro-commands
 ;; ;; M-x name-last-kbd-macro give name to macro (for saving)
 ;; ;; M-x insert-keyboard-macro save named macro into file
