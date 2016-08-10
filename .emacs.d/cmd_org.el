@@ -1,4 +1,8 @@
-(setq org-agenda-files (list "~/cmd.org"))
+;; these things get backed up by Dropbox
+(setq org-agenda-files (list "~/.org/cmd.org")
+      bookmark-default-file "~/.org/bookmarks"
+      bookmark-save-flag 1)
+
 
 (add-to-list 'auto-mode-alist'("\\.org" . org-mode))
 (add-to-list 'auto-mode-alist'("\\.txt" . org-mode))
