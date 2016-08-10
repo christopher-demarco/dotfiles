@@ -10,12 +10,25 @@
 	       
 (global-set-key "\C-ca" 'org-agenda)
 
-;; Automagically export agenda views to HTML whenever an org-mode
-;; buffer is saved.
+;; Export agenda views to HTML whenever an org-mode buffer is saved.
+;;;; Ensure the export directory exists
+(setq export-dir (expand-file-name "~/tmp/org-export"))
+(when (not (file-exists-p export-dir))
+  (make-directory export-dir t))
+(when (eq nil (car (file-attributes "/Users/demarco/tmp/org-export")))
+  (delete-file export-dir)
+  (make-directory export-dir))
+;;;; Function to push to s3
+(defun agenda-export-push nil
+  (interactive)
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "s3sync" "*Messages*" "aws" "--profile" "cmd" "s3" "sync" export-dir "s3://cmd-orgtest" "--acl" "public-read"))))))
+;;;; Every time org-mode starts, add hooks
 (add-hook 'org-mode-hook
 	  '(lambda ()
 	     (add-hook 'after-save-hook 'org-store-agenda-views nil t)
-	     ))
+	     (add-hook 'after-save-hook 'agenda-export-push t t)))
+
 
 ;; Don't break things
 (setq org-insert-heading-respect-content t
@@ -57,10 +70,16 @@
 
 (setq org-agenda-custom-commands
       '(
-;;      (key desc type match settings files)
-	("A" "Agenda" agenda nil nil ("~/tmp/today.html"))
-	("T " "All" todo "TODO" nil ("~/tmp/todo.html"))
-	("P" "Phone" tags-todo "PHONE" nil ("~/tmp/phone.html"))
-	("E" "Errand" tags-todo "ERRAND" nil ("~/tmp/errand.html"))
+	("A" "Agenda" agenda nil nil ("~/tmp/org-export/today.html"))
+	("T " "All" todo "TODO" nil ("~/tmp/org-export/todo.html"))
+	("P" "Phone" tags-todo "PHONE" nil ("~/tmp/org-export/phone.html"))
+	("E" "Errand" tags-todo "ERRAND" nil ("~/tmp/org-export/errand.html"))
 	))
 
+;; (setq org-agenda-custom-commands
+;;       '(
+;; 	("A" "Agenda" agenda nil nil ("~/.org/today.html"))
+;; 	("T " "All" todo "TODO" nil ("~/.org/todo.html"))
+;; 	("P" "Phone" tags-todo "PHONE" nil ("~/.org/phone.html"))
+;; 	("E" "Errand" tags-todo "ERRAND" nil ("~/.org/errand.html"))
+;; 	))
