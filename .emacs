@@ -29,6 +29,7 @@
 
 ;; Make it easier to copy to OSX clipboard
 (when (memq system-type '(darwin))
+  ;; this could also be (eq system-type 'darwin) but lists are funner
   (defun pbcopy (text &optional push)
     (let ((process-connection-type nil))
       (let ((proc (start-process "pbcopy" nil "pbcopy")))
