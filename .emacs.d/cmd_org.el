@@ -40,9 +40,12 @@
 (setq org-capture-templates
       '(
 	("t" "Todo" entry (file "~/.org/cmd.org")
-	 "* TODO %?\n  %i%U" )
+	 "* TODO %?\n  %i" )
+	("m" "Meeting" entry (file "~/.org/cmd.org")
+	 "* TODO %? :MEETING:\n%i" )
 	("n" "Note" entry (file "~/.org/cmd.org")
-	 "* %? :NOTE:\n%i%U" )))
+	 "* %? :NOTE:\n%i" )
+	))
 
 ;; Log stuff into drawers
 (setq org-log-done t
