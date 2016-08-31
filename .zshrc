@@ -129,6 +129,9 @@ function delsshkey {
     sed -i.bak "$1d" ~/.ssh/known_hosts
 }
 
+alias -g L='| less'
+
+
 ### Python
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh # sudo pip install virtualenvwrapper
