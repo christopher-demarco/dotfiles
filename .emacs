@@ -119,6 +119,9 @@
 ;; Let's have proper syntax!
 (setq sentence-end-double-space nil)
 
+(add-hook 'go-mode-hook
+		  (lambda ()
+			(setq tab-width 2)))
 
 ;; slepping
 (setq-default ispell-program-name "/usr/local/bin/aspell")
