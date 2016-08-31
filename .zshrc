@@ -137,8 +137,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh # sudo pip install virtualenvwrapper
 
 
-### Rhiza stuff
-export rz='rhizalytics.com'
 
 
 
