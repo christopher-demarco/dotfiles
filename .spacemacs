@@ -28,13 +28,19 @@ values."
      emacs-lisp
      git
      markdown
-     org
-      (shell :variables
-             shell-default-height 30
-             shell-default-position 'bottom)
-      spell-checking
+     spell-checking
      ;; syntax-checking
      ;; version-control
+     terraform
+     ansible
+     javascript
+     go
+     html
+     dockerfile
+     (org :variables
+          org-enable-github-support t)
+     python
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -170,7 +176,7 @@ values."
    dotspacemacs-enable-paste-micro-state nil
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
-   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-delay 0.1
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
@@ -199,7 +205,7 @@ values."
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
@@ -246,19 +252,130 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
-layers configuration.
-This is the place where most of your configurations should be done. Unless it is
-explicitly specified that a variable should be set before a package is loaded,
-you should place your code here."
+layers configuration."
+
   (global-set-key (kbd "C-h") 'delete-backward-char)
   (global-set-key (kbd "M-C-h") 'backward-kill-word)
 
   (global-set-key (kbd "M-T") 'transpose-lines)
   (global-set-key (kbd "M-#") 'comment-region)
   (global-set-key (kbd "M-g") 'goto-line)
-  (global-set-key (kbd "M-H") 'hl-line-mode)
   (global-set-key (kbd "M-%") 'query-replace-regexp)
-  )
+
+  (setq sentence-end-double-space nil)
+
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (setq tab-width 2)))
+
+  (defun cmd-insert-date ()
+    (interactive)
+    (insert (format-time-string "%Y-%m-%d")))
+  (global-set-key (kbd "C-c d") 'cmd-insert-date)
+
+  (require 'org)
+
+  (global-set-key "\C-ca" 'org-agenda)
+
+  ;; these things get backed up by Dropbox
+  (setq org-agenda-files (list "~/.org/cmd.org")
+        bookmark-default-file "~/.org/bookmarks"
+        bookmark-save-flag 1)
+
+
+  (remove-hook 'org-mode-hook `org-bullets-mode)
+
+
+  ;; (add-to-list 'auto-mode-alist'("\\.org" . org-mode))
+  ;; (add-to-list 'auto-mode-alist'("\\.txt" . org-mode))
+  ;; (add-hook 'org-agenda-mode-hook 'hl-line-mode)
+
+
+
+  (setq org-startup-indented t)
+
+  ;; Export agenda views to HTML whenever an org-mode buffer is saved.
+;;;; Ensure the export directory exists
+  (setq export-dir (expand-file-name "~/tmp/org-export"))
+  (when (not (file-exists-p export-dir))
+    (make-directory export-dir t))
+  (when (eq nil (car (file-attributes "/Users/demarco/tmp/org-export")))
+    (delete-file export-dir)
+    (make-directory export-dir))
+;;;; Function to push to s3
+  (defun agenda-export-push nil
+    (interactive)
+    (let ((process-connection-type nil))
+      (let ((proc (start-process "s3sync" "*Messages*" "aws" "--profile" "cmd" "s3" "sync" export-dir "s3://cmd-orgtest" "--acl" "public-read"))))))
+;;;; Every time org-mode starts, add hooks
+  (add-hook 'org-mode-hook
+            '(lambda ()
+               (add-hook 'after-save-hook 'org-store-agenda-views nil t)
+               (add-hook 'after-save-hook 'agenda-export-push t t)))
+
+
+  ;; Don't break things
+  (setq org-insert-heading-respect-content t
+        org-catch-invisible-edits "error")
+
+  ;; Capture is bonzer!
+  (define-key global-map "\M-?" 'org-capture)
+  (setq org-default-notes-file "~/.org/cmd.org")
+  (setq org-capture-templates
+        '(
+          ("t" "Todo" entry (file "~/.org/cmd.org")
+           "* TODO %?\n  %i" )
+          ("m" "Meeting" entry (file "~/.org/cmd.org")
+           "* TODO %? :MEETING:\n%i" )
+          ("n" "Note" entry (file "~/.org/cmd.org")
+           "* %? :NOTE:\n%i" )
+          ))
+
+  ;; Log stuff into drawers
+  (setq org-log-done t
+        org-log-into-drawer t
+        )
+
+  ;; Only consider children when calculating completion percent
+  (setq org-checkbox-hierarchical-statistics t)
+
+
+  ;; Archive into a datetree
+  (setq org-archive-location "%s_archive::datetree/")
+
+  (setq org-todo-keywords
+        (quote
+         (
+          (sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "DONE(d!)"))))
+
+  ;; ;; Don't pollute effort estimate summary with DONE stuff
+  (setq org-agenda-skip-scheduled-if-done t)
+
+
+  (setq org-agenda-span 1)
+
+
+  (setq org-agenda-export-html-style
+        "<link rel='stylesheet' type='text/css' href='http://thomasf.github.io/solarized-css/solarized-dark.min.css' />")
+
+  (setq org-agenda-custom-commands
+        '(
+          ("A" "Agenda" agenda nil nil ("~/tmp/org-export/today.html"))
+          ("T " "All" todo "TODO" nil ("~/tmp/org-export/todo.html"))
+          ("P" "Phone" tags-todo "PHONE" nil ("~/tmp/org-export/phone.html"))
+          ("E" "Errand" tags-todo "ERRAND" nil ("~/tmp/org-export/errand.html"))
+          ("W" "WAITING" todo "WAITING" nil ("~/tmp/org-export/waiting.html"))
+          ))
+
+  ;; (setq org-agenda-custom-commands
+  ;;       '(
+  ;; 	("A" "Agenda" agenda nil nil ("~/.org/today.html"))
+  ;; 	("T " "All" todo "TODO" nil ("~/.org/todo.html"))
+  ;; 	("P" "Phone" tags-todo "PHONE" nil ("~/.org/phone.html"))
+  ;; 	("E" "Errand" tags-todo "ERRAND" nil ("~/.org/errand.html"))
+  ;; 	))
+
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
