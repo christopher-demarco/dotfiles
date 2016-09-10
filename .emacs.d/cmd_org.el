@@ -10,6 +10,8 @@
 	       
 (global-set-key "\C-ca" 'org-agenda)
 
+(setq org-startup-indented t)
+
 ;; Export agenda views to HTML whenever an org-mode buffer is saved.
 ;;;; Ensure the export directory exists
 (setq export-dir (expand-file-name "~/tmp/org-export"))
@@ -62,7 +64,7 @@
 (setq org-todo-keywords
       (quote
        (
-        (sequence "TODO(t)" "WAITING(w)" "DONE(d!)"))))
+        (sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "DONE(d!)"))))
 
 ;; ;; Don't pollute effort estimate summary with DONE stuff
 (setq org-agenda-skip-scheduled-if-done t)
@@ -71,12 +73,16 @@
 (setq org-agenda-span 1)
 
 
+(setq org-agenda-export-html-style
+      "<link rel='stylesheet' type='text/css' href='http://thomasf.github.io/solarized-css/solarized-dark.min.css' />")
+
 (setq org-agenda-custom-commands
       '(
 	("A" "Agenda" agenda nil nil ("~/tmp/org-export/today.html"))
 	("T " "All" todo "TODO" nil ("~/tmp/org-export/todo.html"))
 	("P" "Phone" tags-todo "PHONE" nil ("~/tmp/org-export/phone.html"))
 	("E" "Errand" tags-todo "ERRAND" nil ("~/tmp/org-export/errand.html"))
+	("W" "WAITING" todo "WAITING" nil ("~/tmp/org-export/waiting.html"))
 	))
 
 ;; (setq org-agenda-custom-commands

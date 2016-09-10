@@ -57,11 +57,10 @@
 ;; MELPA; see https://melpa.org/#/getting-started
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+	     '("melpa" . "https://melpa.org/packages/") t)
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
-
 
 (push "~/.emacs.d/lib" load-path)
 
@@ -249,13 +248,6 @@
 
 
 
-;; (custom-set-variables
-;;   ;; custom-set-variables was added by Custom.
-;;   ;; If you edit it by hand, you could mess it up, so be careful.
-;;   ;; Your init file should contain only one such instance.
-;;   ;; If there is more than one, they won't work right.
-;;  '(org-agenda-files (quote ("~/working/refile.org" "~/working/finances/finances.org" "~/working/personal.org" "~/working/maya/maya.org"))))
-
 
 ;;(custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
@@ -282,7 +274,8 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 ;;(load-theme 'solarized-dark t)
-(load-theme 'wombat t)
+;;(load-theme 'wombat)
+
 
 
 ;; ;;;;Disable theme bg in terminal (it makes me sad to need this)
@@ -316,7 +309,7 @@
  '(aquamacs-tool-bar-user-customization nil t)
  '(custom-safe-themes
    (quote
-    ("fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "303488aa27ce49f658a7ba4035e93380421e394ec2799ae8fd952d08808c7235" "02414c4cfbbe9805b89a5ec66d3d3deb4ae1e4795ed2092eab240ca0cb79ea96" "828d47ac5f3c9c5c06341b28a1d0ebd9f0a0a9c4074504626148f36c438321c2" "3b7e62b9884f1533f8eac5d21b252e5b8098274d7d9096521db84e4f10797ae3" default)))
+    ("cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "303488aa27ce49f658a7ba4035e93380421e394ec2799ae8fd952d08808c7235" "02414c4cfbbe9805b89a5ec66d3d3deb4ae1e4795ed2092eab240ca0cb79ea96" "828d47ac5f3c9c5c06341b28a1d0ebd9f0a0a9c4074504626148f36c438321c2" "3b7e62b9884f1533f8eac5d21b252e5b8098274d7d9096521db84e4f10797ae3" default)))
  '(gpm-mouse-mode nil)
  '(org-startup-indented t)
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
@@ -329,11 +322,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-level-4 ((t (:inherit outline-5))))
- '(org-level-5 ((t (:inherit outline-6))))
- '(org-level-6 ((t (:inherit outline-8))))
- '(org-level-7 ((t (:inherit outline-1))))
- '(org-level-8 ((t (:inherit outline-2)))))
+ '(font-lock-variable-name-face ((t nil)))
+ '(highlight ((t (:background "color-17"))))
+ '(mode-line ((t (:background "#222222" :foreground "white" :box (:line-width -1 :style released-button)))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "black" :foreground "white" :box (:line-width -1 :color "grey75") :weight light))))
+ '(org-hide ((t (:foreground "black"))))
+ '(org-level-1 ((t nil)))
+ '(org-level-2 ((t nil)))
+ '(org-level-3 ((t nil)))
+ '(org-level-4 ((t nil)))
+ '(org-level-5 ((t nil)))
+ '(org-level-6 ((t nil)))
+ '(org-level-7 ((t nil)))
+ '(org-level-8 ((t nil)))
+ '(region ((t (:background "color-17")))))
 
 
 ;; I *really* should do this properly >:-(
