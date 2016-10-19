@@ -7,15 +7,10 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+
+#ZSH_THEME=muse
 #ZSH_THEME="robbyrussell"
-#ZSH_THEME="arrow"
-#ZSH_THEME='bira'
-#ZSH_THEME=fino
-#ZSH_THEME='agnoster'
-#ZSH_THEME=ys
-ZSH_THEME=mortalscumbag
-
-
+ZSH_THEME="mortalscumbag-cmd"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -63,7 +58,25 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/demarco/cmd/src/go/bin:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/demarco/cmd/src/go/bin:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/demarco/cmd/src/go/bin:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/demarco/cmd/src/go/bin:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/demarco/cmd/src/go/bin:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/demarco/cmd/src/go/bin:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/demarco/cmd/src/go/bin:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/demarco/cmd/src/go/bin:/sbin:/usr/sbin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:/Users/demarco/cmd/src/go/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:~/cmd/src/go/bin:~/cmd/proxy"
+
+function dedup_path {
+    if [ -n "$PATH" ]; then
+        old_PATH=$PATH:; PATH=
+        while [ -n "$old_PATH" ]; do
+            x=${old_PATH%%:*}       # the first remaining entry
+            case $PATH: in
+                *:"$x":*) ;;         # already there
+                *) PATH=$PATH:$x;;    # not there yet
+            esac
+            old_PATH=${old_PATH#*:}
+        done
+        PATH=${PATH#:}
+        unset old_PATH x
+    fi
+}
+
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -77,6 +90,7 @@ if [ -e /Applications/Emacs.app/Contents/MacOS/Emacs ]; then
     #EMACS="/Applications/Emacs.app/Contents/MacOS/Emacs"
 fi
 export EDITOR="$EMACS -nw"
+export GIT_EDITOR="$EMACS -nw"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -89,6 +103,7 @@ alias ssho='ssh -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"'
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 alias sl=ls
+alias ls='ls -FhG'
 alias svnst="svn st | egrep -v '^(X|$|Performing)'"
 alias em="$EMACS -nw"
 alias EM="$EMACS"
@@ -129,8 +144,18 @@ function delsshkey {
     sed -i.bak "$1d" ~/.ssh/known_hosts
 }
 
-alias -g L='| less'
+alias -g L='| less -R'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g eo='2>&1'
+alias -g hq='50.202.194.218'
 
+alias dirs='dirs -v'
+
+alias irssi='TERM=screen-256color irssi'
+
+export CLICOLOR_FORCE=1
 
 ### Python
 export WORKON_HOME=$HOME/.virtualenvs
@@ -138,7 +163,15 @@ source /usr/local/bin/virtualenvwrapper.sh # sudo pip install virtualenvwrapper
 
 
 
+### Docker
+alias -g dl='$(docker ps -laq)'
+alias dla='docker ps -a'
+alias -g dli='$(docker images -q | head -1)'
 
+### Eternia
+function essh { ssh -i ~/.ssh/gotham2.pem ec2-user@$1 }
+
+alias weather='docker run jess/weather'
 
 # So backward-compatible aliases should be in a .bash_aliases. In
 # fact, there should be a bash_common.sh which has everything for both
