@@ -173,6 +173,13 @@ function essh { ssh -i ~/.ssh/gotham2.pem ec2-user@$1 }
 
 alias weather='docker run jess/weather'
 
+alias ts='tig status'
+
+alias td='tree -d'
+alias td1='td -L 1'
+alias td2='td -L 2'
+
+
 # So backward-compatible aliases should be in a .bash_aliases. In
 # fact, there should be a bash_common.sh which has everything for both
 # shells, and .zshrc only overrides.

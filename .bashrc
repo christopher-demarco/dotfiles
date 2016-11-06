@@ -162,9 +162,9 @@ alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
 ##alias ssh='ssh -v'
 
 # Since sliced bread
-alias dirs='dirs -l -p'
-alias pushd='pushd >/dev/null'
-alias popd='popd >/dev/null'
+#alias dirs='dirs -l -p'
+# alias pushd='pushd >/dev/null'
+# alias popd='popd >/dev/null'
 
 ### tmux
 alias tls='tmux ls'

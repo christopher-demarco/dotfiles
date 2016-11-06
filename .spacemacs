@@ -23,7 +23,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     ;; auto-completion
      ;; better-defaults
      emacs-lisp
      git
@@ -209,7 +209,7 @@ values."
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
-   dotspacemacs-smooth-scrolling t
+   dotspacemacs-smooth-scrolling nil
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
@@ -285,6 +285,17 @@ layers configuration."
 
   (remove-hook 'org-mode-hook `org-bullets-mode)
 
+  (custom-set-faces
+   '(org-level-1 ((t nil)))
+   '(org-level-2 ((t nil)))
+   '(org-level-3 ((t nil)))
+   '(org-level-4 ((t nil)))
+   '(org-level-5 ((t nil)))
+   '(org-level-6 ((t nil)))
+   '(org-level-7 ((t nil)))
+   '(org-level-8 ((t nil)))
+   )
+
 
   ;; (add-to-list 'auto-mode-alist'("\\.org" . org-mode))
   ;; (add-to-list 'auto-mode-alist'("\\.txt" . org-mode))
@@ -294,24 +305,24 @@ layers configuration."
 
   (setq org-startup-indented t)
 
-  ;; Export agenda views to HTML whenever an org-mode buffer is saved.
-;;;; Ensure the export directory exists
-  (setq export-dir (expand-file-name "~/tmp/org-export"))
-  (when (not (file-exists-p export-dir))
-    (make-directory export-dir t))
-  (when (eq nil (car (file-attributes "/Users/demarco/tmp/org-export")))
-    (delete-file export-dir)
-    (make-directory export-dir))
-;;;; Function to push to s3
-  (defun agenda-export-push nil
-    (interactive)
-    (let ((process-connection-type nil))
-      (let ((proc (start-process "s3sync" "*Messages*" "aws" "--profile" "cmd" "s3" "sync" export-dir "s3://cmd-orgtest" "--acl" "public-read"))))))
-;;;; Every time org-mode starts, add hooks
-  (add-hook 'org-mode-hook
-            '(lambda ()
-               (add-hook 'after-save-hook 'org-store-agenda-views nil t)
-               (add-hook 'after-save-hook 'agenda-export-push t t)))
+;;   ;; Export agenda views to HTML whenever an org-mode buffer is saved.
+;; ;;;; Ensure the export directory exists
+;;   (setq export-dir (expand-file-name "~/tmp/org-export"))
+;;   (when (not (file-exists-p export-dir))
+;;     (make-directory export-dir t))
+;;   (when (eq nil (car (file-attributes "/Users/demarco/tmp/org-export")))
+;;     (delete-file export-dir)
+;;     (make-directory export-dir))
+;; ;;;; Function to push to s3
+;;   (defun agenda-export-push nil
+;;     (interactive)
+;;     (let ((process-connection-type nil))
+;;       (let ((proc (start-process "s3sync" "*Messages*" "aws" "--profile" "cmd" "s3" "sync" export-dir "s3://cmd-orgtest" "--acl" "public-read"))))))
+;; ;;;; Every time org-mode starts, add hooks
+;;   (add-hook 'org-mode-hook
+;;             '(lambda ()
+;;                (add-hook 'after-save-hook 'org-store-agenda-views nil t)
+;;                (add-hook 'after-save-hook 'agenda-export-push t t)))
 
 
   ;; Don't break things
@@ -379,3 +390,25 @@ layers configuration."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fill-column 70))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(lazy-highlight ((t (:background "#262626" :inverse-video t :weight normal))))
+ '(org-level-1 ((t nil)))
+ '(org-level-2 ((t nil)))
+ '(org-level-3 ((t nil)))
+ '(org-level-4 ((t nil)))
+ '(org-level-5 ((t nil)))
+ '(org-level-6 ((t nil)))
+ '(org-level-7 ((t nil)))
+ '(org-level-8 ((t nil))))
