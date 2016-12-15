@@ -103,7 +103,11 @@ alias ssho='ssh -o ProxyCommand="ssh -W %h:%p -q demarco@office.rhiza.com"'
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 alias sl=ls
-alias ls='ls -FhG'
+if [[ $(uname) == 'Darwin' ]] ; then
+    alias ls='ls -FhG'
+else
+    alias ls='ls -Fh --color=yes'
+fi
 alias svnst="svn st | egrep -v '^(X|$|Performing)'"
 alias em="$EMACS -nw"
 alias EM="$EMACS"
