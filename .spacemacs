@@ -278,8 +278,13 @@ layers configuration."
   (defun cmd-insert-trace-python()
     (interactive)
     (insert "import pudb ; pudb.set_trace()"))
-  (add-hook 'python-mode-hook
-            (lambda () (local-set-key (kbd "C-c t"))))
+  (defun cmd-python-customizations ()
+    "cmd"
+    (define-key python-mode-map
+      (kbd "C-c t")
+      'cmd-insert-trace-python))
+  (add-hook 'python-mode-hook 'cmd-python-customizations)
+
 
   (require 'org)
 
