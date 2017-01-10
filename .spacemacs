@@ -25,7 +25,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     ;;auto-completion
      better-defaults
      emacs-lisp
      git
@@ -103,13 +103,13 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
+  dotspacemacs-themes '(spacemacs-dark
+                        spacemacs-light
+                        solarized-light
+                        solarized-dark
+                        leuven
+                        monokai
+                        zenburn)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -211,7 +211,7 @@ values."
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
-   dotspacemacs-smooth-scrolling nil
+   dotspacemacs-smooth-scrolling t
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
@@ -275,6 +275,12 @@ layers configuration."
     (insert (format-time-string "%Y-%m-%d")))
   (global-set-key (kbd "C-c d") 'cmd-insert-date)
 
+  (defun cmd-insert-trace-python()
+    (interactive)
+    (insert "import pudb ; pudb.set_trace()"))
+  (add-hook 'python-mode-hook
+            (lambda () (local-set-key (kbd "C-c t"))))
+
   (require 'org)
 
   (global-set-key "\C-ca" 'org-agenda)
@@ -337,11 +343,9 @@ layers configuration."
   (setq org-capture-templates
         '(
           ("t" "Todo" entry (file "~/.org/cmd.org")
-           "* TODO %?\n  %i" )
-          ("m" "Meeting" entry (file "~/.org/cmd.org")
-           "* TODO %? :MEETING:\n%i" )
+           "* TODO %?\n  %i %t" )
           ("n" "Note" entry (file "~/.org/cmd.org")
-           "* %? :NOTE:\n%i" )
+           "* %? :NOTE:\n  %i %t" )
           ))
 
   ;; Log stuff into drawers
