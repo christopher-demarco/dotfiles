@@ -275,9 +275,13 @@ layers configuration."
     (insert (format-time-string "%Y-%m-%d")))
   (global-set-key (kbd "C-c d") 'cmd-insert-date)
 
-  (defun cmd-insert-trace-python()
-    (interactive)
-    (insert "import pudb ; pudb.set_trace()"))
+  (defun cmd-insert-trace-python (&optional arg)
+    (interactive "P")
+    (if (equal arg nil)
+        (insert "import pudb ; pudb.set_trace()")
+      (save-excursion
+        (goto-char 0)
+        (delete-matching-lines "import pudb ; pudb.set_trace()"))))
   (defun cmd-python-customizations ()
     "cmd"
     (define-key python-mode-map
@@ -285,9 +289,7 @@ layers configuration."
       'cmd-insert-trace-python))
   (add-hook 'python-mode-hook 'cmd-python-customizations)
 
-
   (require 'org)
-
   (global-set-key "\C-ca" 'org-agenda)
 
   ;; these things get backed up by Dropbox
