@@ -289,6 +289,11 @@ layers configuration."
       'cmd-insert-trace-python))
   (add-hook 'python-mode-hook 'cmd-python-customizations)
 
+
+  ;; Smartparens can be *really* anoying
+  (global-set-key "\C-c)" 'smartparens-mode)
+
+
   (require 'org)
   (global-set-key "\C-ca" 'org-agenda)
 
