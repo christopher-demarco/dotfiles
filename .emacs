@@ -1,7 +1,4 @@
 ; basic stuff
-
-
-
 (server-start)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
@@ -17,7 +14,6 @@
 (xterm-mouse-mode t)
 
 	 
-
 ;; don't interfere with tmux and anyway I bind this myself in the WM
 (define-key global-map (kbd "C-z") nil)
 
@@ -77,6 +73,20 @@
 ;; How do I undefine python-mode's py-mark-def-or-class!?
 (eval-after-load "python-mode" '(define-key py-mode-map "\C-\M-h" 'backward-kill-word))
 
+(defun cmd-insert-trace-python (&optional arg)
+  (interactive "P")
+  (if (equal arg nil)
+      (insert "import pudb ; pudb.set_trace()")
+    (save-excursion
+      (goto-char 0)
+      (delete-matching-lines "import pudb ; pudb.set_trace()"))))
+(defun cmd-python-customizations ()
+  "cmd"
+  (define-key python-mode-map
+    (kbd "C-c t")
+    'cmd-insert-trace-python))
+(add-hook 'python-mode-hook 'cmd-python-customizations)
+
 
 ;; TRAMP
 ;; Should be built-in to tramp-mode:
@@ -119,8 +129,8 @@
 (setq sentence-end-double-space nil)
 
 (add-hook 'go-mode-hook
-		  (lambda ()
-			(setq tab-width 2)))
+	  (lambda ()
+	    (setq tab-width 2)))
 
 ;; slepping
 (setq-default ispell-program-name "/usr/local/bin/aspell")
@@ -155,16 +165,63 @@
 (global-set-key (kbd "C-c d") 'cmd-insert-date)
 
 
-;; Load org-mode elsewhere
-(if (file-exists-p "~/.emacs.d/cmd_org.el")
-     (load-file "~/.emacs.d/cmd_org.el"))
+;; ;; Load org-mode elsewhere
+;; (if (file-exists-p "~/.emacs.d/cmd_org.el")
+;;      (load-file "~/.emacs.d/cmd_org.el"))
+
+(require 'org)
+(global-set-key "\C-ca" 'org-agenda)
+
+;; these things get backed up by Dropbox
+(setq org-agenda-files (list "~/.org/cmd.org")
+      bookmark-default-file "~/.org/bookmarks"
+      bookmark-save-flag 1)
+
+;; Don't break things
+(setq org-insert-heading-respect-content t
+      org-catch-invisible-edits "error")
+
+;; Capture is bonzer!
+(define-key global-map "\M-?" 'org-capture)
+(setq org-default-notes-file "~/.org/cmd.org")
+(setq org-capture-templates
+      '(
+	("t" "Todo" entry (file "~/.org/cmd.org")
+	 "* TODO %?\n  %i" )
+	("n" "Note" entry (file "~/.org/cmd.org")
+	 "* %? :NOTE:\n  %i %t" )
+	))
+
+;; Log stuff into drawers
+(setq org-log-done t
+      org-log-into-drawer t
+      )
+
+;; Only consider children when calculating completion percent
+(setq org-checkbox-hierarchical-statistics t)
 
 
-(push "~/.emacs.d/lib/markdown-mode" load-path)
-(autoload 'markdown-mode "markdown-mode"
-  "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-      (cons '("\\.md" . markdown-mode) auto-mode-alist))
+;; Archive into a datetree
+(setq org-archive-location "%s_archive::datetree/")
+
+(setq org-todo-keywords
+      (quote
+       (
+	(sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "DONE(d!)"))))
+
+;; ;; Don't pollute effort estimate summary with DONE stuff
+(setq org-agenda-skip-scheduled-if-done t)
+
+(setq org-agenda-span 1)
+
+(setq org-agenda-custom-commands
+      '(
+	("A" "Agenda" agenda nil nil ("~/cmd/Google Drive/org/agenda.txt"))
+	("T " "All" todo "TODO" nil ("~/cmd/Google Drive/org/todo.txt"))
+	("P" "Phone" tags-todo "PHONE" nil ("~/cmd/Google Drive/org/phone.txt"))
+	("E" "Errand" tags-todo "ERRAND" nil ("~/cmd/Google Drive/org/errand.txt"))
+	("W" "WAITING" todo "WAITING" nil ("~/cmd/Google Drive/waiting.txt"))
+	))
 
 
 
@@ -275,7 +332,7 @@
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 ;;(load-theme 'solarized-dark t)
 ;;(load-theme 'wombat)
-
+(load-theme 'spacemacs-dark t)
 
 
 ;; ;;;;Disable theme bg in terminal (it makes me sad to need this)
@@ -309,37 +366,46 @@
  '(aquamacs-tool-bar-user-customization nil t)
  '(custom-safe-themes
    (quote
-    ("cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "303488aa27ce49f658a7ba4035e93380421e394ec2799ae8fd952d08808c7235" "02414c4cfbbe9805b89a5ec66d3d3deb4ae1e4795ed2092eab240ca0cb79ea96" "828d47ac5f3c9c5c06341b28a1d0ebd9f0a0a9c4074504626148f36c438321c2" "3b7e62b9884f1533f8eac5d21b252e5b8098274d7d9096521db84e4f10797ae3" default)))
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "303488aa27ce49f658a7ba4035e93380421e394ec2799ae8fd952d08808c7235" "02414c4cfbbe9805b89a5ec66d3d3deb4ae1e4795ed2092eab240ca0cb79ea96" "828d47ac5f3c9c5c06341b28a1d0ebd9f0a0a9c4074504626148f36c438321c2" "3b7e62b9884f1533f8eac5d21b252e5b8098274d7d9096521db84e4f10797ae3" default)))
  '(gpm-mouse-mode nil)
  '(org-startup-indented t)
+ '(package-selected-packages
+   (quote
+    (smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
  '(tool-bar-mode nil))
 
 
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(font-lock-variable-name-face ((t nil)))
+;;  '(highlight ((t (:background "color-17"))))
+;;  '(mode-line ((t (:background "#222222" :foreground "white" :box (:line-width -1 :style released-button)))))
+;;  '(mode-line-inactive ((t (:inherit mode-line :background "black" :foreground "white" :box (:line-width -1 :color "grey75") :weight light))))
+;;  '(org-hide ((t (:foreground "black"))))
+;;  '(org-level-1 ((t nil)))
+;;  '(org-level-2 ((t nil)))
+;;  '(org-level-3 ((t nil)))
+;;  '(org-level-4 ((t nil)))
+;;  '(org-level-5 ((t nil)))
+;;  '(org-level-6 ((t nil)))
+;;  '(org-level-7 ((t nil)))
+;;  '(org-level-8 ((t nil)))
+;;  '(region ((t (:background "color-17")))))
+
+
+;; ;; I *really* should do this properly >:-(
+;; (require 'info)
+;; (info-initialize)
+;; (push "/usr/local/Cellar/org-mode/8.3.4/share/info/emacs/org-mode" Info-directory-list)
+;; (push "/usr/local/Cellar/gawk/4.1.3_1/share/info" Info-directory-list)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(font-lock-variable-name-face ((t nil)))
- '(highlight ((t (:background "color-17"))))
- '(mode-line ((t (:background "#222222" :foreground "white" :box (:line-width -1 :style released-button)))))
- '(mode-line-inactive ((t (:inherit mode-line :background "black" :foreground "white" :box (:line-width -1 :color "grey75") :weight light))))
- '(org-hide ((t (:foreground "black"))))
- '(org-level-1 ((t nil)))
- '(org-level-2 ((t nil)))
- '(org-level-3 ((t nil)))
- '(org-level-4 ((t nil)))
- '(org-level-5 ((t nil)))
- '(org-level-6 ((t nil)))
- '(org-level-7 ((t nil)))
- '(org-level-8 ((t nil)))
- '(region ((t (:background "color-17")))))
-
-
-;; I *really* should do this properly >:-(
-(require 'info)
-(info-initialize)
-(push "/usr/local/Cellar/org-mode/8.3.4/share/info/emacs/org-mode" Info-directory-list)
-(push "/usr/local/Cellar/gawk/4.1.3_1/share/info" Info-directory-list)
+ )

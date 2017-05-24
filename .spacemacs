@@ -20,9 +20,6 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     markdown
-     markdown
-     markdown
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -44,6 +41,7 @@ values."
      dockerfile
      (org :variables
           org-enable-github-support t)
+     ivy
      python
      yaml
      )
@@ -53,7 +51,10 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages
+   '(
+     smartparens
+     )
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -341,10 +342,14 @@ layers configuration."
 ;;     (interactive)
 ;;     (let ((process-connection-type nil))
 ;;       (let ((proc (start-process "s3sync" "*Messages*" "aws" "--profile" "cmd" "s3" "sync" export-dir "s3://cmd-orgtest" "--acl" "public-read"))))))
-;; ;;;; Every time org-mode starts, add hooks
-  (add-hook 'org-mode-hook
-            '(lambda ()
-               (add-hook 'after-save-hook 'org-store-agenda-views nil t)))
+  ;; ;;;; Every time org-mode starts, add hooks
+  ;; (defun cmd-org-store-agenda-views nil
+  ;;   (interactive)
+  ;;   (save-excursion
+  ;;     (org-store-agenda-views nil t)))
+  ;; (add-hook 'org-mode-hook
+  ;;           '(lambda ()
+  ;;              (add-hook 'after-save-hook 'cmd-org-store-agenda-views)))
 
 
 
@@ -461,7 +466,7 @@ layers configuration."
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (yapfify winum uuidgen unfill py-isort pug-mode ox-gfm org-projectile log4e gntp org-download mwim livid-mode skewer-mode simple-httpd live-py-mode link-hint json-snatcher json-reformat jinja2-mode parent-mode hide-comnt pkg-info epl go-guru gitignore-mode git-link flyspell-correct-helm flyspell-correct flx eyebrowse evil-visual-mark-mode evil-unimpaired magit magit-popup git-commit with-editor smartparens evil-ediff evil goto-chg undo-tree dumb-jump diminish column-enforce-mode bind-map bind-key pythonic f dash s helm helm-core popup async hcl-mode powerline hydra spinner alert markdown-mode yasnippet multiple-cursors js2-mode projectile request haml-mode go-mode anzu packed avy highlight iedit zenburn-theme monokai-theme helm-company helm-c-yasnippet company-web web-completion-data company-tern dash-functional company-statistics company-quickhelp pos-tip company-go company-anaconda company auto-yasnippet ac-ispell auto-complete yaml-mode ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package toc-org terraform-mode tern tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf popwin pip-requirements persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dockerfile-mode define-word cython-mode coffee-mode clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-dictionary auto-compile ansible-doc ansible anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+    (wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy yapfify winum uuidgen unfill py-isort pug-mode ox-gfm org-projectile log4e gntp org-download mwim livid-mode skewer-mode simple-httpd live-py-mode link-hint json-snatcher json-reformat jinja2-mode parent-mode hide-comnt pkg-info epl go-guru gitignore-mode git-link flyspell-correct-helm flyspell-correct flx eyebrowse evil-visual-mark-mode evil-unimpaired magit magit-popup git-commit with-editor smartparens evil-ediff evil goto-chg undo-tree dumb-jump diminish column-enforce-mode bind-map bind-key pythonic f dash s helm helm-core popup async hcl-mode powerline hydra spinner alert markdown-mode yasnippet multiple-cursors js2-mode projectile request haml-mode go-mode anzu packed avy highlight iedit zenburn-theme monokai-theme helm-company helm-c-yasnippet company-web web-completion-data company-tern dash-functional company-statistics company-quickhelp pos-tip company-go company-anaconda company auto-yasnippet ac-ispell auto-complete yaml-mode ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package toc-org terraform-mode tern tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf popwin pip-requirements persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dockerfile-mode define-word cython-mode coffee-mode clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-dictionary auto-compile ansible-doc ansible anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))

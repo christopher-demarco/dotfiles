@@ -3,7 +3,7 @@
  		[".homemaker.tml", "homemaker.tml"],
 		[".bashrc"],
 		[".bash_profile"],
-		[".spacemacs"],
+		[".emacs"],
 		[".gitconfig"],
 		[".slate"],
 		[".subversion/config"],
