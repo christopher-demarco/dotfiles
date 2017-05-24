@@ -128,6 +128,7 @@ alias tn='tmux new-session -s '
 alias tnew='tmux new-session -s '
 alias ta='tmux attach -t '
 alias tattach='tmux attach -d -t '
+alias tcd='tmux attach -c $PWD -t '
 
 
 ### Ansible
@@ -164,7 +165,7 @@ export CLICOLOR_FORCE=1
 ### Python
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh # sudo pip install virtualenvwrapper
-
+alias pup='pip install --upgrade pip && pip install --upgrade setuptools'
 
 
 ### Docker
@@ -182,6 +183,25 @@ alias ts='tig status'
 alias td='tree -d'
 alias td1='td -L 1'
 alias td2='td -L 2'
+
+
+# 54.227.172.47 is HYDROGEN
+function legacy_ufw {
+    for ip in $(tf output cidrs); do
+        ip=$(echo $ip | cut -d/ -f1)
+        echo sudo ufw insert 1 allow proto tcp from $ip to any port 3306
+    done
+    for ip in 50.202.194.218 52.55.235.123 54.227.172.47; do
+        echo sudo ufw insert 1 allow from $ip to any 
+    done
+}
+function legacy_iptables {
+    for ip in $(tf output cidrs) 50.202.194.218 52.55.235.123 54.227.172.47 206.210.65.20 52.90.22.241; do
+        ip=$(echo $ip | cut -d/ -f1)
+        echo sudo iptables -A INPUT -p tcp --dport 3306 -s $ip -j ACCEPT
+    done
+    echo sudo iptables -A INPUT -p tcp --dport 3306 -j DROP
+}
 
 
 # So backward-compatible aliases should be in a .bash_aliases. In
