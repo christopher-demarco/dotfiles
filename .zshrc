@@ -185,18 +185,17 @@ alias td1='td -L 1'
 alias td2='td -L 2'
 
 
-# 54.227.172.47 is HYDROGEN
 function legacy_ufw {
     for ip in $(tf output cidrs); do
         ip=$(echo $ip | cut -d/ -f1)
         echo sudo ufw insert 1 allow proto tcp from $ip to any port 3306
     done
-    for ip in 50.202.194.218 52.55.235.123 54.227.172.47; do
+    for ip in $(dig +short rhiza-hq.rhizalytics.com) $(dig +short jenkins.rhizalytics.com) $(dig +short hydrogen.rhizalytics.com); do
         echo sudo ufw insert 1 allow from $ip to any 
     done
 }
 function legacy_iptables {
-    for ip in $(tf output cidrs) 50.202.194.218 52.55.235.123 54.227.172.47 206.210.65.20 52.90.22.241; do
+    for ip in $(tf output cidrs) $(dig +short rhiza-hq.rhizalytics.com) $(dig +short jenkins.rhizalytics.com) $(dig +short hydrogen.rhizalytics.com) 206.210.65.20 52.90.22.241; do
         ip=$(echo $ip | cut -d/ -f1)
         echo sudo iptables -A INPUT -p tcp --dport 3306 -s $ip -j ACCEPT
     done
