@@ -3,7 +3,10 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 (transient-mark-mode t)
-(show-paren-mode 1)
+;; (show-paren-mode 1)
+;; (setq show-paren-delay 0)
+;(show-smartparens-global-mode +1)
+
 (column-number-mode t)
 (auto-compression-mode 1)
 (setq redisplay-dont-pause t)
@@ -13,14 +16,18 @@
 (require 'mouse)
 (xterm-mouse-mode t)
 
-	 
 ;; don't interfere with tmux and anyway I bind this myself in the WM
 (define-key global-map (kbd "C-z") nil)
 
 ;; Type unicode with C-x 8 <cr>
 ;263a☺
 ;;C-x 8 <cr> 263a ;☺
-(global-set-key "\M-_" (lambda () (interactive) (insert "--")));; the unicode character messes up the line spacing :-/
+;;C-x 8 <cr> 2318 ; ⌘
+;; ♠♥♦♣ 2660 2665 2666 2663
+;; 
+;;(global-set-key "\M-_" (lambda () (interactive) (insert "--")));; the unicode character messes up the line spacing :-/
+
+
 
 
 ;; Make it easier to copy to OSX clipboard
@@ -193,9 +200,8 @@
 	))
 
 ;; Log stuff into drawers
-(setq org-log-done t
-      org-log-into-drawer t
-      )
+(setq org-log-done nil)
+(setq org-log-into-drawer t)
 
 ;; Only consider children when calculating completion percent
 (setq org-checkbox-hierarchical-statistics t)
@@ -264,7 +270,7 @@
 ;; ;; 2.5 `M-n' creates a new independent Info buffer in Emacs
 ;; ;; ========================================================
 
-;; ;; If you are reading Info in Emacs, you can select a new independent Info
+;; ;; If you are reading Info in Emacs",  you can select a new independent Info
 ;; ;; buffer in a new Emacs window by typing `M-n'.  The new buffer starts
 ;; ;; out as an exact copy of the old one, but you will be able to move
 ;; ;; independently between nodes in the two buffers.  (In Info mode, `M-n'
@@ -333,6 +339,8 @@
 ;;(load-theme 'solarized-dark t)
 ;;(load-theme 'wombat)
 (load-theme 'spacemacs-dark t)
+;(load-theme 'spacemacs-light t)
+;(load-theme 'solarized t)
 
 
 ;; ;;;;Disable theme bg in terminal (it makes me sad to need this)
@@ -348,7 +356,6 @@
 ;; (require 'wc-mode)
 ;;(global-set-key "\C-cw" 'wc-mode)
 
-(push "~/.emacs.d/lib/yaml-mode" load-path)
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
@@ -371,9 +378,12 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
+    (color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
+ '(show-paren-mode t)
+ '(sp-show-pair-delay 0)
+ '(sp-show-pair-from-inside t)
  '(tool-bar-mode nil))
 
 
@@ -408,4 +418,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(mode-line ((t (:background "#3c3c3c" :foreground "#ffffff" :box (:line-width 1 :color "#111111")))))
+ '(org-meta-line ((t (:foreground "#008787"))))
+ '(show-paren-match ((t (:inverse-video t))))
+ '(show-paren-mismatch ((t (:background "red" :inverse-video nil))))
+ '(widget-field ((t (:background "#008c79" :foreground "#000000")))))
