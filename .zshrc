@@ -154,7 +154,6 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
 alias -g eo='2>&1'
-alias -g hq='50.202.194.218'
 
 alias dirs='dirs -v'
 
@@ -197,9 +196,14 @@ function legacy_ufw {
 function legacy_iptables {
     for ip in $(tf output cidrs) $(dig +short rhiza-hq.rhizalytics.com) $(dig +short jenkins.rhizalytics.com) $(dig +short hydrogen.rhizalytics.com) 206.210.65.20 52.90.22.241; do
         ip=$(echo $ip | cut -d/ -f1)
-        echo sudo iptables -A INPUT -p tcp --dport 3306 -s $ip -j ACCEPT
+        echo sudo iptables -I INPUT -p tcp --dport 3306 -s $ip -j ACCEPT
     done
     echo sudo iptables -A INPUT -p tcp --dport 3306 -j DROP
+}
+
+function mtmux {
+    aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
+    tmuxinator metropolis-${1}
 }
 
 

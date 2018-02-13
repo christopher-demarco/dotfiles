@@ -334,20 +334,21 @@
 ;; ;; (remove-hook 'text-mode-hook 'smart-spacing-mode)
 
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
+;;(load-theme 'solarized t)
 ;;(load-theme 'solarized-dark t)
 ;;(load-theme 'wombat)
 (load-theme 'spacemacs-dark t)
-;(load-theme 'spacemacs-light t)
-;(load-theme 'solarized t)
+;;(load-theme 'spacemacs-light t)
 
 
-;; ;;;;Disable theme bg in terminal (it makes me sad to need this)
-;; (defun on-frame-open (frame)
-;;   (if (not (display-graphic-p frame))
-;;       (set-face-background 'default "unspecified-bg" frame )))
-;; (add-hook 'after-make-frame-functions 'on-frame-open)
+
+;;;;Disable theme bg in terminal (it makes me sad to need this)
+(defun on-frame-open (frame)
+  (if (not (display-graphic-p frame))
+      (set-face-background 'default "unspecified-bg" frame )))
+(add-hook 'after-make-frame-functions 'on-frame-open)
 
 
 
@@ -373,12 +374,12 @@
  '(aquamacs-tool-bar-user-customization nil t)
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "303488aa27ce49f658a7ba4035e93380421e394ec2799ae8fd952d08808c7235" "02414c4cfbbe9805b89a5ec66d3d3deb4ae1e4795ed2092eab240ca0cb79ea96" "828d47ac5f3c9c5c06341b28a1d0ebd9f0a0a9c4074504626148f36c438321c2" "3b7e62b9884f1533f8eac5d21b252e5b8098274d7d9096521db84e4f10797ae3" default)))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "303488aa27ce49f658a7ba4035e93380421e394ec2799ae8fd952d08808c7235" "02414c4cfbbe9805b89a5ec66d3d3deb4ae1e4795ed2092eab240ca0cb79ea96" "828d47ac5f3c9c5c06341b28a1d0ebd9f0a0a9c4074504626148f36c438321c2" "3b7e62b9884f1533f8eac5d21b252e5b8098274d7d9096521db84e4f10797ae3" default)))
  '(gpm-mouse-mode nil)
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
+    (graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
  '(show-paren-mode t)
