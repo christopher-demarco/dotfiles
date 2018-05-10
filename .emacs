@@ -30,7 +30,7 @@
 
 
 
-;; Make it easier to copy to OSX clipboard
+;;Make it easier to copy to OSX clipboard
 (when (memq system-type '(darwin))
   ;; this could also be (eq system-type 'darwin) but lists are funner
   (defun pbcopy (text &optional push)
@@ -337,14 +337,13 @@
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 ;;(load-theme 'solarized t)
-;;(load-theme 'solarized-dark t)
+(load-theme 'solarized-dark t)
 ;;(load-theme 'wombat)
-(load-theme 'spacemacs-dark t)
+;;(load-theme 'spacemacs-dark t)
 ;;(load-theme 'spacemacs-light t)
 
+;;Disable theme bg in terminal (it makes me sad to need this)
 
-
-;;;;Disable theme bg in terminal (it makes me sad to need this)
 (defun on-frame-open (frame)
   (if (not (display-graphic-p frame))
       (set-face-background 'default "unspecified-bg" frame )))
@@ -414,13 +413,14 @@
 ;; (info-initialize)
 ;; (push "/usr/local/Cellar/org-mode/8.3.4/share/info/emacs/org-mode" Info-directory-list)
 ;; (push "/usr/local/Cellar/gawk/4.1.3_1/share/info" Info-directory-list)
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(mode-line ((t (:background "#3c3c3c" :foreground "#ffffff" :box (:line-width 1 :color "#111111")))))
- '(org-meta-line ((t (:foreground "#008787"))))
- '(show-paren-match ((t (:inverse-video t))))
- '(show-paren-mismatch ((t (:background "red" :inverse-video nil))))
- '(widget-field ((t (:background "#008c79" :foreground "#000000")))))
+;; (custom-set-faces
+
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(mode-line ((t (:background "#3c3c3c" :foreground "#ffffff" :box (:line-width 1 :color "#111111")))))
+;;  '(org-meta-line ((t (:foreground "#008787"))))
+;;  '(show-paren-match ((t (:inverse-video t))))
+;;  '(show-paren-mismatch ((t (:background "red" :inverse-video nil))))
+;;  '(widget-field ((t (:background "#008c79" :foreground "#000000")))))
