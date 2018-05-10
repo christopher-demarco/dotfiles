@@ -132,10 +132,13 @@ alias tcd='tmux attach -c $PWD -t '
 
 
 ### Ansible
-alias ansible-init='workon ansible; source ansible/hacking/env-setup; export EC2_INI_PATH=inventory/ec2.ini'
+alias ansible-init='. ./venv/bin/activate; source ansible/hacking/env-setup; export EC2_INI_PATH=inventory/ec2.ini; export ANSIBLE_HOST_KEY_CHECKING=False'
 
 ### Hashicorp
 alias tf=terraform
+
+### k8s
+alias k=kubectl
 
 ### Go
 export GOPATH=$HOME/cmd/src/go
@@ -162,10 +165,9 @@ alias irssi='TERM=screen-256color irssi'
 export CLICOLOR_FORCE=1
 
 ### Python
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh # sudo pip install virtualenvwrapper
 alias pup='pip install --upgrade pip && pip install --upgrade setuptools'
-
+alias pipenv=$(python -m site --user-base)/bin/pipenv
+export PYTHONPATH=$PYTHONPATH:~/rhiza/rhiza/asgard/shared
 
 ### Docker
 alias -g dl='$(docker ps -laq)'
@@ -182,7 +184,6 @@ alias ts='tig status'
 alias td='tree -d'
 alias td1='td -L 1'
 alias td2='td -L 2'
-
 
 function legacy_ufw {
     for ip in $(tf output cidrs); do
@@ -204,6 +205,10 @@ function legacy_iptables {
 function mtmux {
     aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
     tmuxinator metropolis-${1}
+}
+
+function minutes {
+    python3 -c "import datetime; print(datetime.datetime.strftime(datetime.datetime.strptime('$1', '%H%M') + datetime.timedelta(minutes=$2), '%H%M'))"
 }
 
 
