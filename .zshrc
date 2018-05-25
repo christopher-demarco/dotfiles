@@ -168,6 +168,8 @@ export CLICOLOR_FORCE=1
 alias pup='pip install --upgrade pip && pip install --upgrade setuptools'
 alias pipenv=$(python -m site --user-base)/bin/pipenv
 export PYTHONPATH=$PYTHONPATH:~/rhiza/rhiza/asgard/shared
+alias vup=". ./venv/bin/activate"
+alias vdown=deactivate
 
 ### Docker
 alias -g dl='$(docker ps -laq)'
