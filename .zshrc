@@ -170,6 +170,9 @@ alias pipenv=$(python -m site --user-base)/bin/pipenv
 export PYTHONPATH=$PYTHONPATH:~/rhiza/rhiza/asgard/shared
 alias vup=". ./venv/bin/activate"
 alias vdown=deactivate
+alias vnew='python3 -mvenv venv'
+alias vpip='pip install -r requirements.txt'
+
 
 ### Docker
 alias -g dl='$(docker ps -laq)'
