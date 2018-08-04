@@ -1,4 +1,4 @@
-export TERM=xterm-256color
+#export TERM=xterm-256color # iterm2 takes care of this?
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -119,7 +119,7 @@ alias his='history'
 alias hgrep='his | grep'
 alias crasshplan='ssh -v -L 4200:localhost:4243'
 alias screenssharing="ssh -L 31337:localhost:5900 "
-
+alias cld='colordiff -Bbwu'
 
 ### tmux
 alias tls='tmux ls'
@@ -160,8 +160,6 @@ alias -g eo='2>&1'
 
 alias dirs='dirs -v'
 
-alias irssi='TERM=screen-256color irssi'
-
 export CLICOLOR_FORCE=1
 
 ### Python
@@ -181,6 +179,14 @@ alias -g dli='$(docker images -q | head -1)'
 
 ### Eternia
 function essh { ssh -i ~/.ssh/gotham2.pem ec2-user@$1 }
+function erun {
+    docker run --rm -it \
+	   -v $HOME/rhiza/eternia:/opt/applications/eternia \
+	   -v $HOME/.aws:/home/rhiza-dev/.aws \
+	   -e LOCAL_UID=$LOCAL_UID \
+	   rhiza/eternia \
+	   $*
+}
 
 alias weather='docker run jess/weather'
 
@@ -220,4 +226,6 @@ function minutes {
 # So backward-compatible aliases should be in a .bash_aliases. In
 # fact, there should be a bash_common.sh which has everything for both
 # shells, and .zshrc only overrides.
+
+alias exifdate='mdls -name kMDItemContentCreationDate '
 
