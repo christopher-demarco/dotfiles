@@ -301,60 +301,28 @@
 ;; ;; Given a prefix argument and .* as its first argument this allows one to search all currently open buffers for a regexp.
 ;; ;; Found at http://argandgahandapandpa.wordpress.com/2008/07/27/searching-multiple-buffers-emacs/
 
-
 ;; `C-c C-o` is (org-open-at-point), which opens a link
-
-
-
-;; M-x toggle-debug-on-error
-
-
-
-
-
-;;(custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(cursor ((t (:background "cyan"))))
- ;; '(hl-line ((t (:background "PaleTurquoise1" :foreground "blue"))))
-;;  '(region ((((class color) (min-colors 88) (background light) (type ns)) (:background "PaleTurquoise1")))))
-;;)
-
 
 
 (put 'narrow-to-region 'disabled nil)
 
-
-;; ;; disable aquamacs annoyances
-;; (aquamacs-autoface-mode -1) ; no mode-specific faces, everything in Monaco
-;; (set-face-attribute 'mode-line nil :inherit 'unspecified) ; show modeline in Monaco
-;; (set-face-attribute 'echo-area nil :family 'unspecified)  ; show echo area in Monaco
-;; ;; (remove-hook 'text-mode-hook 'smart-spacing-mode)
-
-
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 ;;(load-theme 'solarized t)
-(load-theme 'solarized-dark t)
+;;(load-theme 'solarized-dark t)
 ;;(load-theme 'wombat)
 ;;(load-theme 'spacemacs-dark t)
 ;;(load-theme 'spacemacs-light t)
+(load-theme 'gruvbox-dark-medium t)
 
+
+
+;;;;;;; is this necessary?
 ;;Disable theme bg in terminal (it makes me sad to need this)
-
-(defun on-frame-open (frame)
-  (if (not (display-graphic-p frame))
-      (set-face-background 'default "unspecified-bg" frame )))
-(add-hook 'after-make-frame-functions 'on-frame-open)
-
+;; (defun on-frame-open (frame)
+;;   (if (not (display-graphic-p frame))
+;;       (set-face-background 'default "unspecified-bg" frame )))
+;; (add-hook 'after-make-frame-functions 'on-frame-open)
 
 
-;; for 750-words
-;; (add-to-list 'load-path "~/.emacs.d/wc-mode")
-;; (require 'wc-mode)
-;;(global-set-key "\C-cw" 'wc-mode)
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -368,16 +336,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-
- ;; '(custom-safe-themes
- ;;   (quote
- ;;    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "cdbd0a803de328a4986659d799659939d13ec01da1f482d838b68038c1bb35e8" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "303488aa27ce49f658a7ba4035e93380421e394ec2799ae8fd952d08808c7235" "02414c4cfbbe9805b89a5ec66d3d3deb4ae1e4795ed2092eab240ca0cb79ea96" "828d47ac5f3c9c5c06341b28a1d0ebd9f0a0a9c4074504626148f36c438321c2" "3b7e62b9884f1533f8eac5d21b252e5b8098274d7d9096521db84e4f10797ae3" default)))
-
  '(gpm-mouse-mode nil)
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
+    (gruvbox-theme graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
  '(show-paren-mode t)
@@ -385,41 +348,9 @@
  '(sp-show-pair-from-inside t)
  '(tool-bar-mode nil))
 
-
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(font-lock-variable-name-face ((t nil)))
-;;  '(highlight ((t (:background "color-17"))))
-;;  '(mode-line ((t (:background "#222222" :foreground "white" :box (:line-width -1 :style released-button)))))
-;;  '(mode-line-inactive ((t (:inherit mode-line :background "black" :foreground "white" :box (:line-width -1 :color "grey75") :weight light))))
-;;  '(org-hide ((t (:foreground "black"))))
-;;  '(org-level-1 ((t nil)))
-;;  '(org-level-2 ((t nil)))
-;;  '(org-level-3 ((t nil)))
-;;  '(org-level-4 ((t nil)))
-;;  '(org-level-5 ((t nil)))
-;;  '(org-level-6 ((t nil)))
-;;  '(org-level-7 ((t nil)))
-;;  '(org-level-8 ((t nil)))
-;;  '(region ((t (:background "color-17")))))
-
-
-;; ;; I *really* should do this properly >:-(
-;; (require 'info)
-;; (info-initialize)
-;; (push "/usr/local/Cellar/org-mode/8.3.4/share/info/emacs/org-mode" Info-directory-list)
-;; (push "/usr/local/Cellar/gawk/4.1.3_1/share/info" Info-directory-list)
-;; (custom-set-faces
-
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(mode-line ((t (:background "#3c3c3c" :foreground "#ffffff" :box (:line-width 1 :color "#111111")))))
-;;  '(org-meta-line ((t (:foreground "#008787"))))
-;;  '(show-paren-match ((t (:inverse-video t))))
-;;  '(show-paren-mismatch ((t (:background "red" :inverse-video nil))))
-;;  '(widget-field ((t (:background "#008c79" :foreground "#000000")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

@@ -103,12 +103,12 @@ alias -g eo='2>&1'
 export CLICOLOR_FORCE=1
 
 
-alias pup='pip install --upgrade pip && pip install --upgrade setuptools'
 alias pipenv=$(python -m site --user-base)/bin/pipenv
 export PYTHONPATH=$PYTHONPATH:~/rhiza/rhiza/asgard/shared
 alias vup=". ./venv/bin/activate"
 alias vdown=deactivate
 alias vnew='python3 -mvenv venv'
+alias pup='pip install --upgrade pip && pip install --upgrade setuptools'
 alias vpip='pip install -r requirements.txt'
 
 
@@ -152,4 +152,4 @@ function mtmux {
 
 alias exifdate='mdls -name kMDItemContentCreationDate '
 
-alias wikipush='git pull && git ci -am 'd' && git push'
+alias pushwiki='git pull && git ci -am 'd' && git push'
