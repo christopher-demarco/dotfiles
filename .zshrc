@@ -11,7 +11,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:~/cmd/src/go/bin:~/cmd/proxy"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:$HOME/cmd/src/go/bin:$HOME/cmd/proxy"
 
 function dedup_path {
     if [ -n "$PATH" ]; then
@@ -126,6 +126,7 @@ alias ts='tig status'
 alias td='tree -d'
 alias td1='td -L 1'
 alias td2='td -L 2'
+alias td3='td -L 3'
 
 function legacy_ufw {
     for ip in $(tf output cidrs); do
