@@ -95,38 +95,39 @@
 (add-hook 'python-mode-hook 'cmd-python-customizations)
 
 
-;; TRAMP
-;; Should be built-in to tramp-mode:
-(setq tramp-default-method "ssh")
-(setq mode-line-remote
-      '(:eval
-        (let ((host-name
-               (or (file-remote-p default-directory 'host)
-                   (system-name))))
-          (if (string-match "^[^0-9][^.]*\\(\\..*\\)" host-name)
-              (substring host-name 0 (match-beginning 1))
-            host-name))))
-(defconst my-mode-line-buffer-identification
-  (list
-   '(:eval
-     (let ((host-name
-            (if (file-remote-p default-directory)
-                (tramp-file-name-host
-                 (tramp-dissect-file-name default-directory))
-              (system-name))))
-       (if (string-match "^[^0-9][^.]*\\(\\..*\\)" host-name)
-           (substring host-name 0 (match-beginning 1))
-         host-name)))
-   ": %12b"))
-(setq-default
- mode-line-buffer-identification
- my-mode-line-buffer-identification)
-(add-hook
- 'dired-mode-hook
- '(lambda ()
-    (setq
-     mode-line-buffer-identification
-     my-mode-line-buffer-identification)))
+;; ;; TRAMP
+;; ;; Should be built-in to tramp-mode:
+;; (setq tramp-default-method "ssh")
+;; (setq mode-line-remote
+;;       '(:eval
+;;         (let ((host-name
+;;                (or (file-remote-p default-directory 'host)
+;;                    (system-name))))
+;;           (if (string-match "^[^0-9][^.]*\\(\\..*\\)" host-name)
+;;               (substring host-name 0 (match-beginning 1))
+;;             host-name))))
+;; (defconst my-mode-line-buffer-identification
+;;   (list
+;;    '(:eval
+;;      (let ((host-name
+;;             (if (file-remote-p default-directory)
+;;                 (tramp-file-name-host
+;;                  (tramp-dissect-file-name default-directory))
+;;               (system-name))))
+;;        (if (string-match "^[^0-9][^.]*\\(\\..*\\)" host-name)
+;;            (substring host-name 0 (match-beginning 1))
+;;          host-name)))
+;;    ": %12b"))
+;; (setq-default
+;;  mode-line-buffer-identification
+;;  my-mode-line-buffer-identification)
+;; (add-hook
+;;  'dired-mode-hook
+;;  '(lambda ()
+;;     (setq
+;;      mode-line-buffer-identification
+;;      my-mode-line-buffer-identification)))
+
 ;; It's *UNSAFE* to backup files edited via tramp or mailcrypt!
 ;; (plus they're annoying)
 (setq make-backup-files nil)
@@ -150,13 +151,6 @@
 (add-hook 'org-mode-hook 'turn-on-flyspell)
 
 
-;; Why is this not builtin?
-(if (file-exists-p "~/.emacs.d/apache-mode.el")
-    (load-file "~/.emacs.d/apache-mode.el")
-)
-(if (file-exists-p "~/.emacs.d/splode.el")
-    (load-file "~/.emacs.d/splode.el")
-)
 (autoload 'apache-mode "apache-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.htaccess\\'"   . apache-mode))
 (add-to-list 'auto-mode-alist '("httpd\\.conf\\'"  . apache-mode))
@@ -172,17 +166,9 @@
 (global-set-key (kbd "C-c d") 'cmd-insert-date)
 
 
-;; ;; Load org-mode elsewhere
-;; (if (file-exists-p "~/.emacs.d/cmd_org.el")
-;;      (load-file "~/.emacs.d/cmd_org.el"))
-
 (require 'org)
 (global-set-key "\C-ca" 'org-agenda)
 
-;; these things get backed up by Dropbox
-(setq org-agenda-files (list "~/.org/cmd.org")
-      bookmark-default-file "~/.org/bookmarks"
-      bookmark-save-flag 1)
 
 ;; Don't break things
 (setq org-insert-heading-respect-content t
@@ -205,7 +191,6 @@
 
 ;; Only consider children when calculating completion percent
 (setq org-checkbox-hierarchical-statistics t)
-
 
 ;; Archive into a datetree
 (setq org-archive-location "%s_archive::datetree/")
@@ -312,16 +297,6 @@
 ;;(load-theme 'spacemacs-dark t)
 ;;(load-theme 'spacemacs-light t)
 (load-theme 'gruvbox-dark-medium t)
-
-
-
-;;;;;;; is this necessary?
-;;Disable theme bg in terminal (it makes me sad to need this)
-;; (defun on-frame-open (frame)
-;;   (if (not (display-graphic-p frame))
-;;       (set-face-background 'default "unspecified-bg" frame )))
-;; (add-hook 'after-make-frame-functions 'on-frame-open)
-
 
 
 (require 'yaml-mode)
