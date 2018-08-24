@@ -11,6 +11,7 @@
 (auto-compression-mode 1)
 (setq redisplay-dont-pause t)
 
+(delete-selection-mode t)
 
 (menu-bar-mode -1)
 (require 'mouse)
