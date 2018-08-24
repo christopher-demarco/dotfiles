@@ -82,6 +82,7 @@ alias tcd='tmux attach -c $PWD -t '
 
 alias ansible-init='. ./venv/bin/activate; source ansible/hacking/env-setup; export EC2_INI_PATH=inventory/ec2.ini; export ANSIBLE_HOST_KEY_CHECKING=False'
 alias tf=terraform
+alias tfgrep 'grep -v tfstate'
 alias k=kubectl
 export GOPATH=$HOME/cmd/src/go
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
@@ -154,3 +155,4 @@ function mtmux {
 alias exifdate='mdls -name kMDItemContentCreationDate '
 
 alias pushwiki='git pull && git ci -am 'd' && git push'
+alias cdwiki='cd ~/rhiza/wiki'
