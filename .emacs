@@ -78,8 +78,8 @@
 
 
 
-;; How do I undefine python-mode's py-mark-def-or-class!?
-(eval-after-load "python-mode" '(define-key py-mode-map "\C-\M-h" 'backward-kill-word))
+;; ;; How do I undefine python-mode's py-mark-def-or-class!?
+;; (eval-after-load "python-mode" '(define-key py-mode-map "\C-\M-h" 'backward-kill-word))
 
 (defun cmd-insert-trace-python (&optional arg)
   (interactive "P")
