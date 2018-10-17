@@ -83,10 +83,12 @@ alias tcd='tmux attach -c $PWD -t '
 alias ansible-init='. ./venv/bin/activate; source ansible/hacking/env-setup; export EC2_INI_PATH=inventory/ec2.ini; export ANSIBLE_HOST_KEY_CHECKING=False'
 alias tf=terraform
 alias -g tfgrep='grep -v terraform.tfstate'
-alias k=kubectl
 export GOPATH=$HOME/cmd/src/go
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 
+
+alias k=kubectl
+export KUBECONFIG=~/rhiza/rhiza/ops/EngOps/terraform/eks/kubeconfig
 
 function sshkey {
     cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
@@ -99,13 +101,14 @@ alias -g L='| less -R'
 alias -g H='| head'
 alias -g T='| tail'
 alias -g G='| grep'
+alias -g SL=' | sort -n | less'
 alias -g eo='2>&1'
 
 export CLICOLOR_FORCE=1
 
 
 alias pipenv=$(python -m site --user-base)/bin/pipenv
-export PYTHONPATH=$PYTHONPATH:~/rhiza/rhiza/asgard/shared
+export PYTHONPATH=~/rhiza/rhiza/asgard/shared:~/rhiza/rhiza/asgard/build
 alias vup=". ./venv/bin/activate"
 alias vdown=deactivate
 alias vnew='python3 -mvenv venv'
@@ -155,4 +158,6 @@ function mtmux {
 alias exifdate='mdls -name kMDItemContentCreationDate '
 
 alias pushwiki='git pull && git ci -am 'd' && git push'
+alias ciwiki='git pull && tig status'
+alias -g wiki='~/rhiza/wiki'
 alias cdwiki='cd ~/rhiza/wiki'
