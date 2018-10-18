@@ -113,8 +113,10 @@ alias vup=". ./venv/bin/activate"
 alias vdown=deactivate
 alias vnew='python3 -mvenv venv'
 alias pup='pip install --upgrade pip && pip install --upgrade setuptools'
-alias vpip='pip install -r requirements.txt'
-
+function vpip {
+    [[ -e requirements.txt ]] && pip install -r requirements.txt
+    [[ -e build-requirements.txt ]] && pip install -r build-requirements.txt
+}   
 
 alias -g dl='$(docker ps -laq)'
 alias dla='docker ps -a'

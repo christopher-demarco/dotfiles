@@ -295,9 +295,9 @@
 ;;(load-theme 'solarized t)
 ;;(load-theme 'solarized-dark t)
 ;;(load-theme 'wombat)
-;;(load-theme 'spacemacs-dark t)
+(load-theme 'spacemacs-dark t)
 ;;(load-theme 'spacemacs-light t)
-(load-theme 'gruvbox-dark-medium t)
+;;(load-theme 'gruvbox-dark-medium t)
 
 
 (require 'yaml-mode)
@@ -316,7 +316,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (gruvbox-theme graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
+    (lua-mode gruvbox-theme graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
  '(show-paren-mode t)
