@@ -79,7 +79,7 @@
 
 
 ;; ;; How do I undefine python-mode's py-mark-def-or-class!?
-;;(eval-after-load "python-mode" '(define-key py-mode-map "\C-\M-h" 'backward-kill-word))
+(eval-after-load "python-mode" '(define-key py-mode-map "\C-\M-h" 'backward-kill-word))
 
 (defun cmd-insert-trace-python (&optional arg)
   (interactive "P")
@@ -316,7 +316,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (lua-mode gruvbox-theme graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org python-mode terraform-mode spacemacs-theme yaml-mode)))
+    (lua-mode gruvbox-theme graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode)))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
  '(show-paren-mode t)
