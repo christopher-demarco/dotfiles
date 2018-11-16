@@ -32,7 +32,7 @@ if [[ $(uname) == 'Darwin' ]] ; then
     alias tmacs="TERM=xterm-24bits tmux new -s emacs"
 else
     alias ls='ls -Fh --color=yes'
-    EMACS ="$EMACS -nw"
+    EMACS="$EMACS -nw"
     alias tmacs="tmux new -s emacs"
 fi
 
