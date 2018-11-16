@@ -27,12 +27,12 @@ EMACS=$(which emacsclient)
 if [[ $(uname) == 'Darwin' ]] ; then
     alias ls='ls -FhG'
     [[ -e /Applications/Emacs.app/Contents/MacOS/Emacs ]] && \
-	EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+      EMACS="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
     EMACS="TERM=xterm-24bits $EMACS -nw"
     alias tmacs="TERM=xterm-24bits tmux new -s emacs"
 else
     alias ls='ls -Fh --color=yes'
-    export ="$EMACS -nw"
+    EMACS ="$EMACS -nw"
     alias tmacs="tmux new -s emacs"
 fi
 
