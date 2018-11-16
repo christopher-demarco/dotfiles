@@ -1,9 +1,0 @@
-name: databugs
-root: ~/
-windows:
-  - expedient:
-      layout: even-vertical
-      panes:
-        - ssh arkham.rhiza.com
-        - ssh mantis.rhiza.com
-        - ssh scarab.rhiza.com
