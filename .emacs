@@ -316,7 +316,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (lua-mode gruvbox-theme graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode)))
+    (dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode)))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
  '(show-paren-mode t)

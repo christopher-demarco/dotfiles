@@ -10,6 +10,7 @@ mkdir -p cmd/src; cd cmd/src
 git clone https://github.com/christopher-demarco/dotfiles.git
 cd dotfiles
 git submodule update --init
+
 ```	
 
 Then use [homemaker](http://foosoft.net/projects/homemaker/) to deploy.
@@ -17,6 +18,7 @@ Then use [homemaker](http://foosoft.net/projects/homemaker/) to deploy.
 Linux: 
 ```    
 cd ~/cmd/src/dotfiles; ./homemaker_x64 ./homemaker.tml .
+
 ```
 
 OSX: 
