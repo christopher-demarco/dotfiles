@@ -322,7 +322,9 @@
  '(show-paren-mode t)
  '(sp-show-pair-delay 0)
  '(sp-show-pair-from-inside t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(js-indent-level 2)
+ )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
