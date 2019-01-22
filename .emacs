@@ -14,8 +14,8 @@
 (delete-selection-mode t)
 
 (menu-bar-mode -1)
-(require 'mouse)
-(xterm-mouse-mode t)
+;; (require 'mouse)
+;; (xterm-mouse-mode t)
 
 ;; don't interfere with tmux and anyway I bind this myself in the WM
 (define-key global-map (kbd "C-z") nil)
@@ -313,18 +313,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(gpm-mouse-mode nil)
+ '(js-indent-level 2)
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode color-theme-solarized nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode)))
+    (color-theme-sanityinc-solarized dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode)))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
  '(show-paren-mode t)
  '(sp-show-pair-delay 0)
  '(sp-show-pair-from-inside t)
- '(tool-bar-mode nil)
- '(js-indent-level 2)
- )
+ '(tool-bar-mode nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
