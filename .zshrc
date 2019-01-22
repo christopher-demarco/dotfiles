@@ -65,6 +65,8 @@ export GOPATH=$HOME/cmd/src/go
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 
 alias k=kubectl
+alias kshell='cd ~/rhiza/rhiza; VAULT_GITHUB_TOKEN=c6061c86d75f95040c3bcbe5d3df406447c35982 asgard/build/images/k8s/run.sh $PWD'
+
 
 function sshkey {
     cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
