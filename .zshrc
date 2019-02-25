@@ -40,7 +40,7 @@ alias em=$EMACS
 export EDITOR=$EMACS
 export GIT_EDITOR=$EDITOR
 
-alias ssh='ssh -v'
+alias ssh='TERM=xterm ssh -v'
 alias sl=ls
 alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
 alias rm='rm -i'
@@ -65,7 +65,7 @@ export GOPATH=$HOME/cmd/src/go
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 
 alias k=kubectl
-alias kshell='cd ~/rhiza/rhiza; VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault) asgard/build/images/k8s/run.sh $PWD'
+alias kshell='cd ~/rhiza/rhiza; VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault) asgard/build/images/k8s/run.sh $PWD; cd -'
 
 
 function sshkey {
