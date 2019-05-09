@@ -109,12 +109,13 @@ alias td2='td -L 2'
 alias td3='td -L 3'
 
 # Rhiza
+export NIELSEN_ID=dech7001
+. ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
+
 function mtmux {
     aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
     tmuxinator metropolis-${1}
 }
-
-export KUBECONFIG=~/rhiza/rhiza/ops/EngOps/terraform/eks/kubeconfig
 
 alias pushwiki='git pull && git ci -am 'd' && git push'
 alias ciwiki='git pull && tig status'
