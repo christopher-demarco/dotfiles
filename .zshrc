@@ -59,13 +59,29 @@ alias tcd='tmux attach -c $PWD -t '
 
 alias ansible-init='. ./venv/bin/activate; source ansible/hacking/env-setup; export EC2_INI_PATH=inventory/ec2.ini; export ANSIBLE_HOST_KEY_CHECKING=False'
 alias tf=terraform
+function tfswitch {
+    case $(basename $(ls -l /usr/local/bin/terraform | awk '{ print $NF }')) in
+	terraform_12)
+	    ln -sf /usr/local/bin/terraform{_11,}
+	    terraform -v
+	    ;;
+	terraform_11)
+	    ln -sf /usr/local/bin/terraform{_12,}
+	    terraform -v
+	    ;;
+	*)
+	    echo "ERROR"
+	    ls -l $(which terraform)
+	    ;;
+    esac
+    }
 alias -g tfgrep='grep -v terraform.tfstate'
 
 export GOPATH=$HOME/cmd/src/go
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 
 alias k=kubectl
-alias kshell='cd ~/rhiza/rhiza; VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault) asgard/build/images/k8s/run.sh $PWD; cd -'
+
 
 
 function sshkey {
@@ -107,15 +123,35 @@ alias td='tree -d'
 alias td1='td -L 1'
 alias td2='td -L 2'
 alias td3='td -L 3'
+alias t='tree -I venv'
+alias t1='tree -I venv -L 1'
+alias t2='tree -I venv -L 2'
+alias t3='tree -I venv -L 3'
 
 # Rhiza
 export NIELSEN_ID=dech7001
+export NIELSEN_EMAIL=christopher.demarco@nielsen.com
+export GITHUB_EMAIL=cdemarco@gmail.com
+export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault)
+#export AWS_PROFILE=saml
+#export AWS_DEFAULT_REGION=us-west-2
+# export AWS_PROFILE=default
+# export AWS_DEFAULT_REGION=us-east-1
 . ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
 
 function mtmux {
     aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
     tmuxinator metropolis-${1}
 }
+function bitbucket {
+    git config --global user.email $NIELSEN_EMAIL
+    git config --global credential.username $NIELSEN_ID
+}
+function github {
+    git config --global user.email $GITHUB_EMAIL
+    git config --global credential.username $GITHUB_EMAIL
+}
+
 
 alias pushwiki='git pull && git ci -am 'd' && git push'
 alias ciwiki='git pull && tig status'
