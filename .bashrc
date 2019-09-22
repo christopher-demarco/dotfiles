@@ -266,12 +266,7 @@ function pidof {
     ps -Ac | egrep -i $@ | awk '{ print $1 }'
 }
 
-function svnstamp {
-    if [ ! -e $1 ]; then
-	echo "File $1 not found."
-	return
-    fi
-    svn ps 'svn:keywords' 'IdURL' $1
-    echo '# $Id$' >> $1
-    echo '# $URL$' >> $1
-}
+
+export NIELSEN_ID=dech7001
+export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault)
+source ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
