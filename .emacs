@@ -302,13 +302,27 @@
 ;;(load-theme 'solarized-dark t)
 ;;(load-theme 'sanityinc-solarized-dark)
 ;;(load-theme 'wombat)
-(load-theme 'spacemacs-dark t)
+;;(load-theme 'spacemacs-dark t)
 ;;(load-theme 'spacemacs-light t)
-;;(load-theme 'gruvbox-dark-medium t)
+;;(load-theme 'gruvbox-dark-hard t)
+(load-theme 'cyberpunk t)
+;;(load-theme 'monokai-theme t)
 
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
+
+
+
+;; clojure
+(defun clj nil
+  (interactive)
+  (cider-jack-in nil))
+
+
+
+
 
 (push "/usr/local/share/emacs/site-lisp/json-mode" load-path)
 
