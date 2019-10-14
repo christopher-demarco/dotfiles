@@ -38,7 +38,10 @@ fi
 
 alias em=$EMACS
 export EDITOR=$EMACS
+
 export GIT_EDITOR=$EDITOR
+alias gs='git status'
+alias ts='tig status'
 
 alias ssh='TERM=xterm ssh -v'
 alias sl=ls
@@ -117,7 +120,7 @@ alias -g dli='$(docker images -q | head -1)'
 
 alias weather='docker run jess/weather'
 alias exifdate='mdls -name kMDItemContentCreationDate '
-alias ts='tig status'
+
 
 alias td='tree -d'
 alias td1='td -L 1'
@@ -158,6 +161,8 @@ alias ciwiki='git pull && tig status'
 alias -g wiki='~/rhiza/wiki'
 alias cdwiki='cd ~/rhiza/wiki'
 export PYTHONPATH=~/rhiza/rhiza/asgard/shared:~/rhiza/rhiza/asgard/build
+
+alias -g cake='~/rhiza/content-analytics-ui'
 
 # function legacy_ufw {
 #     for ip in $(tf output cidrs); do
