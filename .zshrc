@@ -48,7 +48,6 @@ alias -g csd=~/cmd/src/dotfiles
 alias ssh='TERM=xterm ssh -v'
 alias sl=ls
 alias lslt='ls -lt'
-alias lslth='lslt | head'
 alias cg='egrep -v "^($|[[:space:]]*#|;)" ' # strip out comments
 alias rm='rm -i'
 alias cp='cp -i'
