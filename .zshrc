@@ -67,18 +67,18 @@ alias ansible-init='. ./venv/bin/activate; source ansible/hacking/env-setup; exp
 alias tf=terraform
 function tfswitch {
     case $(basename $(ls -l /usr/local/bin/terraform | awk '{ print $NF }')) in
-	terraform_12)
-	    ln -sf /usr/local/bin/terraform{_11,}
-	    terraform -v
-	    ;;
-	terraform_11)
-	    ln -sf /usr/local/bin/terraform{_12,}
-	    terraform -v
-	    ;;
-	*)
-	    echo "ERROR"
-	    ls -l $(which terraform)
-	    ;;
+        terraform_12)
+            ln -sf /usr/local/bin/terraform{_11,}
+            terraform -v
+            ;;
+        terraform_11)
+            ln -sf /usr/local/bin/terraform{_12,}
+            terraform -v
+            ;;
+        *)
+            echo "ERROR"
+            ls -l $(which terraform)
+            ;;
     esac
     }
 alias -g tfgrep='grep -v terraform.tfstate'
@@ -135,7 +135,8 @@ alias t2='tree -I venv -L 2'
 alias t3='tree -I venv -L 3'
 
 # Rhiza
-export NIELSEN_ID=dech7001
+export NIELSEN_LANID=dech7001
+export NIELSEN_ID=christopher.demarco@nielsen.com
 export NIELSEN_EMAIL=christopher.demarco@nielsen.com
 export GITHUB_EMAIL=cdemarco@gmail.com
 export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault)
@@ -145,19 +146,40 @@ export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault)
 # export AWS_DEFAULT_REGION=us-east-1
 . ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
 
+function samlinator {
+    export AWS_PROFILE=saml
+    docker container run \
+           -e NIELSEN_ID=christopher.demarco@nielsen.com \
+           -v ~/.aws:/root/.aws -it samlinator
+    }
+
+function helminator {
+    $(aws ecr get-login --no-include-email --region=us-west-2)
+    docker container run \
+           -v ~/.aws:/root/.aws \
+           -e CLUSTER_NAME=$CLUSTER_NAME \
+           -e AWS_DEFAULT_REGION=$CLUSTER_REGION \
+           -e AWS_PROFILE=saml \
+           -e KUBECONFIG=/usr/local/src/kubeconfig \
+           -it 829904534767.dkr.ecr.us-west-2.amazonaws.com/helminator:latest $@
+    }
+
 function mtmux {
     aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
     tmuxinator metropolis-${1}
 }
 function bitbucket {
     git config --global user.email $NIELSEN_EMAIL
-    git config --global credential.username $NIELSEN_ID
+    git config --global credential.username $NIELSEN_LANID
 }
 function github {
     git config --global user.email $GITHUB_EMAIL
     git config --global credential.username $GITHUB_EMAIL
 }
-
+function gitlab {
+    git config --global user.email $NIELSEN_EMAIL
+    git config --global credential.username $NIELSEN_EMAIL
+}
 
 alias pushwiki='git pull && git ci -am 'd' && git push'
 alias ciwiki='git pull && tig status'
@@ -165,7 +187,9 @@ alias -g wiki='~/rhiza/wiki'
 alias cdwiki='cd ~/rhiza/wiki'
 export PYTHONPATH=~/rhiza/rhiza/asgard/shared:~/rhiza/rhiza/asgard/build
 
-alias -g cake='~/rhiza/content-analytics-ui'
+alias -g cake='~/rhiza/cake'
+alias -g manticore='~/rhiza/manticore'
+alias -g rhiza='~/rhiza/rhiza'
 
 # function legacy_ufw {
 #     for ip in $(tf output cidrs); do

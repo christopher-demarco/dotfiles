@@ -267,6 +267,6 @@ function pidof {
 }
 
 
-export NIELSEN_ID=dech7001
+export NIELSEN_ID=christopher.demarco@nielsen.com
 export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault)
 source ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh

@@ -1,6 +1,7 @@
 [user]
   name = Christopher DeMarco
-  email = cdemarco@gmail.com
+	email = cdemarco@gmail.com
+#	email = christopher.demarco@nielsen.com
 [color]
   status = auto
   branch = auto
@@ -12,7 +13,8 @@
   default = simple
 [credential]
   helper = cache
-  username = cdemarco@gmail.com
+	username = cdemarco@gmail.com
+#	username = dech7001
 
 [core]
   editor = emacs
