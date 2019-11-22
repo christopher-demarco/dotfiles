@@ -147,6 +147,7 @@ function samlinator {
     export AWS_PROFILE=saml
     docker container run \
            -e NIELSEN_ID=christopher.demarco@nielsen.com \
+	   -e AWS_PROFILE=$AWS_PROFILE \
            -v ~/.aws:/root/.aws -it samlinator
     }
 
