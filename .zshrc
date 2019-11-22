@@ -142,11 +142,6 @@ export NIELSEN_ID=christopher.demarco@nielsen.com
 export NIELSEN_EMAIL=christopher.demarco@nielsen.com
 export GITHUB_EMAIL=cdemarco@gmail.com
 export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault)
-#export AWS_PROFILE=saml
-#export AWS_DEFAULT_REGION=us-west-2
-# export AWS_PROFILE=default
-# export AWS_DEFAULT_REGION=us-east-1
-. ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
 
 function samlinator {
     export AWS_PROFILE=saml
