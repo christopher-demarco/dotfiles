@@ -188,6 +188,7 @@ export PYTHONPATH=~/rhiza/rhiza/asgard/shared:~/rhiza/rhiza/asgard/build
 alias -g cake='~/rhiza/cake'
 alias -g manticore='~/rhiza/manticore'
 alias -g rhiza='~/rhiza/rhiza'
+function pastxt { pbpaste > $1.txt ; cat $1.txt }
 
 # function legacy_ufw {
 #     for ip in $(tf output cidrs); do
