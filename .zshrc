@@ -87,6 +87,8 @@ export GOPATH=$HOME/cmd/src/go
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 
 alias k=kubectl
+alias -g aall="clusterrolebindings,clusterroles,configmaps,cronjobs,customresourcedefinitions,daemonsets,deployments,externalmetrics,horizontalpodautoscalers,ingresses,jobs,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,podmonitors,pods,podsecuritypolicies,podtemplates,replicasets,rolebindings,roles,secrets,serviceaccounts,servicemonitors,services,statefulsets,storageclasses,volumeattachments"
+
 
 
 
