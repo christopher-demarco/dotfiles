@@ -56,7 +56,6 @@ alias his='history'
 alias hgrep='his | grep'
 
 alias tls='tmux ls'
-alias tm='tmux'
 alias tn='tmux new-session -s '
 alias tnew='tmux new-session -s '
 alias ta='tmux attach -t '
@@ -152,15 +151,19 @@ function samlinator {
     }
 
 function helminator {
-    $(aws ecr get-login --no-include-email --region=us-west-2)
+    local ecr_repo=829904534767.dkr.ecr.us-west-2.amazonaws.com/helminator:latest
+    $(aws ecr get-login --no-include-email --region us-west-2)
     docker container run \
-           -v ~/.aws:/root/.aws \
-           -e CLUSTER_NAME=$CLUSTER_NAME \
-           -e AWS_DEFAULT_REGION=$CLUSTER_REGION \
-           -e AWS_PROFILE=saml \
-           -e KUBECONFIG=/usr/local/src/kubeconfig \
-           -it 829904534767.dkr.ecr.us-west-2.amazonaws.com/helminator:latest $@
+	   -v ~/.aws:/root/.aws \
+	   -e CLUSTER_NAME=$CLUSTER_NAME \
+	   -e AWS_DEFAULT_REGION=$CLUSTER_REGION \
+	   -e AWS_PROFILE=$AWS_PROFILE \
+	   -e KUBECONFIG=/usr/local/src/kubeconfig \
+	   -it $ecr_repo $@
     }
+
+alias aws-which='aws sts get-caller-identity | jq -r .Arn'
+alias manticore-which='set | egrep "(CLUSTER_REGION|STATE_REGION|ACCOUNT|ENV|CLUSTER_COLOR)"'
 
 function mtmux {
     aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
@@ -179,15 +182,13 @@ function gitlab {
     git config --global credential.username $NIELSEN_EMAIL
 }
 
-alias pushwiki='git pull && git ci -am 'd' && git push'
-alias ciwiki='git pull && tig status'
+alias pushwiki='git pull && git ci -am 'autosave' && git push'
+alias -g GP=' && git push'
+
 alias -g wiki='~/rhiza/wiki'
 alias cdwiki='cd ~/rhiza/wiki'
 export PYTHONPATH=~/rhiza/rhiza/asgard/shared:~/rhiza/rhiza/asgard/build
 
-alias -g cake='~/rhiza/cake'
-alias -g manticore='~/rhiza/manticore'
-alias -g rhiza='~/rhiza/rhiza'
 function pastxt { pbpaste > $1.txt ; cat $1.txt }
 
 # function legacy_ufw {
@@ -206,3 +207,4 @@ function pastxt { pbpaste > $1.txt ; cat $1.txt }
 #     done
 #     echo sudo iptables -A INPUT -p tcp --dport 3306 -j DROP
 # }
+
