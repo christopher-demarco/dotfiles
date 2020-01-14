@@ -85,8 +85,10 @@ alias -g tfgrep='grep -v terraform.tfstate'
 export GOPATH=$HOME/cmd/src/go
 export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 
+export KUBECONFIG=~/.kube/config
 alias k=kubectl
 alias -g aall="clusterrolebindings,clusterroles,configmaps,cronjobs,customresourcedefinitions,daemonsets,deployments,externalmetrics,horizontalpodautoscalers,ingresses,jobs,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,podmonitors,pods,podsecuritypolicies,podtemplates,replicasets,rolebindings,roles,secrets,serviceaccounts,servicemonitors,services,statefulsets,storageclasses,volumeattachments"
+function ktx { kubectl config set-context --current --namespace=$1 }
 
 
 
@@ -140,7 +142,20 @@ export NIELSEN_LANID=dech7001
 export NIELSEN_ID=christopher.demarco@nielsen.com
 export NIELSEN_EMAIL=christopher.demarco@nielsen.com
 export GITHUB_EMAIL=cdemarco@gmail.com
-export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault)
+
+export VAULT_HOST=vault.green.testrhizalytics.com
+export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault-new)
+function vault-old {
+    export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault-rhizalytics)
+    export VAULT_HOST=vault.rhizalytics.com
+}
+function vault-new {
+    export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault-new)
+    export VAULT_HOST=vault.green.testrhizalytics.com
+}
+function vault-which { echo $VAULT_GITHUB_TOKEN $VAULT_HOST }
+
+. ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
 
 function samlinator {
     export AWS_PROFILE=saml
@@ -161,6 +176,8 @@ function helminator {
 	   -e KUBECONFIG=/usr/local/src/kubeconfig \
 	   -it $ecr_repo $@
     }
+
+
 
 alias aws-which='aws sts get-caller-identity | jq -r .Arn'
 alias manticore-which='set | egrep "(CLUSTER_REGION|STATE_REGION|ACCOUNT|ENV|CLUSTER_COLOR)"'
