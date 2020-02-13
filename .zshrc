@@ -88,7 +88,13 @@ export GEM_PATH=$HOME/.gems:/usr/lib/ruby/gems/2.0.0
 export KUBECONFIG=~/.kube/config
 alias k=kubectl
 alias -g aall="clusterrolebindings,clusterroles,configmaps,cronjobs,customresourcedefinitions,daemonsets,deployments,externalmetrics,horizontalpodautoscalers,ingresses,jobs,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,podmonitors,pods,podsecuritypolicies,podtemplates,replicasets,rolebindings,roles,secrets,serviceaccounts,servicemonitors,services,statefulsets,storageclasses,volumeattachments"
-function ktx { kubectl config set-context --current --namespace=$1 }
+function get-kubeconfig {
+    aws eks update-kubeconfig \
+	--region $AWS_DEFAULT_REGION \
+	--name $1 \
+	--alias $1
+}
+function ktx { kubectl config use-context $1 --namespace=$2 }
 
 
 
@@ -171,11 +177,13 @@ function helminator {
     $(aws ecr get-login --no-include-email --region us-west-2)
     docker container run \
 	   -v ~/.aws:/root/.aws \
+	   -v ~/.kube:/root/.kube \
 	   -e CLUSTER_NAME=$CLUSTER_NAME \
-	   -e AWS_DEFAULT_REGION=$CLUSTER_REGION \
+	   -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION \
 	   -e AWS_PROFILE=$AWS_PROFILE \
-	   -e KUBECONFIG=/usr/local/src/kubeconfig \
-	   -it $ecr_repo $@
+	   -e KUBECONFIG=/root/.kube/config \
+	   -it helminator $@    
+#	   -it $ecr_repo $@
     }
 
 
