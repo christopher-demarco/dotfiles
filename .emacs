@@ -485,7 +485,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (clojure-mode-extra-font-locking cyberpunk-theme cyberpunk-2019-theme monokai-theme color-theme-sanityinc-tomorrow solarized-theme cider clojure-mode color-theme-sanityinc-solarized dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode)))
+    (grip-mode clojure-mode-extra-font-locking cyberpunk-theme cyberpunk-2019-theme monokai-theme color-theme-sanityinc-tomorrow solarized-theme cider clojure-mode color-theme-sanityinc-solarized dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode)))
  '(pdf-view-midnight-colors (quote ("#fdf4c1" . "#32302f")))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
