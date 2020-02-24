@@ -11,7 +11,7 @@
 		[".oh-my-zsh", "oh-my-zsh"],
 		[".tmux.conf"],
 		[".vimrc"],
-		["Library/KeyBindings", "KeyBindings"],
+#		["Library/KeyBindings", "KeyBindings"],
 		[".ipython/profile_default/ipython_config.py", "ipython_config.py"],
 		[".terminfo"],
 		["Library/LaunchAgents/com.christopherdemarco.bin.backup_evernote.plist", "com.christopherdemarco.bin.backup_evernote.plist"],

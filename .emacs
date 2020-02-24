@@ -3,9 +3,6 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 (transient-mark-mode t)
-;; (show-paren-mode 1)
-;; (setq show-paren-delay 0)
-;(show-smartparens-global-mode +1)
 
 (column-number-mode t)
 (auto-compression-mode 1)
@@ -29,7 +26,6 @@
 ;; ♠♥♦♣ 2660 2665 2666 2663
 ;; 
 
-;; FIXME: This and sentence-spacing and lotsa more go into ENGLISH section
 (global-set-key "\M-_" (lambda () (interactive) (insert "--")));; the unicode character messes up the line spacing :-/
 (add-hook 'text-mode-hook
 	  '(lambda ()
@@ -163,11 +159,6 @@
 (define-key global-map "\C-\M-h" 'backward-kill-word)
 (setq mouse-yank-at-point t)
 
-(add-to-list 'exec-path "/opt/local/bin")
-(add-to-list 'exec-path "~/bin")
-(add-to-list 'exec-path "/usr/local/bin")
-
-
 
 ;; MELPA; see https://melpa.org/#/getting-started
 (require 'package)
@@ -278,53 +269,53 @@
 (global-set-key (kbd "C-c d") 'cmd-insert-date)
 
 
-(require 'org)
-(global-set-key "\C-ca" 'org-agenda)
+;; ; ; ;; ;;; ;;;;; ;;;;;;;; ;;;;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;
+;; (require 'org)
+;; (global-set-key "\C-ca" 'org-agenda)
 
+;; ;; Don't break things
+;; (setq org-insert-heading-respect-content t
+;;       org-catch-invisible-edits "error")
 
-;; Don't break things
-(setq org-insert-heading-respect-content t
-      org-catch-invisible-edits "error")
+;; ;; Capture is bonzer!
+;; (define-key global-map "\M-?" 'org-capture)
+;; (setq org-default-notes-file "~/.org/cmd.org")
+;; (setq org-capture-templates
+;;       '(
+;; 	("t" "Todo" entry (file "~/.org/cmd.org")
+;; 	 "* TODO %?\n  %i" )
+;; 	("n" "Note" entry (file "~/.org/cmd.org")
+;; 	 "* %? :NOTE:\n  %i %t" )
+;; 	))
 
-;; Capture is bonzer!
-(define-key global-map "\M-?" 'org-capture)
-(setq org-default-notes-file "~/.org/cmd.org")
-(setq org-capture-templates
-      '(
-	("t" "Todo" entry (file "~/.org/cmd.org")
-	 "* TODO %?\n  %i" )
-	("n" "Note" entry (file "~/.org/cmd.org")
-	 "* %? :NOTE:\n  %i %t" )
-	))
+;; ;; Log stuff into drawers
+;; (setq org-log-done nil)
+;; (setq org-log-into-drawer t)
 
-;; Log stuff into drawers
-(setq org-log-done nil)
-(setq org-log-into-drawer t)
+;; ;; Only consider children when calculating completion percent
+;; (setq org-checkbox-hierarchical-statistics t)
 
-;; Only consider children when calculating completion percent
-(setq org-checkbox-hierarchical-statistics t)
+;; ;; Archive into a datetree
+;; (setq org-archive-location "%s_archive::datetree/")
 
-;; Archive into a datetree
-(setq org-archive-location "%s_archive::datetree/")
+;; (setq org-todo-keywords
+;;       (quote
+;;        (
+;; 	(sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "DONE(d!)"))))
 
-(setq org-todo-keywords
-      (quote
-       (
-	(sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "DONE(d!)"))))
+;; ;; ;; Don't pollute effort estimate summary with DONE stuff
+;; (setq org-agenda-skip-scheduled-if-done t)
 
-;; ;; Don't pollute effort estimate summary with DONE stuff
-(setq org-agenda-skip-scheduled-if-done t)
+;; (setq org-agenda-span 1)
 
-(setq org-agenda-span 1)
-
-(setq org-agenda-custom-commands
-      '(
-	("A" "Agenda" agenda nil nil ("~/cmd/Google Drive/org/agenda.txt"))
-	("T " "All" todo "TODO" nil ("~/cmd/Google Drive/org/todo.txt"))
-	("P" "Phone" tags-todo "PHONE" nil ("~/cmd/Google Drive/org/phone.txt"))
-	("E" "Errand" tags-todo "ERRAND" nil ("~/cmd/Google Drive/org/errand.txt"))
-	("W" "WAITING" todo "WAITING" nil ("~/cmd/Google Drive/waiting.txt"))
-	))
+;; (setq org-agenda-custom-commands
+;;       '(
+;; 	("A" "Agenda" agenda nil nil ("~/cmd/Google Drive/org/agenda.txt"))
+;; 	("T " "All" todo "TODO" nil ("~/cmd/Google Drive/org/todo.txt"))
+;; 	("P" "Phone" tags-todo "PHONE" nil ("~/cmd/Google Drive/org/phone.txt"))
+;; 	("E" "Errand" tags-todo "ERRAND" nil ("~/cmd/Google Drive/org/errand.txt"))
+;; 	("W" "WAITING" todo "WAITING" nil ("~/cmd/Google Drive/waiting.txt"))
+;; 	))
 
 
 
@@ -417,20 +408,12 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
-
-
-
 ;; clojure
 (defun clj nil
   (interactive)
   (cider-jack-in nil))
 
-
-
-
-
 (push "/usr/local/share/emacs/site-lisp/json-mode" load-path)
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

@@ -149,18 +149,8 @@ export NIELSEN_ID=christopher.demarco@nielsen.com
 export NIELSEN_EMAIL=christopher.demarco@nielsen.com
 export GITHUB_EMAIL=cdemarco@gmail.com
 
-export VAULT_HOST=vault.green.testrhizalytics.com
+export VAULT_HOST=vault.rhizalytics.com
 export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault-new)
-function vault-old {
-    export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault-rhizalytics) \
-	   VAULT_HOST=vault.rhizalytics.com
-}
-function vault-new {
-    export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault-new) \
-	   VAULT_HOST=vault.green.testrhizalytics.com
-}
-function vault-which { echo $VAULT_GITHUB_TOKEN \
-			    $VAULT_HOST }
 
 . ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
 
