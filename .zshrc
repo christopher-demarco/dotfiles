@@ -94,8 +94,8 @@ function get-kubeconfig {
 	--name $1 \
 	--alias $1
 }
+function kls { k config get-contexts }
 function ktx { kubectl config use-context $1 --namespace=$2 }
-
 
 
 
@@ -106,6 +106,7 @@ function delsshkey {
     sed -i.bak "$1d" ~/.ssh/known_hosts
 }
 
+alias -g C='| cat'
 alias -g L='| less -R'
 alias -g H='| head'
 alias -g T='| tail'
@@ -149,33 +150,46 @@ export NIELSEN_ID=christopher.demarco@nielsen.com
 export NIELSEN_EMAIL=christopher.demarco@nielsen.com
 export GITHUB_EMAIL=cdemarco@gmail.com
 
+export CLUSTER_REGION=us-west-2
+
 export VAULT_HOST=vault.rhizalytics.com
 export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault-new)
 
 . ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
 
-function samlinator {
+samlinator() {
+    if [[ $NIELSEN_ID == "firstname.lastname@nielsen.com" ]] \
+	   || [[ -z $NIELSEN_ID ]] ; then
+	echo "Error: NIELSEN_ID is either unset or set wrongly in your .bashrc."
+	echo -n "Enter your Nielsen email address: "
+	read NIELSEN_ID
+    fi
+    local repo=registry.gitlab.com/nielsen-media/ma/site-reliability-engineering/samlinator
+    echo "Verifying GitLab credentials . . ."
+    docker login registry.gitlab.com
+    echo "========================================"
+    echo "Logging into Nielsen AWS . . ."
     export AWS_PROFILE=saml
     docker container run \
-           -e NIELSEN_ID=christopher.demarco@nielsen.com \
-	   -e AWS_PROFILE=$AWS_PROFILE \
-           -v ~/.aws:/root/.aws -it samlinator
-    }
+           -e NIELSEN_ID="$NIELSEN_ID" \
+           -e AWS_PROFILE=$AWS_PROFILE \
+           -v ~/.aws:/root/.aws \
+           "$@" -it "$repo"
+}
 
-function helminator {
-    local ecr_repo=829904534767.dkr.ecr.us-west-2.amazonaws.com/helminator:latest
-    $(aws ecr get-login --no-include-email --region us-west-2)
+helminator() {
+   docker login registry.gitlab.com
+   local repo=registry.gitlab.com/nielsen-media/ma/site-reliability-engineering/helminator
     docker container run \
-	   -v ~/.aws:/root/.aws \
-	   -v ~/.kube:/root/.kube \
-	   -e CLUSTER_NAME=$CLUSTER_NAME \
-	   -e AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION \
-	   -e AWS_PROFILE=$AWS_PROFILE \
-	   -e KUBECONFIG=/root/.kube/config \
-	   -it helminator $@    
-#	   -it $ecr_repo $@
+    -v ~/.kube:/root/.kube \
+    -v ~/.aws:/root/.aws \
+    -e CLUSTER_NAME=$CLUSTER_NAME \
+    -e AWS_DEFAULT_REGION=$CLUSTER_REGION \
+    -e AWS_PROFILE=$AWS_PROFILE \
+    -e KUBECONFIG=/root/.kube/config \
+    "$@" \
+    -it $repo $@
     }
-
 
 
 alias aws-which='aws sts get-caller-identity | jq -r .Arn'
@@ -193,17 +207,24 @@ function github {
     git config --global user.email $GITHUB_EMAIL
     git config --global credential.username $GITHUB_EMAIL
 }
-function gitlab {
+function gitlab-nielsen {
     git config --global user.email $NIELSEN_EMAIL
     git config --global credential.username $NIELSEN_EMAIL
 }
+function gitlab {
+    git config --global user.email cmd@alephant.net
+    git config --global credential.username cmd@alephant.net
+}
 
-alias pushwiki='git pull && git ci -am 'autosave' && git push'
+function pushwiki {
+    msg=${1:-Autosave}
+       
+    git pull && \
+	git ci -am "$msg" && \
+	git push
+}
 alias -g GP=' && git push'
 
-alias -g wiki='~/rhiza/wiki'
-alias cdwiki='cd ~/rhiza/wiki'
-export PYTHONPATH=~/rhiza/rhiza/asgard/shared:~/rhiza/rhiza/asgard/build
 
 function pastxt { pbpaste > $1.txt ; cat $1.txt }
 

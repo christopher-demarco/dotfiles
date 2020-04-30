@@ -190,6 +190,7 @@
     (save-excursion
       (goto-char 0)
       (delete-matching-lines "import pudb ; pudb.set_trace()"))))
+
 (defun cmd-python-customizations ()
   "cmd"
   (define-key python-mode-map

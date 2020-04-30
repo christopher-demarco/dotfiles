@@ -270,3 +270,19 @@ function pidof {
 export NIELSEN_ID=christopher.demarco@nielsen.com
 export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault)
 source ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
+samlinator() {
+    if [[ $NIELSEN_ID == "firstname.lastname@nielsen.com" ]] \
+	   || [[ -z $NIELSEN_ID ]] ; then
+	echo "Error: NIELSEN_ID is either unset or set wrongly in your .bashrc"
+	echo -n "Enter your Nielsen email address: "
+	read NIELSEN_ID
+    fi
+    local repo=registry.gitlab.com/nielsen-media/ma/site-reliability-engineering/samlinator
+    docker login registry.gitlab.com
+    export AWS_PROFILE=saml
+    docker container run \
+           -e NIELSEN_ID="$NIELSEN_ID" \
+           -e AWS_PROFILE=$AWS_PROFILE \
+           -v ~/.aws:/root/.aws \
+           "$@" -it "$repo"
+}
