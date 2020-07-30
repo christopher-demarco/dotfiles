@@ -23,6 +23,9 @@ bind d:alt,shift corner top-right resize:screenSizeX/2;screenSizeY
 bind w:alt,shift corner top-left resize:screenSizeX;screenSizeY/2
 bind x:alt,shift corner bottom-left resize:screenSizeX;screenSizeY/2
 
+# center window on screen
+bind s:alt,shift move screenOriginX+((screenSizeX-windowSizeX)/2);screenOriginY+((screenSizeY-windowSizeY)/2) windowSizeX;windowSizeY
+
 bind f:alt,shift corner top-left resize:screenSizeX;screenSizeY
 
 bind a:ctrl,alt,shift resize +100% +0
