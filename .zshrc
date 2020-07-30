@@ -94,7 +94,7 @@ function get-kubeconfig {
 	--name $1 \
 	--alias $1
 }
-function kls { k config get-contexts }
+function kls { kubectl config get-contexts }
 function ktx { kubectl config use-context $1 --namespace=$2 }
 
 
