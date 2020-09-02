@@ -166,8 +166,8 @@
 
 
 ;; ; ; ;; ;;; ;;;;; ;;;;;;;; ;;;;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;
-(setq org-hide-leading-stars nil)
-(setq org-odd-levels-only nil)
+(setq org-hide-leading-stars t)
+(setq org-odd-levels-only t)
 
 ;; (require 'org)
 ;; (global-set-key "\C-ca" 'org-agenda)
@@ -418,7 +418,7 @@
  ;; If there is more than one, they won't work right.
  '(font-lock-comment-face ((t (:foreground "#8B8989" :slant normal))))
  '(highlight ((t (:background "turquoise"))))
- '(region ((t (:inherit highlight))))
+ '(region ((t (:background "white"))))
  '(show-paren-match ((t (:inverse-video t)))))
 
 (server-start)
