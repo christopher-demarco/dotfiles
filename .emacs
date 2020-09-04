@@ -10,7 +10,7 @@
 
 (delete-selection-mode t)
 
-(global-hl-line-mode t)
+;(global-hl-line-mode t)
 
 (menu-bar-mode -1)
 ;; (require 'mouse)
@@ -418,6 +418,8 @@
  ;; If there is more than one, they won't work right.
  '(font-lock-comment-face ((t (:foreground "#8B8989" :slant normal))))
  '(highlight ((t (:background "turquoise"))))
+ '(mode-line-inactive ((t (:inherit mode-line :background "grey20" :foreground "grey60" :box (:line-width -1 :color "grey75") :weight light))))
+ '(org-hide ((t (:foreground "black"))))
  '(region ((t (:background "white"))))
  '(show-paren-match ((t (:inverse-video t)))))
 
