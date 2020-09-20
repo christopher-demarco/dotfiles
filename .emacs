@@ -187,9 +187,8 @@
 ;; 	 "* %? :NOTE:\n  %i %t" )
 ;; 	))
 
-;; ;; Log stuff into drawers
-;; (setq org-log-done nil)
-;; (setq org-log-into-drawer t)
+(setq org-log-done nil)
+(setq org-log-into-drawer t)
 
 ;; ;; Only consider children when calculating completion percent
 ;; (setq org-checkbox-hierarchical-statistics t)
@@ -197,10 +196,10 @@
 ;; ;; Archive into a datetree
 ;; (setq org-archive-location "%s_archive::datetree/")
 
-;; (setq org-todo-keywords
-;;       (quote
-;;        (
-;; 	(sequence "TODO(t)" "INPROGRESS(i)" "WAITING(w)" "DONE(d!)"))))
+(setq org-todo-keywords
+      (quote
+       (
+	(sequence "TODO(t)" "WAITING(w)" "DONE(d!)"))))
 
 ;; ;; ;; Don't pollute effort estimate summary with DONE stuff
 ;; (setq org-agenda-skip-scheduled-if-done t)
