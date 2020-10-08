@@ -195,6 +195,8 @@ helminator() {
 alias aws-which='aws sts get-caller-identity | jq -r .Arn'
 alias manticore-which='set | egrep "(CLUSTER_REGION|STATE_REGION|ACCOUNT|ENV|CLUSTER_COLOR)"'
 
+alias start-ssm=' aws ssm start-session --target'
+
 function mtmux {
     aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
     tmuxinator metropolis-${1}
