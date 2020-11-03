@@ -62,6 +62,7 @@ alias ta='tmux attach -t '
 alias tattach='tmux attach -d -t '
 alias tcd='tmux attach -c $PWD -t '
 
+# FIXME: should be function
 alias ansible-init='. ./venv/bin/activate; source ansible/hacking/env-setup; export EC2_INI_PATH=inventory/ec2.ini; export ANSIBLE_HOST_KEY_CHECKING=False'
 alias tf=terraform
 function tfswitch {
@@ -195,7 +196,7 @@ helminator() {
 alias aws-which='aws sts get-caller-identity | jq -r .Arn'
 alias manticore-which='set | egrep "(CLUSTER_REGION|STATE_REGION|ACCOUNT|ENV|CLUSTER_COLOR)"'
 
-alias start-ssm=' aws ssm start-session --target'
+function  start-ssm { aws ssm start-session --target %1 }
 
 function mtmux {
     aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
