@@ -17,7 +17,7 @@ Then use [homemaker](http://foosoft.net/projects/homemaker/) to deploy.
 
 Linux: 
 ```    
-git co linux
+git checkout linux
 cd ~/cmd/src/dotfiles; ./homemaker_x64 ./homemaker.tml .
 
 ```
@@ -27,7 +27,6 @@ OSX:
 Install go. Then
 
 ```
-git co macos
 export GOPATH=$HOME/cmd/src/go 
 mkdir -p $GOPATH
 go get github.com/FooSoft/homemaker
@@ -41,4 +40,4 @@ I've forked oh-my-zsh and made a custom theme. It remains to be seen whether pul
 
 
 
-*Copyright (c) 2020 Christopher DeMarco <<cdemarco@gmail.com>>. All rights reserved.*
+*Copyright (c) 2021 Christopher DeMarco <<cdemarco@gmail.com>>. All rights reserved.*
