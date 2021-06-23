@@ -196,7 +196,14 @@ helminator() {
 alias aws-which='aws sts get-caller-identity | jq -r .Arn'
 alias manticore-which='set | egrep "(CLUSTER_REGION|STATE_REGION|ACCOUNT|ENV|CLUSTER_COLOR)"'
 
-function  start-ssm { aws ssm start-session --target %1 }
+# lookup an aws ec2 instance by its private ip
+function instancebyprivateip {
+    aws ec2 describe-instances \
+	--filter Name=private-ip-address,Values=${1} | \
+	jq -r '.Reservations[].Instances[].InstanceId'
+}
+
+function  start-ssm { aws ssm start-session --target $1 }
 
 function mtmux {
     aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
