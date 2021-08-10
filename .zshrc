@@ -23,6 +23,8 @@ function dedup_path {
 
 source $ZSH/oh-my-zsh.sh
 
+export PAGER=less
+
 EMACS=$(which emacsclient)
 if [[ $(uname) == 'Darwin' ]] ; then
     alias ls='ls -FhG'
@@ -65,22 +67,23 @@ alias tcd='tmux attach -c $PWD -t '
 # FIXME: should be function
 alias ansible-init='. ./venv/bin/activate; source ansible/hacking/env-setup; export EC2_INI_PATH=inventory/ec2.ini; export ANSIBLE_HOST_KEY_CHECKING=False'
 alias tf=terraform
-function tfswitch {
-    case $(basename $(ls -l /usr/local/bin/terraform | awk '{ print $NF }')) in
-        terraform_12)
-            ln -sf /usr/local/bin/terraform{_11,}
-            terraform -v
-            ;;
-        terraform_11)
-            ln -sf /usr/local/bin/terraform{_12,}
-            terraform -v
-            ;;
-        *)
-            echo "ERROR"
-            ls -l $(which terraform)
-            ;;
-    esac
-    }
+alias tg='terragrunt init && terragrunt '
+# function tfswitch {
+#     case $(basename $(ls -l /usr/local/bin/terraform | awk '{ print $NF }')) in
+#         terraform_12)
+#             ln -sf /usr/local/bin/terraform{_11,}
+#             terraform -v
+#             ;;
+#         terraform_11)
+#             ln -sf /usr/local/bin/terraform{_12,}
+#             terraform -v
+#             ;;
+#         *)
+#             echo "ERROR"
+#             ls -l $(which terraform)
+#             ;;
+#     esac
+#     }
 alias -g tfgrep='grep -v terraform.tfstate'
 
 export GOPATH=$HOME/cmd/src/go
@@ -114,10 +117,11 @@ alias -g T='| tail'
 alias -g G='| grep'
 alias -g SL=' | sort -n | less'
 alias -g eo='2>&1'
-alias -g cld='colordiff -Bbwu'
+alias -g cdl='| colordiff -Bbwu | less'
 
 export CLICOLOR_FORCE=1
 
+alias python=python3
 alias pipenv=$(python -m site --user-base)/bin/pipenv
 alias vup=". ./venv/bin/activate"
 alias vdown=deactivate
@@ -152,9 +156,6 @@ export NIELSEN_EMAIL=christopher.demarco@nielsen.com
 export GITHUB_EMAIL=cdemarco@gmail.com
 
 export CLUSTER_REGION=us-west-2
-
-export VAULT_HOST=vault.rhizalytics.com
-export VAULT_GITHUB_TOKEN=$(cat ~/tmp/.vault-new)
 
 . ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
 
@@ -220,11 +221,23 @@ function github {
 function gitlab-nielsen {
     git config --global user.email $NIELSEN_EMAIL
     git config --global credential.username $NIELSEN_EMAIL
+    unset GIT_SSH_COMMAND
 }
 function gitlab {
     git config --global user.email cmd@alephant.net
     git config --global credential.username cmd@alephant.net
 }
+
+function gh2gl {
+    github
+    git clone --mirror https://github.com/Rhiza/${1}.git
+    cd ${1}.git
+    git remote set-url origin git@gitlab.com:nielsen-media/ma/rhizalytics/${1}.git
+    gitlab-nielsen
+    git push --mirror
+    cd -
+}
+
 
 function pushwiki {
     msg=${1:-Autosave}
