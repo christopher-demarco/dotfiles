@@ -1,6 +1,6 @@
 [user]
   name = Christopher DeMarco
-	email = cmd@alephant.net
+	email = christopher.demarco@nielsen.com
 [color]
   status = auto
   branch = auto
@@ -12,7 +12,7 @@
   default = simple
 [credential]
   helper = cache
-	username = cmd@alephant.net
+	username = christopher.demarco@nielsen.com
 
 [core]
   editor = emacs

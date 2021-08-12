@@ -175,6 +175,7 @@
 (global-set-key (kbd "C-c d") 'cmd-insert-date)
 
 
+;; org mode
 ;; ; ; ;; ;;; ;;;;; ;;;;;;;; ;;;;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;
 (setq org-hide-leading-stars t)
 (setq org-odd-levels-only t)
@@ -203,6 +204,7 @@
 	 "* %? :NOTE:\n  %i %t" )
 	))
 
+;; logging
 (setq org-log-done nil)
 (setq org-log-into-drawer t)
 
@@ -218,9 +220,10 @@
 	(sequence "TODO(t)" "WAITING(w)" "DONE(d!)"))))
 
 ;; ;; ;; Don't pollute effort estimate summary with DONE stuff
-;; (setq org-agenda-skip-scheduled-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
 
-;; (setq org-agenda-span 1)
+;; ;; ;; default to day view in the agenda
+(setq org-agenda-span 1)
 
 ;; (setq org-agenda-custom-commands
 ;;       '(
