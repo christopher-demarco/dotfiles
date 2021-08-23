@@ -187,7 +187,9 @@
 (setq org-refile-targets (quote (("ticklers.org" :maxlevel . 1)
 				 ("cmd.org" :maxlevel . 9)
 				 ("inbox.org" :maxlevel . 1)
-				 ("backlog.org" :maxlevel . 1 ))))
+				 ("backlog.org" :maxlevel . 1)
+				 ("incan.org" :maxlevel . 1)
+				 )))
 
 ;; ;; Don't break things
 ;; (setq org-insert-heading-respect-content t
@@ -378,10 +380,7 @@
  '(nrepl-message-colors
    '("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4"))
  '(package-selected-packages
-   '(grip-mode clojure-mode-extra-font-locking cyberpunk-theme cyberpunk-2019-theme monokai-theme color-theme-sanityinc-tomorrow solarized-theme cider clojure-mode color-theme-sanityinc-solarized dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode))
- '(pdf-view-midnight-colors '("#fdf4c1" . "#32302f"))
- '(pos-tip-background-color "#073642")
- '(pos-tip-foreground-color "#93a1a1")
+   '(grip-mode clojure-mode-extra-font-locking monokai-theme color-theme-sanityinc-tomorrow solarized-theme cider clojure-mode color-theme-sanityinc-solarized dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
  '(show-paren-mode t)
@@ -427,11 +426,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(highlight ((t (:inverse-video t))))
- '(mode-line-inactive ((t (:inherit mode-line :background "grey20" :foreground "grey60" :box (:line-width -1 :color "grey75") :weight light))))
  '(org-hide ((t (:foreground "black"))))
+ '(region ((t (:extend t :inverse-video t))))
  '(outline-2 ((t (:inherit font-lock-constant-face))))
- '(outline-6 ((t (:inherit font-lock-variable-name-face))))
- '(region ((t (:background "white"))))
+ '(outline-5 ((t (:inherit font-lock-variable-name-face)))) 
  '(show-paren-match ((t (:inverse-video t)))))
 
 (server-start)
