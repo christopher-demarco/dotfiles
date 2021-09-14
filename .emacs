@@ -219,10 +219,10 @@
 (setq org-todo-keywords
       (quote
        (
-	(sequence "TODO(t)" "WAITING(w)" "DONE(d!)"))))
+	(sequence "TODO(t/!)" "WAITING(w/!)" "DONE(d/!)"))))
 
 ;; ;; ;; Don't pollute effort estimate summary with DONE stuff
-(setq org-agenda-skip-scheduled-if-done t)
+;;(setq org-agenda-skip-scheduled-if-done t)
 
 ;; ;; ;; default to day view in the agenda
 (setq org-agenda-span 1)
@@ -321,8 +321,12 @@
 ;;(load-theme 'spacemacs-dark t)
 ;;(load-theme 'spacemacs-light t)
 ;;(load-theme 'gruvbox-dark-hard t)
-;;(load-theme 'cyberpunk t)
+(load-theme 'cyberpunk t)
 ;;(load-theme 'monokai-theme t)
+
+(defun on-after-init ()
+  (set-face-background 'default "#000000" (selected-frame)))
+(add-hook 'window-setup-hook 'on-after-init)
 
 
 (require 'yaml-mode)
@@ -425,11 +429,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(highlight ((t (:inverse-video t))))
+ '(org-agenda-done ((t (:foreground "darkslategray"))))
  '(org-hide ((t (:foreground "black"))))
- '(region ((t (:extend t :inverse-video t))))
+ '(org-scheduled ((t (:foreground "darkgreen" :weight bold))))
+ '(org-scheduled-today ((t (:foreground "green" :weight bold))))
  '(outline-2 ((t (:inherit font-lock-constant-face))))
- '(outline-5 ((t (:inherit font-lock-variable-name-face)))) 
+ '(outline-5 ((t (:inherit font-lock-variable-name-face))))
  '(show-paren-match ((t (:inverse-video t)))))
 
 (server-start)

@@ -239,7 +239,7 @@ function gh2gl {
 }
 
 
-function pushwiki {
+function pushorg {
     msg=${1:-Autosave}
        
     git pull && \
