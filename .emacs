@@ -189,6 +189,7 @@
 				 ("inbox.org" :maxlevel . 1)
 				 ("backlog.org" :maxlevel . 1)
 				 ("incan.org" :maxlevel . 1)
+				 ("okrs.org" :maxlevel . 1)
 				 )))
 
 ;; ;; Don't break things
