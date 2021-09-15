@@ -239,7 +239,7 @@ function gh2gl {
 }
 
 
-function autosave-org {
+function autosave-git {
     msg=${1:-Autosave}
        
     git pull && \
