@@ -181,7 +181,7 @@
 (setq org-odd-levels-only t)
 
 ;; (require 'org)
-(setq org-agenda-files (list "~/cmd/org"))
+(setq org-agenda-files (list "~/cmd/org" "~/rhiza/rhiza.wiki"))
 (global-set-key "\C-ca" 'org-agenda)
 
 (setq org-refile-targets (quote (("ticklers.org" :maxlevel . 1)
@@ -191,6 +191,11 @@
 				 ("incan.org" :maxlevel . 1)
 				 ("okrs.org" :maxlevel . 1)
 				 )))
+
+(org-babel-do-load-languages 'org-babel-load-languages
+			     '(
+			       (shell . t)))
+
 
 ;; ;; Don't break things
 ;; (setq org-insert-heading-respect-content t
@@ -202,9 +207,9 @@
 (setq org-capture-templates
       '(
 	("t" "Todo" entry (file "~/cmd/org/inbox.org")
-	 "* TODO %?\n  %i" )
+	 "* TODO %?\n %i %t" )
 	("n" "Note" entry (file "~/cmd/org/inbox.org")
-	 "* %? :NOTE:\n  %i %t" )
+	 "* %? :NOTE:\n %i %t" )
 	))
 
 ;; logging
@@ -214,13 +219,13 @@
 ;; ;; Only consider children when calculating completion percent
 ;; (setq org-checkbox-hierarchical-statistics t)
 
-;; ;; Archive into a datetree
-;; (setq org-archive-location "%s_archive::datetree/")
+;; Archive into a datetree
+(setq org-archive-location "%s_archive::datetree/")
 
 (setq org-todo-keywords
       (quote
        (
-	(sequence "TODO(t/!)" "WAITING(w/!)" "DONE(d/!)"))))
+	(sequence "BLOCKED(b)" "TODO(t/!)" "INPROGRESS(i/!)" "WAITING(w/!)" "DONE(d/!)"))))
 
 ;; ;; ;; Don't pollute effort estimate summary with DONE stuff
 ;;(setq org-agenda-skip-scheduled-if-done t)
