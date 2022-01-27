@@ -4,7 +4,9 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:$HOME/cmd/src/go/bin:$HOME/cmd/proxy:$HOME/cmd/bin"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH=${HOME}/cmd/src/go/bin:${HOME}/cmd/src/bin:${PATH}
+
 function dedup_path {
     if [ -n "$PATH" ]; then
         old_PATH=$PATH:; PATH=
