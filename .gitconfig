@@ -18,3 +18,5 @@
   editor = emacs
 [rerere]
   enabled = 0
+[init]
+	defaultBranch = trunk
