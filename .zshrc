@@ -70,22 +70,7 @@ alias tcd='tmux attach -c $PWD -t '
 alias ansible-init='. ./venv/bin/activate; source ansible/hacking/env-setup; export EC2_INI_PATH=inventory/ec2.ini; export ANSIBLE_HOST_KEY_CHECKING=False'
 alias tf=terraform
 alias tg='terragrunt init && terragrunt '
-# function tfswitch {
-#     case $(basename $(ls -l /usr/local/bin/terraform | awk '{ print $NF }')) in
-#         terraform_12)
-#             ln -sf /usr/local/bin/terraform{_11,}
-#             terraform -v
-#             ;;
-#         terraform_11)
-#             ln -sf /usr/local/bin/terraform{_12,}
-#             terraform -v
-#             ;;
-#         *)
-#             echo "ERROR"
-#             ls -l $(which terraform)
-#             ;;
-#     esac
-#     }
+
 alias -g tfgrep='grep -v terraform.tfstate'
 
 export GOPATH=$HOME/cmd/src/go
@@ -151,50 +136,9 @@ alias t1='tree -I venv -L 1'
 alias t2='tree -I venv -L 2'
 alias t3='tree -I venv -L 3'
 
-# Rhiza
-export NIELSEN_LANID=dech7001
-export NIELSEN_ID=christopher.demarco@nielsen.com
-export NIELSEN_EMAIL=christopher.demarco@nielsen.com
 export GITHUB_EMAIL=cdemarco@gmail.com
 
 export CLUSTER_REGION=us-west-2
-
-. ~/rhiza/rhiza/ops/rhizacli/SOURCEME.sh
-
-samlinator() {
-    if [[ $NIELSEN_ID == "firstname.lastname@nielsen.com" ]] \
-	   || [[ -z $NIELSEN_ID ]] ; then
-	echo "Error: NIELSEN_ID is either unset or set wrongly in your .bashrc."
-	echo -n "Enter your Nielsen email address: "
-	read NIELSEN_ID
-    fi
-    local repo=registry.gitlab.com/nielsen-media/ma/site-reliability-engineering/samlinator
-    echo "Verifying GitLab credentials . . ."
-    docker login registry.gitlab.com
-    echo "========================================"
-    echo "Logging into Nielsen AWS . . ."
-    export AWS_PROFILE=saml
-    docker container run \
-           -e NIELSEN_ID="$NIELSEN_ID" \
-           -e AWS_PROFILE=$AWS_PROFILE \
-           -v ~/.aws:/root/.aws \
-           "$@" -it "$repo"
-}
-
-helminator() {
-   docker login registry.gitlab.com
-   local repo=registry.gitlab.com/nielsen-media/ma/site-reliability-engineering/helminator
-    docker container run \
-    -v ~/.kube:/root/.kube \
-    -v ~/.aws:/root/.aws \
-    -e CLUSTER_NAME=$CLUSTER_NAME \
-    -e AWS_DEFAULT_REGION=$CLUSTER_REGION \
-    -e AWS_PROFILE=$AWS_PROFILE \
-    -e KUBECONFIG=/root/.kube/config \
-    "$@" \
-    -it $repo $@
-    }
-
 
 alias aws-which='aws sts get-caller-identity | jq -r .Arn'
 alias manticore-which='set | egrep "(CLUSTER_REGION|STATE_REGION|ACCOUNT|ENV|CLUSTER_COLOR)"'
@@ -208,38 +152,14 @@ function instancebyprivateip {
 
 function  start-ssm { aws ssm start-session --target $1 }
 
-function mtmux {
-    aws s3 sync s3://rhiza_ansible/metropolis/$1/metropolis-${1}.tmuxinator.yml/ ~/.tmuxinator/
-    tmuxinator metropolis-${1}
-}
-function bitbucket {
-    git config --global user.email $NIELSEN_EMAIL
-    git config --global credential.username $NIELSEN_LANID
-}
 function github {
     git config --global user.email $GITHUB_EMAIL
     git config --global credential.username $GITHUB_EMAIL
-}
-function gitlab-nielsen {
-    git config --global user.email $NIELSEN_EMAIL
-    git config --global credential.username $NIELSEN_EMAIL
-    unset GIT_SSH_COMMAND
 }
 function gitlab {
     git config --global user.email cmd@alephant.net
     git config --global credential.username cmd@alephant.net
 }
-
-function gh2gl {
-    github
-    git clone --mirror https://github.com/Rhiza/${1}.git
-    cd ${1}.git
-    git remote set-url origin git@gitlab.com:nielsen-media/ma/rhizalytics/${1}.git
-    gitlab-nielsen
-    git push --mirror
-    cd -
-}
-
 
 function autosave-git {
     msg=${1:-Autosave}
@@ -253,20 +173,4 @@ alias -g GP=' && git push'
 
 function pastxt { pbpaste > $1.txt ; cat $1.txt }
 
-# function legacy_ufw {
-#     for ip in $(tf output cidrs); do
-#         ip=$(echo $ip | cut -d/ -f1)
-#         echo sudo ufw insert 1 allow proto tcp from $ip to any port 3306
-#     done
-#     for ip in $(dig +short rhiza-hq.rhizalytics.com) $(dig +short jenkins.rhizalytics.com) $(dig +short hydrogen.rhizalytics.com); do
-#         echo sudo ufw insert 1 allow from $ip to any 
-#     done
-# }
-# function legacy_iptables {
-#     for ip in $(tf output cidrs) $(dig +short rhiza-hq.rhizalytics.com) $(dig +short jenkins.rhizalytics.com) $(dig +short hydrogen.rhizalytics.com) 206.210.65.20 52.90.22.241; do
-#         ip=$(echo $ip | cut -d/ -f1)
-#         echo sudo iptables -I INPUT -p tcp --dport 3306 -s $ip -j ACCEPT
-#     done
-#     echo sudo iptables -A INPUT -p tcp --dport 3306 -j DROP
-# }
 
