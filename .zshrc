@@ -174,3 +174,9 @@ alias -g GP=' && git push'
 function pastxt { pbpaste > $1.txt ; cat $1.txt }
 
 
+# make it easier to deal with utc
+function 2utc { TZ=UTC gdate -Iminutes -d "$1 $2" }
+function utc2 { gdate -Iminutes -d ${1}Z }
+function timeonly { cut -dT -f2 < /dev/stdin}
+function 2utct { 2utc "$1 $2" | timeonly }
+function utc2t { utc2 $1 | timeonly }
