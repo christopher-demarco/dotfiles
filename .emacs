@@ -406,7 +406,7 @@
  '(org-fontify-done-headline nil)
  '(org-fontify-todo-headline nil)
  '(package-selected-packages
-   '(abyss-theme cyberpunk-theme grip-mode clojure-mode-extra-font-locking monokai-theme color-theme-sanityinc-tomorrow solarized-theme cider clojure-mode color-theme-sanityinc-solarized dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode))
+   '(applescript-mode abyss-theme cyberpunk-theme grip-mode clojure-mode-extra-font-locking monokai-theme color-theme-sanityinc-tomorrow solarized-theme cider clojure-mode color-theme-sanityinc-solarized dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#1d2021"))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
