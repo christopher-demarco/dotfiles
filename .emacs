@@ -320,7 +320,7 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;;(load-theme 'solarized t)
-;;(load-theme 'solarized-dark t)
+(load-theme 'solarized-dark t)
 ;;(load-theme 'sanityinc-solarized-dark)
 ;;(load-theme 'sanityinc-solarized-light)
 ;;(load-theme 'wombat)
