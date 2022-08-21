@@ -13,5 +13,6 @@
 		[".vimrc"],
 #		["Library/KeyBindings", "KeyBindings"],
 		[".ipython/profile_default/ipython_config.py", "ipython_config.py"],
-		[".terminfo"]
+		[".terminfo"],
+    [".config/fish", "fish"]
 	]
