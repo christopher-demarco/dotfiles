@@ -181,6 +181,7 @@
 (setq org-odd-levels-only t)
 
 ;; (require 'org)
+(require 'ox-md)
 (setq org-agenda-files (list "~/cmd/org" "~/rhiza/rhiza.wiki"))
 (global-set-key "\C-ca" 'org-agenda)
 
@@ -320,7 +321,7 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;;(load-theme 'solarized t)
-(load-theme 'solarized-dark t)
+;;(load-theme 'solarized-dark t)
 ;;(load-theme 'sanityinc-solarized-dark)
 ;;(load-theme 'sanityinc-solarized-light)
 ;;(load-theme 'wombat)
