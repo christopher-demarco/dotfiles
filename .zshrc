@@ -4,7 +4,6 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=${HOME}/cmd/src/go/bin:${HOME}/cmd/src/bin:${PATH}
 
 function dedup_path {
@@ -49,6 +48,8 @@ alias ts='tig status'
 
 alias -g csd=~/cmd/src/dotfiles
 
+which gdate >>/dev/null && alias date=gdate
+
 alias ssh='TERM=xterm ssh -v'
 alias sl=ls
 alias lslt='ls -lt'
@@ -87,8 +88,20 @@ function get-kubeconfig {
 }
 function kls { kubectl config get-contexts }
 function ktx { kubectl config use-context $1 --namespace=$2 }
-
-
+function kpodson { kubectl get pods -A --field-selector spec.nodeName=${1} }
+alias kwhoson=kpodson
+function kpodwhere { kubectl get pod -n ${1} ${2} -o json | jq .spec.nodeName }
+function kall {
+  if [[ $# -lt 1 ]] ; then
+    echo "Usage: kall <namespace>"
+  else
+    for i in $(kubectl api-resources --verbs=list --namespaced -o name | grep -v "events.events.k8s.io" | grep -v "events" | sort | uniq); do
+      echo "Resource:" $i
+      kubectl -n ${1} get --ignore-not-found ${i}
+    done
+  fi
+}
+alias -g labelsof="-o yaml | yq '.metadata.labels'"
 
 function sshkey {
     cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir ~/.ssh; chmod 0700 ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 0600 ~/.ssh/authorized_keys'
@@ -136,7 +149,8 @@ alias t1='tree -I venv -L 1'
 alias t2='tree -I venv -L 2'
 alias t3='tree -I venv -L 3'
 
-export GITHUB_EMAIL=cdemarco@gmail.com
+export GITHUB_PERSONAL=cdemarco@gmail.com
+export GITHUB_DRW=cdemarco@drwholdings.com
 
 export CLUSTER_REGION=us-west-2
 
@@ -152,9 +166,13 @@ function instancebyprivateip {
 
 function  start-ssm { aws ssm start-session --target $1 }
 
-function github {
-    git config --global user.email $GITHUB_EMAIL
-    git config --global credential.username $GITHUB_EMAIL
+function github-personal {
+    git config --global user.email $GITHUB_PERSONAL
+    git config --global credential.username $GITHUB_PERSONAL
+}
+function github-drw {
+    git config --global user.email $GITHUB_DRW
+    git config --global credential.username $GITHUB_DRW
 }
 function gitlab {
     git config --global user.email cmd@alephant.net
@@ -162,11 +180,9 @@ function gitlab {
 }
 
 function autosave-git {
-    msg=${1:-Autosave}
-       
-    git pull && \
-	git ci -am "$msg" && \
-	git push
+  msg=${1:-Autosave}
+  git ci -am "$msg" && \
+    git push
 }
 alias -g GP=' && git push'
 
@@ -174,9 +190,30 @@ alias -g GP=' && git push'
 function pastxt { pbpaste > $1.txt ; cat $1.txt }
 
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 # make it easier to deal with utc
 function 2utc { TZ=UTC gdate -Iminutes -d "$1 $2" }
 function utc2 { gdate -Iminutes -d ${1}Z }
 function timeonly { cut -dT -f2 < /dev/stdin}
 function 2utct { 2utc "$1 $2" | timeonly }
 function utc2t { utc2 $1 | timeonly }
+
+
+# dhall
+alias dj=dhall-to-json
+alias dy=dhall-to-yaml
