@@ -20,3 +20,5 @@
   enabled = 0
 [init]
 	defaultBranch = trunk
+[pull]
+	rebase = true
