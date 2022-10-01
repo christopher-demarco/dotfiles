@@ -178,11 +178,11 @@
 ;; org mode
 ;; ; ; ;; ;;; ;;;;; ;;;;;;;; ;;;;;;;;;;;;; ;;;;;;;;;;;;;;;;;;;;;
 (setq org-hide-leading-stars t)
-(setq org-odd-levels-only t)
+(setq org-odd-levels-only nil)
 
 ;; (require 'org)
 (require 'ox-md)
-(setq org-agenda-files (list "~/cmd/org" "~/rhiza/rhiza.wiki"))
+(setq org-agenda-files (list "~/Documents/org"))
 (global-set-key "\C-ca" 'org-agenda)
 
 (setq org-refile-targets (quote (("ticklers.org" :maxlevel . 1)
@@ -215,7 +215,7 @@
 
 ;; logging
 (setq org-log-done nil)
-(setq org-log-into-drawer t)
+(setq org-log-into-drawer nil)
 
 ;; ;; Only consider children when calculating completion percent
 ;; (setq org-checkbox-hierarchical-statistics t)
@@ -407,7 +407,7 @@
  '(org-fontify-done-headline nil)
  '(org-fontify-todo-headline nil)
  '(package-selected-packages
-   '(applescript-mode abyss-theme cyberpunk-theme grip-mode clojure-mode-extra-font-locking monokai-theme color-theme-sanityinc-tomorrow solarized-theme cider clojure-mode color-theme-sanityinc-solarized dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode))
+   '(fish-mode applescript-mode abyss-theme cyberpunk-theme grip-mode clojure-mode-extra-font-locking monokai-theme color-theme-sanityinc-tomorrow solarized-theme cider clojure-mode color-theme-sanityinc-solarized dockerfile-mode lua-mode gruvbox-theme graphviz-dot-mode json-mode nginx-mode nlinum ini-mode magit rainbow-delimiters go-mode xclip jinja2-mode smartparens ansible ansible-vault markdown-mode org terraform-mode spacemacs-theme yaml-mode))
  '(pdf-view-midnight-colors '("#fdf4c1" . "#1d2021"))
  '(sentence-end "[.?!][]\"')}]*\\($\\|     \\| \\)[
      ]*")
@@ -457,6 +457,7 @@
  '(org-hide ((t (:foreground "black"))))
  '(org-scheduled ((t (:foreground "darkgreen" :weight bold))))
  '(org-scheduled-today ((t (:foreground "green" :weight bold))))
+ '(org-table ((t (:foreground "deepskyblue"))))
  '(outline-2 ((t (:inherit font-lock-constant-face))))
  '(outline-5 ((t (:inherit font-lock-variable-name-face))))
  '(show-paren-match ((t (:inverse-video t)))))

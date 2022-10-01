@@ -1,5 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="mortalscumbag-cmd"
+ZSH_THEME="mortalscumbag"
 DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git)
