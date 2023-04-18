@@ -217,3 +217,5 @@ function utc2t { utc2 $1 | timeonly }
 # dhall
 alias dj=dhall-to-json
 alias dy=dhall-to-yaml
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

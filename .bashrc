@@ -286,3 +286,5 @@ samlinator() {
            -v ~/.aws:/root/.aws \
            "$@" -it "$repo"
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
