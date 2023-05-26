@@ -19,6 +19,9 @@
 ;; don't interfere with tmux
 (define-key global-map (kbd "C-z") nil)
 
+;; why is this not the default
+(setq-default show-trailing-whitespace t)
+
 ;; Type unicode with C-x 8 <cr>
 ;263a☺
 ;;C-x 8 <cr> 263a ;☺
