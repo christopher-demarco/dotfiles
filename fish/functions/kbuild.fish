@@ -1,3 +1,5 @@
 function kbuild --wraps='kustomize build' --description 'alias kbuild=kustomize build'
-  kustomize build $argv; 
+    kustomize build \
+        --load-restrictor LoadRestrictionsNone \
+        --enable-helm $argv
 end
