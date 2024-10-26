@@ -9,11 +9,14 @@ if test -f /opt/homebrew/Caskroom/miniconda/base/bin/conda
 end
 # <<< conda initialize <<<
 
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
+[ -e /opt/homebrew/opt/asdf/libexec/asdf.fish ] && . /opt/homebrew/opt/asdf/libexec/asdf.fish
+[ -e ~/.drw.fish ] && . ~/.drw.fish
+[ -e ~/.sgpt_vars.fish ] && . ~/.sgpt_vars.fish
 
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.config/emacs/bin
 
 set -Ux EDITOR "emacsclient -nw"
 set -Ux VISUAL "emacsclient -nw"
+
 starship init fish | source

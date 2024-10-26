@@ -1,6 +1,5 @@
 [user]
   name = Christopher DeMarco
-	email = cdemarco@gmail.com
 [color]
   status = auto
   branch = auto
@@ -13,7 +12,6 @@
   autoSetupRemote = true
 [credential]
   helper = cache
-	username = cdemarco@gmail.com
 
 [core]
   editor = emacsclient -nw
@@ -23,3 +21,5 @@
 	defaultBranch = trunk
 [pull]
 	rebase = true
+[include]
+	path = ~/.gitconfig-local
