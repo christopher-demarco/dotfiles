@@ -1,6 +1,3 @@
 [submodule ".emacs.d/yaml-mode"]
 	path = .emacs.d/lib/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
-[submodule "oh-my-zsh"]
-	path = oh-my-zsh
-	url = https://github.com/christopher-demarco/oh-my-zsh.git
