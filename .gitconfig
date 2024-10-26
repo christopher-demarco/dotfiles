@@ -10,12 +10,13 @@
   co = checkout
 [push]
   default = simple
+  autoSetupRemote = true
 [credential]
   helper = cache
 	username = cdemarco@gmail.com
 
 [core]
-  editor = emacs
+  editor = emacsclient -nw
 [rerere]
   enabled = 0
 [init]
