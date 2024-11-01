@@ -37,7 +37,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type nil)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -75,7 +75,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;;(setq shell-file-name (executable-find "bash"))
+(setq shell-file-name (executable-find "zsh"))
 
 (global-set-key "\C-h" 'backward-delete-char-untabify)
 ;; revert to run help
@@ -89,8 +89,32 @@
 
 (setq-default show-trailing-whitespace t)
 
+;; Disable auto-completion
+;; (after! corfu
+;;   (setq corfu-auto nil))
+;; ;; (after! company
+;; ;;   (setq company-idle-delay nil))
+
+
+(after! lsp
+  (add-to-list 'lsp-language-id-configuration '(jsonnet-mode . "jsonnet"))
+  (lsp-register-client (make-lsp-client
+                        :new-connection (lsp-stdio-connection "~/Downloads/jsonnet-language-server_0.14.1_darwin_arm64")
+                        :activation-fn (lsp-activate-on "jsonnet")
+                        :server-id "~/Downloads/jsonnet-language-server_0.14.1_darwin_arm64")))
+
+;; (after! eglot
+;;   (add-to-list
+;;    'eglot-server-programs
+;;    '(jsonnet-mode .
+;;      ("~/Downloads/jsonnet-language-server_0.14.1_darwin_arm64"))))
+;; (add-hook 'jsonnet-mode-hook 'eglot-ensure)
+;; (add-hook 'python-mode-hook 'eglot-ensure)
+
 (load! "org.el")
 (load! "cmd.el")
 
+;; the fucking parens
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
 (server-start)
