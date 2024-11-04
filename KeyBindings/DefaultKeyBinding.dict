@@ -76,4 +76,9 @@
     "^ " = "setMark:";                    /* C-space */
     "^w" = "deleteToMark:";               /* C-w */
 
+    /* Stop the beep in vscode */
+
+    "@^\UF701" = "noop:";
+    "@^\UF702" = "noop:";
+    "@^\UF703" = "noop:";
 }
