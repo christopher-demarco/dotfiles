@@ -43,15 +43,4 @@
       (org-clock-out-if-current)))
   (add-hook 'org-after-todo-state-change-hook
             'org-clock-todo-change)
-
-  (setq org-roam-directory "~/.config/zettelkasten/")
-  (org-roam-db-autosync-mode)
-  (setq org-roam-capture-templates
-        '(
-          ("c" "cmd" plain "%?"
-       :target (file+head "cmd/%<%Y%m%d%H%M%S>-${slug}.org"
-                          "#+title: ${title}\n")
-       :unnarrowed t)
-          )
-        )
 )
