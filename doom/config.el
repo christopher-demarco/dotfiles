@@ -96,12 +96,17 @@
 ;; ;;   (setq company-idle-delay nil))
 
 
-(after! lsp
-  (add-to-list 'lsp-language-id-configuration '(jsonnet-mode . "jsonnet"))
-  (lsp-register-client (make-lsp-client
-                        :new-connection (lsp-stdio-connection "~/Downloads/jsonnet-language-server_0.14.1_darwin_arm64")
-                        :activation-fn (lsp-activate-on "jsonnet")
-                        :server-id "~/Downloads/jsonnet-language-server_0.14.1_darwin_arm64")))
+;; (after! lsp
+;;   (add-to-list 'lsp-language-id-configuration '(jsonnet-mode . "jsonnet"))
+;;   (lsp-register-client (make-lsp-client
+;;                         :new-connection (lsp-stdio-connection "~/Downloads/jsonnet-language-server_0.14.1_darwin_arm64")
+;;                         :activation-fn (lsp-activate-on "jsonnet")
+;;                         :server-id "~/Downloads/jsonnet-language-server_0.14.1_darwin_arm64"))
+;;   (setq lsp-semantic-tokens-enable t)
+;;   (setq lsp-semantic-tokens-honor-refresh-requests t)
+;;   (setq lsp-enable-links t)
+;;   (setq lsp-terraform-ls-prefill-required-fields t)
+;;   )
 
 ;; (after! eglot
 ;;   (add-to-list
