@@ -30,7 +30,8 @@
   (setq org-agenda-span 'day)
   (setq org-agenda-start-day "+0d")
 
-  ;; Show DONE items in the log view, too
+  ;; Only DONE items in the log view
+  (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-log-mode-items '(closed clock state))
 
   ;; Clock-in-and-out automatically
