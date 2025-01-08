@@ -26,5 +26,6 @@
     (defun cmd-open-jira ()
       (interactive)
       (browse-url
-       (format jira-url (thing-at-point 'symbol))))
+       (replace-regexp-in-string "_" "-"
+         (format jira-url (thing-at-point 'symbol)))))
     (global-set-key (kbd "C-x C-j") 'cmd-open-jira)))
