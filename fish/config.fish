@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-[ (uname) = "Darwin" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+[ (uname) = "Darwin" ] && eval "(/opt/homebrew/bin/brew shellenv)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
