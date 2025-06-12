@@ -22,6 +22,9 @@ set -Ux EDITOR "emacsclient -nw"
 set -Ux VISUAL "emacsclient -nw"
 
 starship init fish | source
+
+eval "$(devbox global shellenv)"
+
 function fish_user_key_bindings
   bind ctrl-alt-h backward-kill-word
 end
