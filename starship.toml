@@ -1,0 +1,11 @@
+# ~/.config/starship.toml
+
+[kubernetes]
+disabled = true
+
+[status]
+disabled = false
+symbol = '!'
+
+[aws]
+disabled = true
