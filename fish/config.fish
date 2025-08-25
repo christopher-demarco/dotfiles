@@ -18,11 +18,12 @@ end
 # <<< conda initialize <<<
 
 [ -e /opt/homebrew/opt/asdf/libexec/asdf.fish ] && . /opt/homebrew/opt/asdf/libexec/asdf.fish
-[ -e ~/.drw.fish ] && . ~/.drw.fish
-[ -e ~/.sgpt_vars.fish ] && . ~/.sgpt_vars.fish
+[ -e ~/.work.fish ] && . ~/.work.fish
+
 
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.config/emacs/bin
+fish_add_path $HOME/bin
 
 set -Ux EDITOR "emacsclient -nw"
 set -Ux VISUAL "emacsclient -nw"
