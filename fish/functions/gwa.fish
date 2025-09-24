@@ -15,4 +15,5 @@ function gwa --wraps='git worktree add' --description 'alias gwa=git worktree ad
     git worktree add $argv
   end
   cd $argv
+  test -e ../AGENTS.md; and ln -s ../AGENTS.md .
 end
