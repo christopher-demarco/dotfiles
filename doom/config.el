@@ -32,7 +32,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'modus-vivendi)
+;;(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one-light)
 ;; doom-one doom-sourcerer gruvbox Iosvkem acario solarized modus-vivendi
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
