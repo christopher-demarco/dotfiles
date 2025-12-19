@@ -1,0 +1,7 @@
+[tools]
+gh = "latest"
+terraform = "1.5.7"
+terragrunt = "0.54.5"
+prettier = "3.7.4"
+python = "3.12"
+uv = "latest"

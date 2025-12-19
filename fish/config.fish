@@ -4,7 +4,6 @@ end
 
 [ (uname) = "Darwin" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-[ -e /opt/homebrew/opt/asdf/libexec/asdf.fish ] && . /opt/homebrew/opt/asdf/libexec/asdf.fish
 [ -e ~/.work.fish ] && . ~/.work.fish
 
 fish_add_path $HOME/go/bin
@@ -17,8 +16,12 @@ set -Ux VISUAL "emacsclient -nw"
 
 command -v starship >/dev/null 2>&1 && starship init fish | source
 
-direnv hook fish | source
-command -v starship >/dev/null 2>&1 && eval "$(devbox global shellenv)"
+set -gx MISE_EXPERIMENTAL 1
+fish_add_path -m ~/.local/share/mise/shims
+status --is-interactive; and mise activate fish | source
+status --is-interactive; and direnv hook fish | source
+
+command -v starship >/dev/null 2>&1
 
 function fish_user_key_bindings
   bind ctrl-alt-h backward-kill-word
