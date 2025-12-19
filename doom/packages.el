@@ -51,3 +51,4 @@
 
 
 (package! jsonnet-mode)
+(package! auto-dark)

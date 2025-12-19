@@ -29,12 +29,42 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-;;(setq doom-theme 'doom-one)
-(setq doom-theme 'doom-one-light)
-;; doom-one doom-sourcerer gruvbox Iosvkem acario solarized modus-vivendi
+(setq custom-safe-themes t)
+(setq doom-theme 'doom-solarized-light)
+(use-package! auto-dark
+  :config
+  (setq auto-dark-themes '((doom-solarized-dark) (doom-solarized-light))
+        auto-dark-detection-method 'osascript)
+  ;; Don't use auto-dark-mode since it tries to use NS hooks in terminal
+  ;; Instead, manually start the timer
+  (auto-dark-start-timer))
+;;;; doom-acario-dark + doom-one-light
+;;;; solarized-dark + solarized-light
+;;;; modus-vivendi doom-outrun-electric
+
+;;;; vibe coding
+;; Auto-refresh buffers when files change on disk
+(global-auto-revert-mode 1)
+;; Refresh diff-hl (git gutter) when buffer reverts
+(add-hook 'after-revert-hook #'diff-hl-update)
+;; Use solid blocks in margin for diff-hl (terminal)
+;; NOTE: `diff-hl-margin' caches the rendered strings, so we set this via
+;; `customize-set-variable' to invalidate its cache.
+(after! diff-hl-margin
+  (customize-set-variable
+   'diff-hl-margin-symbols-alist
+   '((insert . "█") (delete . "█") (change . "█")
+     (unknown . "█") (ignored . "█"))))
+
+;; Toggle between showing staged vs unstaged changes in diff-hl
+(defun my/diff-hl-toggle-staged ()
+  "Toggle diff-hl between showing staged changes or not."
+  (interactive)
+  (setq diff-hl-show-staged-changes (not diff-hl-show-staged-changes))
+  (diff-hl-update)
+  (message "diff-hl: %s staged changes"
+           (if diff-hl-show-staged-changes "showing" "hiding")))
+
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
