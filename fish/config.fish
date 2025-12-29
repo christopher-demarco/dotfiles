@@ -2,12 +2,14 @@ set -U fish_greeting
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
-end
+    end
 
 [ (uname) = "Darwin" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
+
 [ -e ~/.work.fish ] && . ~/.work.fish
 
+fish_add_path $HOME/cmd/src/remindme
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.config/emacs/bin
 fish_add_path $HOME/bin
@@ -28,6 +30,7 @@ command -v starship >/dev/null 2>&1
 function fish_user_key_bindings
   bind ctrl-alt-h backward-kill-word
 end
+
 
 
 # Added by `rbenv init` on Wed Aug  6 15:42:25 EDT 2025
