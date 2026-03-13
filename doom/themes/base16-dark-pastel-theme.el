@@ -34,7 +34,8 @@
 (custom-theme-set-faces 'base16-dark-pastel
   '(hl-line ((t (:background "#1a1a1a"))))
   '(mode-line ((t (:background "#1a1a1a"))))
-  '(mode-line-inactive ((t (:background "#111111")))))
+  '(mode-line-inactive ((t (:background "#111111"))))
+  '(minibuffer-prompt ((t (:foreground "#aaaaaa")))))
 
 ;; Mark the theme as provided
 (provide-theme 'base16-dark-pastel)
