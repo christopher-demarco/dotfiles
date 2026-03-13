@@ -52,3 +52,4 @@
 
 (package! jsonnet-mode)
 (package! auto-dark)
+(package! base16-theme)

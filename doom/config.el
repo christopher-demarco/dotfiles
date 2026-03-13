@@ -30,17 +30,22 @@
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
 (setq custom-safe-themes t)
-(setq doom-theme 'doom-solarized-light)
+
+(setq base16-theme-256-color-source 'colors)
+(setq doom-theme 'base16-selenized-light)
 (use-package! auto-dark
   :config
-  (setq auto-dark-themes '((doom-solarized-dark) (doom-solarized-light))
+  (setq auto-dark-themes '((base16-dark-pastel) (base16-selenized-light))
         auto-dark-detection-method 'osascript)
   ;; Don't use auto-dark-mode since it tries to use NS hooks in terminal
   ;; Instead, manually start the timer
   (auto-dark-start-timer))
+
+;;;; modus-vivendi + doom-one-light
 ;;;; doom-acario-dark + doom-one-light
-;;;; solarized-dark + solarized-light
-;;;; modus-vivendi doom-outrun-electric
+;;;; doom-solarized-dark + doom-solarized-light
+;;;; dark: modus-vivendi doom-outrun-electric
+;;;; light: adwaita doom-acario-light
 
 ;;;; vibe coding
 ;; Auto-refresh buffers when files change on disk
@@ -150,7 +155,13 @@
 (load! "org.el")
 (load! "cmd.el")
 
+;; M-x ghostty-import-theme
+(load! "ghostty.el")
+
 ;; the fucking parens
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
+
+;; MDX files (Markdown + JSX)
+(add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
 
 (server-start)

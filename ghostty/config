@@ -1,0 +1,11 @@
+confirm-close-surface = false
+window-inherit-working-directory = false
+tab-inherit-working-directory = false
+# shell-integration-features = no-cursor
+# cursor-style = block
+#cursor-style-blink = true
+window-height = 24
+window-width = 80
+
+theme = dark:Dark Pastel,light:Selenized Light
+#theme = dark:Selenized Dark,light:Selenized Light
