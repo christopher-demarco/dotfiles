@@ -6,6 +6,9 @@ cursor-style = block
 cursor-style-blink = true
 window-height = 24
 window-width = 80
+macos-titlebar-proxy-icon = hidden
+mouse-hide-while-typing = true
+minimum-contrast = 1.05
 
 theme = dark:Dark Pastel,light:Selenized Light
 #theme = dark:Selenized Dark,light:Selenized Light
