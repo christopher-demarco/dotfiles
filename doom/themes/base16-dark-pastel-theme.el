@@ -35,7 +35,8 @@
   '(hl-line ((t (:background "#1a1a1a"))))
   '(mode-line ((t (:background "#1a1a1a"))))
   '(mode-line-inactive ((t (:background "#111111"))))
-  '(minibuffer-prompt ((t (:foreground "#aaaaaa")))))
+  '(minibuffer-prompt ((t (:foreground "#aaaaaa"))))
+  '(vertico-current ((t (:background "#1a1a1a")))))
 
 ;; Mark the theme as provided
 (provide-theme 'base16-dark-pastel)
