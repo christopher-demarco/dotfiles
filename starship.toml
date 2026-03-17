@@ -1,4 +1,5 @@
-# ~/.config/starship.toml
+[hostname]
+style = 'bold dimmed white'
 
 [kubernetes]
 disabled = false
