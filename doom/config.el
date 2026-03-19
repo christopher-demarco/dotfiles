@@ -113,6 +113,15 @@
 
 (setq shell-file-name (executable-find "zsh"))
 
+;; Enable clipboard integration with macOS (for terminal Emacs)
+(when (memq system-type '(darwin))
+  (defun pbcopy (text &optional push)
+    (let ((process-connection-type nil))
+      (let ((proc (start-process "pbcopy" nil "pbcopy")))
+        (process-send-string proc text)
+        (process-send-eof proc))))
+  (setq interprogram-cut-function 'pbcopy))
+
 (global-set-key "\C-h" 'backward-delete-char-untabify)
 ;; revert to run help
 ;; (global-set-key "\C-h" 'help-command)
