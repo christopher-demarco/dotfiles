@@ -31,3 +31,4 @@ end
 
 # Added by `rbenv init` on Wed Aug  6 15:42:25 EDT 2025
 status --is-interactive; and rbenv init - --no-rehash fish | source
+export PATH="$HOME/.local/bin:$PATH"
