@@ -5,7 +5,7 @@ today = date.today()
 monday = today - timedelta(days=today.weekday())
 prev_monday = monday - timedelta(days=7)
 filename = f\"/Users/cdemarco/.config/zk/drw/Week of {monday.strftime('%Y-%m-%d')}.md\"
-content = f\"[[Week of {prev_monday.strftime('%Y-%m-%d')}]]\n\n\"
+content = f\"[Week of {prev_monday.strftime('%Y-%m-%d')}](Week%20of%20{prev_monday.strftime('%Y-%m-%d')}.md)\n\n\"
 day_labels = ['M', 'T', 'W', 'R', 'F']
 for i, label in enumerate(day_labels):
     day_date = monday + timedelta(days=i)
