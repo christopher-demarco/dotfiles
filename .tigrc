@@ -1,1 +1,2 @@
-color cursor black white inverse
+color cursor black white
+set wrap-lines = yes
