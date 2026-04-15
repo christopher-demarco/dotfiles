@@ -44,7 +44,7 @@ I've forked oh-my-zsh and made a custom theme. It remains to be seen whether pul
 
 `com.cdemarco.dark-notify-tmux.plist` is a launchd service that watches for macOS dark/light mode changes and updates the tmux theme accordingly via `dark-notify-tmux.sh`.
 
-**Prerequisites:** `brew install dark-notify`
+**Prerequisites:** `brew install cormacrelf/tap/dark-notify`
 
 **Install:**
 
