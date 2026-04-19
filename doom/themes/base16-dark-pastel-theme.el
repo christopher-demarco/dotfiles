@@ -30,14 +30,6 @@
 ;; Add all the faces to the theme
 (base16-theme-define 'base16-dark-pastel base16-dark-pastel-theme-colors)
 
-;; Tone down hl-line (base01 is too bright on pure black)
-(custom-theme-set-faces 'base16-dark-pastel
-  '(hl-line ((t (:background "#1a1a1a"))))
-  '(mode-line ((t (:background "#1a1a1a"))))
-  '(mode-line-inactive ((t (:background "#111111"))))
-  '(minibuffer-prompt ((t (:foreground "#aaaaaa"))))
-  '(vertico-current ((t (:background "#1a1a1a")))))
-
 ;; Mark the theme as provided
 (provide-theme 'base16-dark-pastel)
 

@@ -20,6 +20,18 @@
     'cmd-insert-trace-python))
 (add-hook 'python-mode-hook 'cmd-python-customizations)
 
+(defun cmd-markdown-insert-file-link ()
+  "Insert a markdown link to a local file using vertico file completion."
+  (interactive)
+  (let* ((file (read-file-name "Link file: " nil nil t))
+         (rel  (file-relative-name file))
+         (text (read-string "Link text: " (file-name-base file))))
+    (insert (format "[%s](%s)" text rel))))
+
+(after! markdown-mode
+  (map! :map markdown-mode-map
+        "C-c C-l" #'cmd-markdown-insert-file-link))
+
 (let ((work-el "~/.work.el"))
   (when (file-exists-p work-el)
     (load! work-el)

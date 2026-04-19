@@ -41,6 +41,18 @@
   ;; Instead, manually start the timer
   (auto-dark-start-timer))
 
+;; Tone down hl-line (base01 is too bright on pure black); applied via hook
+;; so it reliably wins over base16-theme-define regardless of load order.
+(add-hook 'doom-load-theme-hook
+  (lambda ()
+    (when (eq doom-theme 'base16-dark-pastel)
+      (custom-theme-set-faces 'base16-dark-pastel
+        '(hl-line ((t (:background "#1a1a1a"))))
+        '(mode-line ((t (:background "#1a1a1a"))))
+        '(mode-line-inactive ((t (:background "#111111"))))
+        '(minibuffer-prompt ((t (:foreground "#aaaaaa"))))
+        '(vertico-current ((t (:background "#1a1a1a"))))))))
+
 ;;;; modus-vivendi + doom-one-light
 ;;;; doom-acario-dark + doom-one-light
 ;;;; doom-solarized-dark + doom-solarized-light
@@ -170,7 +182,13 @@
 ;; the fucking parens
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 
-;; MDX files (Markdown + JSX)
+;; Markdown + MDX
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
+
+;; File path completion in markdown buffers via cape-file
+(add-hook 'markdown-mode-hook
+          (lambda ()
+            (add-to-list 'completion-at-point-functions #'cape-file)))
 
 (server-start)
